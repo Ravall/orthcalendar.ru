@@ -1,0 +1,13 @@
+@mixin coopyright() {
+    div#coopyright {
+        font-size: 12px;
+        background: $background-top-down;
+        border-top: 1px solid #000;
+        div.container{
+            @include container;
+            text-align: center;
+            color: #bbb;
+            @include small-link($link-color-top-down, $link-color-top-down-hover);
+        }
+    }
+}

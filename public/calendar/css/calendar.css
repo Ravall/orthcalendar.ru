@@ -1,0 +1,105 @@
+@CHARSET "UTF-8";
+/* фон.листы календаря */
+body {background: #f6f6ee url(../images/fon.jpg);background-position:0 0;background-repeat:no-repeat;}
+/* фон с логотипом */
+div.first_con {background: url(../images/logo.jpg);background-position: right top;background-repeat: no-repeat;}
+
+div.container {padding-top:50px;margin-top:50px; }
+
+/* вернхнее меню */
+#top_menu {background:#000;text-align:right;padding-right:10px;padding-bottom:5px;margin:0px;font-size:9pt;}
+    /* стиль ссылок в меню */
+    #top_menu a {color:#f6f6ee;}
+
+
+/*##### Лицевая сторона #####*/
+
+
+
+/* контейнер для элементов каленаря */
+#calendar_container {background:  #f6f5e1;padding:20px;border: 1px solid #ccc;}
+    /* страница календаря */
+    #calendar_container #day_date {line-height:1;margin-bottom:50px;margin-top:10px;}
+    /* дата месяца */
+    #calendar_container #day_date #date {text-align : center;font-size: 100pt;padding: 0px;margin: 0px;}
+    /* день недели */
+    #calendar_container #day_date #week_day {text-align : center;font-size: 20pt;}
+    /* месяц */
+    #calendar_container #day_date #month {text-align : center;font-size: 15pt;padding-top: 0px;margin-top: 0px;}
+    /* блок календаря с именами событий */
+    #calendar_container #day_event {font-size: 15pt;margin-bottom:50px;}
+
+/* календарь на месяц */
+#calendar_month_container { background: #f6f5e1;padding:20px;border: 1px solid #ccc;}
+    /* календарная сетка */
+	#calendar_month_container #month_year {text-align : center;font-size: 20pt;}
+	/* стиль для таблицы календарной сетки */
+    #calendar_month_container #calendr_table {font-size:11pt; table-layout: fixed;}
+	/* стили для дня сегодняшнего */
+    #calendar_month_container #calendr_table .today {font-weight:bold;}
+	/* стили для дня выбранного */
+	#calendar_month_container #calendr_table .current {font-size:15pt;}
+	/* стили для дня в котором есть сакральные события */
+    #calendar_month_container #calendr_table .sacral {color:red;}
+    #calendar_month_container #addinfo {text-align:right;font-size:10pt;}
+
+
+/* календарь на месяц меньшего размера*/
+#calendar_month_container_small { background: #f6f5e1;padding:20px;border: 1px solid #ccc;}
+    /* календарная сетка */
+	#calendar_month_container_small #month_year {text-align : center;font-size: 14pt;}
+	/* стиль для таблицы календарной сетки */
+    #calendar_month_container_small #calendr_table {font-size:8pt; table-layout: fixed;}
+	/* стили для дня сегодняшнего */
+    #calendar_month_container_small #calendr_table .today {font-weight:bold;}
+	/* стили для дня выбранного */
+	#calendar_month_container_small #calendr_table .current {font-size:15pt;}
+	/* стили для дня в котором есть сакральные события */
+    #calendar_month_container_small #calendr_table .sacral {color:red;}
+    #calendar_month_container_small #addinfo {text-align:right;font-size:10pt;}
+
+
+/** событие в развороте */
+/* название события */
+#calendar_container #event_name {
+   text-align : center;
+   font-size: 20pt;
+}
+
+#calendar_container #event_date  {
+   text-align : center;
+   font-size: 7pt;
+}
+
+#calendar_container #event_more {
+   text-align : right;
+   font-size: 7pt;
+}
+
+
+#footer {
+margin-top:100px;
+border-top:1px solid #CCCCCC;
+margin-left:35px;
+overflow:hidden;
+padding:30px 0;
+text-align:center;
+}
+
+
+
+/** текста **/
+.info {
+	font-size:8pt;
+}
+.text {
+	font-size:10pt;
+}
+.caption {
+	font-size:20pt;
+}
+
+a {
+	color:#6DA3BD
+}
+a.notunderline {text-decoration:none;}

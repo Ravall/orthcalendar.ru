@@ -1,0 +1,12 @@
+<div class="leftmenu">
+<?php
+    $menu = new Navigation_Menu_About();
+    echo $this->navigation()->menu($menu->getMenu());
+?>
+<hr/>
+<h3>Календари</h3>
+<?php
+    $menu = new Navigation_Menu_Calendar();
+    echo $this->navigation()->menu($menu->getMenu());
+?>
+</div>

@@ -1,0 +1,13 @@
+<h2>Иконы цепляем тут</h2>
+<a href='/icon/add'>добавить икону</a><br/>
+<div class='alt'>если добавил икону - сбрось кеша</div>
+<ul class="list">
+<?php foreach ($this->iconList as $icon): ?>
+    <li> <span class="alt">(#<?php echo $icon->getId();?>)</span>
+         <a class="<?php echo $icon->getStatus();?>" 
+             href="/icon/edit/id/<?php echo $icon->getId();?>" >
+             <?php echo $icon->getTitle();?>
+         </a>
+    </li>
+<?php endforeach;?>
+</ul>

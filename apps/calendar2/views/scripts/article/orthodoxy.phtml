@@ -1,0 +1,91 @@
+<?php echo $this->partial('calendar/elements/header_menu.phtml'); ?>
+<?php echo $this->partial('calendar/elements/month_menu.phtml',
+                          array(
+                              'data' => $this->date
+                          ));
+?>
+ <div id="article_card" class="clearfix">
+            <div class="container">
+                <div id="img">
+                    <?php
+                    if (!$image = $this->article->getImage('300','200')) {
+                        if ($this->event) {
+                            $image = $this->event->getImage('300','200');
+                        }
+                        if (!$image) {
+                            $image = $this->everyDay->getImage('300','200');
+                        }                        
+                    } ?>
+                    <img src="<?php echo $image; ?>">
+                </div>
+                <div id="card" class="clearfix">
+                    <h1><?php echo $this->article->getTitle();?></h1>
+                    <h2>Православный календарь</h2>
+                    <div id="information">
+                    <?php if ($this->cardShow): ?>
+                        <?php if ($this->event): ?>
+                            статья по теме: &laquo;<?php echo $this->event->getLink($this->event->getTitle());?>&raquo;
+                        <?php else: ?>
+                            статья относится к темам:
+                            <?php 
+                                 $list = Sancta_Peer_Event::getByArticleId($this->article->getId());
+                                 foreach ($list as $event) {
+                                     $links[] = '&laquo;' . $event->getLink($event->getTitle()) . '&raquo;';
+                                 }
+                                 echo implode(', ', $links);
+                            ?>
+                        <?php endif; ?>
+                    <?php endif; ?>                            
+                    </div>
+                    Поделиться статьей:
+                    <script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>
+                    <div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="none" data-yashareQuickServices="yaru,vkontakte,facebook,twitter,odnoklassniki,moimir,lj,friendfeed,moikrug"></div> 
+                </div>
+            </div>
+        </div>
+
+
+ <div id="main_block" class="clearfix">
+            <div class="container">
+                <div id="main_content">
+                    <div id="description">
+                        <!-- google_ad_section_start -->
+                        <?php echo $this->article->getContent(array("\n" => '</p><p>')); ?>
+                        <!-- google_ad_section_end -->
+                        <?php echo $this->partial(
+                                'calendar/elements/social_plugin.phtml',
+                                array(
+                                    'pageId'=> $this->article->getId(),
+                                    'url' => $this->article->getLink(),
+                                
+                                )); ?>
+                    </div>
+                </div>
+
+            <div id="add_content" class="clearfix">                
+                <?php if ($this->event): ?>                    
+                    <div id ='articles'>
+                        <h2>Что еще можно прочесть по теме &laquo<?php echo $this->event->getLink($this->event->getTitle());?>&raquo;:</h2>
+                        <hr/>
+                        
+                            <?php foreach (Sancta_Peer_Article::getByEventId($this->event->getId()) as $article): ?>
+                              <p <?php if ($this->article->getId() == $article->getId()) echo "class='current'";?>>
+                                  <?php echo $article->getLink($article->getTitle(), array('event_id' => $this->event->getId()));?>
+                              </p>
+                            <?php endforeach;?>
+                        
+                     </div>
+                <?php endif;?>
+                <?php echo $this->partial('calendar/elements/adSense.phtml'); ?>
+            </div>
+        </div>
+        </div>
+
+<?php echo $this->partial('calendar/elements/footer.phtml',array(
+                            'data' => $this->date,
+                            'nextEvents' => $this->nextEvents,
+                            'prevEvents' => $this->prevEvents
+                         ));
+?>
+
+<?php echo $this->partial('calendar/elements/copyright.phtml');?>     

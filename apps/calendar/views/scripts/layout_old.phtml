@@ -1,0 +1,38 @@
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <?= $this->headTitle() ?>
+        <?php //$this->headScript(); ?>
+        <?php // $this->headLink(); ?>
+    </head>
+    <body>
+        <div id="header">
+            <div id='top_menu'>
+                 <?php echo $this->action('top-menu','index');?>
+	    </div>
+        </div>
+
+        <div id="main_block">
+        </div>
+
+        <div id="sidebar">
+        </div>
+        <div id="wrap">
+           
+           <div id="content">
+               <?= $this->layout()->content ?>
+           </div>            
+        </div>
+
+        <div id="footer">
+      <a href = '#'>дзен-буддизм</a> | <a href = '#'>вайшнаизм</a> | <a href = '#'>христаинство</a> | <a href = '#'>майя</a> | <a href = '#'>иудаизм</a> <br/>
+			 	<a href = 'about.html'>цель проекта</a> | <a href = 'about.html'>как этим пользоваться</a> | <a href = 'about.html'>mindfly</a> <br/>
+			 	(с) mindFlY 2010
+  </div>
+    </body>
+</html>
+
+

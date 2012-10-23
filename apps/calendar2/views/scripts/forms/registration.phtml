@@ -1,0 +1,37 @@
+<form
+    action="<?= $this->escape($this->element->getAction());  ?>"
+    method="<?= $this->escape($this->element->getMethod());  ?>">
+    <div class="form_element clearfix">
+        <div class="element">
+            <?php echo $this->element->reg_email; ?>
+        </div>
+        <div class="information clearfix">
+            Ваш действующий адрес электронной почты.
+        </div>
+    </div>
+    <div class="form_element clearfix">
+        <div class="element">
+            <?php echo $this->element->reg_password; ?>
+        </div>
+        <div class="information clearfix">
+            Мы не настаиваем, но желательно, во избежания взлома, что бы пароль был сложный.
+        </div>
+    </div>
+    <div class="form_element clearfix">
+        <div class="element">
+            <?php echo $this->element->re_reg_password; ?>
+        </div>
+        <div class="information clearfix">
+            Убедитсь, что не опечатались - введите пароль еще раз.
+        </div>
+    </div>
+     <div class="form_element clearfix">
+        <div class="element">
+             <?php echo $this->element->done; ?>
+        </div>
+        <div class="information clearfix">
+
+        </div>
+    </div>
+
+</form>

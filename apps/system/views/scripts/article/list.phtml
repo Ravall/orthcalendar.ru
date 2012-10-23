@@ -1,0 +1,32 @@
+<a href="javascript::void(0)" class="context" id="filter">фильтр</a> | <a href="/article/add">добавить статью</a>
+
+<hr class="space">
+<div class="filter" id="filterForm">
+    <?php echo $this->form ?>
+</div>
+
+
+<ul class="list">
+<?php foreach ($this->articleList as $article): ?>
+    <li> <span class="alt">(#<?php echo $article->getId();?>)</span>
+         <a class="<?php echo $article->getStatus();?>" 
+             href="/article/edit/id/<?php echo $article->getId();?>" >
+             <?php echo $article->getTitle();?>
+         </a>
+    </li>
+<?php endforeach;?>
+</ul>
+
+
+<script>
+$(document).ready(function() {
+    $('#filterForm').hide();
+    $('#filter').click(function(){
+        if ($("#filterForm").is(":hidden")) {
+            $('#filterForm').show();
+        } else {
+            $('#filterForm').hide();
+        }
+    });
+});
+</script>

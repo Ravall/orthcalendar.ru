@@ -1,0 +1,57 @@
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name='yandex-verification' content='5e04c3cc8b06ecac' />
+        <!-- Framework CSS -->
+        <link rel="stylesheet" href="/css/blueprint/screen.css" type="text/css" media="screen, projection">
+        <link rel="stylesheet" href="/css/blueprint/print.css" type="text/css" media="print">
+        <!--[if lt IE 8]>
+            <link rel="stylesheet" href="/css/blueprint/ie.css" type="text/css" media="screen, projection">
+        <![endif]-->       
+        <link rel="stylesheet" href="/css/blueprint/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
+        <link rel="alternate" type="application/rss+xml" title="Лента событий православного календаря" href="http://calendar.sancta.ru/rss/orthodoxy" />
+        <?php echo $this->headTitle() ?>
+        <?php echo $this->headScript(); ?>
+        <?php echo $this->headLink(); ?>
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-21317987-2']);
+            _gaq.push(['_trackPageview']);
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+    </head>
+    <body>       
+        <?php  echo $this->layout()->content; ?>
+
+    <!-- Yandex.Metrika counter -->
+    <div style="display:none;"><script type="text/javascript">
+    (function(w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter4393480 = new Ya.Metrika(4393480);
+                yaCounter4393480.clickmap(true);
+                yaCounter4393480.trackLinks(true);
+            } catch(e) { }
+        });
+    })(window, 'yandex_metrika_callbacks');
+    </script></div>
+    <script src="//mc.yandex.ru/metrika/watch.js" type="text/javascript" defer="defer"></script>
+    <noscript><div style="position:absolute"><img src="//mc.yandex.ru/watch/4393480" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+    </body>
+</html>
+
+<?php if (isset($this->messages)):?>
+    <?php foreach ($this->messages as $message):?>
+        <script>
+            $.jGrowl("<?php echo $message; ?>");
+        </script>
+    <?php endforeach; ?>
+<?php endif;?>

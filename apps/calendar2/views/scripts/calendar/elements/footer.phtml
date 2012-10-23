@@ -1,0 +1,52 @@
+<div id="footer">
+    <div class="container">
+        <div id="previous_events">
+            <h4>Прошедшие события</h4>
+            <?php foreach ($this->prevEvents as $event): ?>
+                <div class="event">
+                    <?php $datesOfEvent = SmartFunction::getDates($event->getSmartFunction(), $this->data->getY());?>
+                    <div class="date">
+                        <a href="<?=$this->url(array('date'=>current($datesOfEvent)),'orthodoxy');?>"><?=SmartFunction::toString($datesOfEvent);?></a>                         
+                    </div>                                        
+                    <div class="link">
+                        <a href="<?=$this->url(array('id'=>$event->getId()),'event');?>"><?=$event->getTitle();?></a>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <div id="next_events">
+            <h4>Грядущие события</h4>
+            <?php foreach ($this->nextEvents as $event): ?>
+                <div class="event">
+                    <?php $datesOfEvent = SmartFunction::getDates($event->getSmartFunction(), $this->data->getY());?>
+                    <div class="date">
+                        <a href="<?=$this->url(array('date'=>current($datesOfEvent)),'orthodoxy');?>"><?=SmartFunction::toString($datesOfEvent);?></a>                         
+                    </div>                                        
+                    <div class="link">
+                        <a href="<?=$this->url(array('id'=>$event->getId()),'event');?>"><?=$event->getTitle();?></a>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+
+        <div id="about">                    
+            <div id="about_text">
+                  <?php echo Sancta_Peer_Template::getByName('footer_about')->getContent(); ?>
+            </div>
+            <div id="links">
+                <ul>                    
+                    <li><a href="<?=$this->url(array(),'about');?>">о проекте </a> </li>
+                    <li><a href="<?=$this->url(array(),'rss');?>">rss лента</a></li>
+                    <li><a href="<?=$this->url(array(),'event_all');?>">православный календарь</a></li>
+                </ul>
+            </div>
+            <div id="links">
+                <ul>                    
+                    <li><a href="<?=$this->url(array(),'contact');?>">обратная связь</a> </li>
+                    <li><a href="<?=$this->url(array(),'donate');?>">поддержать проект</a> </li>
+                   
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

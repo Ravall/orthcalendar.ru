@@ -1,0 +1,20 @@
+@import "layout/links.css";
+@import "layout/blocks.css";
+/*  layout */
+html, body {height: 100%;}
+#wrap {position: relative;min-height: 100%;}
+* html #wrap {height: 100%;}
+#footer {position: relative; zoom:1;}
+
+/* оформление */
+#content {width:960px;margin:0 auto;}
+#footer {background:url("/images/layout/footer.png") no-repeat scroll center top; margin-top:100px;margin-left:35px; overflow:hidden; padding:30px 0; text-align:center;}
+body {background: #f9f9f5;background-position:0 0;background-repeat:no-repeat;}
+/* фон с логотипом */
+#wrap {background: url(/images/logo.jpg);background-position: right top;background-repeat: no-repeat;}
+/* вернхнее меню */
+#top_menu {background:#000;text-align:right;padding-right:10px;padding-bottom:5px;margin:0px;font-size:9pt;}
+    /* стиль ссылок в меню */
+    #top_menu a {color:#f6f6ee;}
+
+

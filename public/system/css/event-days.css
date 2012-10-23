@@ -1,0 +1,8 @@
+/* календарь на месяц меньшего размера*/
+td.calendar_container { background: #f6f5e1;padding:20px;border: 1px solid #ccc;}
+    /* календарная сетка */
+    td.calendar_container .month_year {text-align : center;font-size: 14pt;}
+	/* стиль для таблицы календарной сетки */
+        td.calendar_container .calendar_table {font-size:8pt; table-layout: fixed;}
+            /* стиль выбранного дня */
+            td.calendar_container .calendar_table td.selected {font-weight:bold; background: yellow; font-size:9pt}

@@ -1,0 +1,62 @@
+<?php
+    for (${0}=-3;${0}<10;${0}++) {
+        $datesOfEvent = SmartFunction::getDates($this->event->getSmartFunction(), $this->date->getY()+${0});
+        $noteForFuture['в ' . ( $this->date->getY()+${0}) . ' году: '] = SmartFunction::toString($datesOfEvent);
+    }
+    $show = true;
+    $values = array_values($noteForFuture);
+    sort($values);
+    if ($values[0] == $values[count($values)-1]) {
+        $show = false;
+    }
+?>
+
+<a id="to_future_show" href="javascript::void(0);" class="context" >
+    <i><b><?php echo $this->event->getTitle(true);?></b></i> в будущем году:
+</a>
+<div id="to_future">
+
+    <?php $datesOfEvent = SmartFunction::getDates($this->event->getSmartFunction(), $this->date->getY()+1);?>
+
+    <?php if ($this->event->getId() != 65):
+              echo 'в ' . ( $this->date->getY()+1) . ' году : ' . SmartFunction::toString($datesOfEvent);
+    ?>
+    
+    <br/><br/><b>в иные года:</b><br/>
+    <?php
+        endif;
+        if ($this->event->getId() == 65):
+            echo 'каждую среду и пятницу, кроме сплошных седмиц';
+        elseif ($show):
+            foreach ($noteForFuture as $year => $days) {
+                echo $year . $days. '<br/>';
+            }
+        else :
+            echo 'Событие непереходящее - ежегодно бывает в одни и те же дни года.';
+        endif;
+     ?>
+</div>
+<hr class="space"/>
+
+
+
+<?php if (count($this->articles)):?>
+    <h3>Что еще можно прочесть по теме "<a href="/event/orthodoxy/<?=$this->event->getId(); ?>"><?php echo $this->event->getTitle(true);?></a>"</h3>
+    <div class="">        
+        <?php foreach ($this->articles as $article):?>
+             <br/><?php if ($this->current == $article->getId()) echo "&rarr;"; ?>
+              <a  <?php if ($this->current == $article->getId()) echo "class='current'"; ?> href="/event/article/id/<?php echo $article->getId();?>/event/<?php echo $this->event->getId(); ?>"><?php echo $article->getTitle();?></a><br/>
+        <?php endforeach;?>
+    </div>
+<?php endif;?>
+
+<script>
+    $("#to_future").hide();
+    $("#to_future_show").click(function () {
+       if ($("#to_future").is(":hidden")) {
+           $("#to_future").show("slow");
+       } else {
+           $("#to_future").hide("slow");
+       }
+    });
+</script>

@@ -1,0 +1,34 @@
+/* 
+ общие стили для админки
+*/
+
+/* ширина кнопки */
+.button {width: 150px;}
+/* размеры поля при редактировании */
+#annonce {width: 490px;}
+#description {width: 500px;height: 500px;}
+
+/* контекстная ссылка */
+a.context {
+    text-decoration: none;
+    border-bottom: 1px dashed #0066CC;
+}
+
+/* стили для активных и удаленных сущностей */
+a.active,
+a.deleted {
+    font-size: 20px !important;
+    line-height: 30px !important;
+}
+a.deleted {
+    text-decoration: line-through !important;
+}
+a.deleted {
+    text-decoration: line-through !important;
+    color: red;
+}
+
+/* списки в админки без буллетов */
+ul.list {
+    list-style:none
+}

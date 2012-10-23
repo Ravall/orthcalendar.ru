@@ -1,0 +1,37 @@
+<form  id = "category_form"
+       action="<?= $this->escape($this->element->getAction());  ?>"
+       method="<?= $this->escape($this->element->getMethod());  ?>"
+       >
+<div class="span-20 last">
+    <?php echo $this->element->id; ?>
+    <?php echo $this->element->parent_id; ?>
+
+    <div class="span-14">
+        <?php echo $this->element->title; ?>
+    </div>
+    <div class="span-6 last alt">
+        <p> Название шаблона. Служебная информация. Нужна только в админке  <p><br/>
+    </div>
+
+    <div class="span-14">
+        <?php echo $this->element->annonce; ?>
+    </div>
+    <div class="span-6 last alt">
+        <p> Описание шаблона. Служебная информация  <p><br/>
+    </div>
+
+
+    <div class="span-14">
+    <?php echo $this->element->description; ?>
+        </div>
+    <div class="span-6 last alt">
+        <hr/>
+        <p> Содержание шаблона. 
+        </p>
+    </div>
+    
+    <hr class="space">
+</div>
+    <?php echo $this->element->drivePanel; ?>
+</form>
+

@@ -1,0 +1,173 @@
+
+<form
+    action="<?= $this->escape($this->element->getAction());  ?>"
+    method="<?= $this->escape($this->element->getMethod());  ?>">
+    <div class="form_element">
+
+        <div class="element">
+            <?php echo $this->element->email; ?>
+        </div>
+        <div class="information">
+            Ваш действующий адрес электронной почты, на него будет приходить рассылка, если вы на нее подпишитесь.
+        </div>
+    </div>
+    
+    <div class="form_element">
+        <div class="element">
+            <div class="day">
+                <?php echo $this->element->day; ?>
+            </div>
+            <div class="month">
+                <?php echo $this->element->month; ?>
+            </div>
+            <div class="year">
+                <?php echo $this->element->year; ?>
+            </div>
+        </div>
+        <div class="information">
+            Дата рождения.
+        </div>
+    </div>
+    
+    <div class="form_element">
+        <div class="element">
+            <?php echo $this->element->pass; ?>
+        </div>
+        <div class="information">
+             Новый пароль (Оставьте поле пустым, если не хотите менять)
+        </div>
+    </div>
+    
+    
+    <div class="form_element">
+        <div class="element">
+            <?php echo $this->element->country; ?>
+        </div>
+        <div class="information">
+            Страна, где вы сейчас проживаете
+        </div>
+    </div>
+    
+    <div class="form_element" id="regions">
+        <div class="element">
+            <?php echo $this->element->region; ?>
+        </div>
+        <div class="information">
+            Регион страны, где вы сейчас проживаете
+        </div>
+    </div>
+    
+    
+    <div class="form_element" id="cities">
+        <div class="element">
+                <?php echo $this->element->city; ?>
+        </div>
+        <div class="information">
+            Город, в котором вы сейчас проживаете.
+            GMT (часовой пояс). Устанавливается при изменении города            
+        </div>
+    </div>
+    
+        
+    <div class="form_element">
+        <div class="element">
+            <?php echo $this->element->mycity; ?>
+        </div>
+        <div class="information">
+            Если вы не нашли свой город, введите его полное название (Страна, Регион, Название города)
+        </div>
+    </div>
+
+    
+    
+     <div class="form_element">
+            
+        <div class="element">            
+            Подписка:<br/>
+            <?php echo $this->element->isorthodoxy; ?>
+        </div>
+        <div class="information">
+            Подписаться на уведомления о предстоящих праздниках
+        </div>
+    </div>
+    
+    
+     <div class="form_element">
+        <div class="element">
+             <?php echo $this->element->done; ?>
+        </div>
+        <?php echo $this->element->userid; ?>
+         <?php echo $this->element->gmt; ?>
+        
+    </div>
+    
+
+</form>
+
+
+
+
+<script>
+$(document).ready(function(){
+ $('#gmt').val(calculate_time_zone());
+ function regions() {
+       $('#regions').empty();
+       $('#cities').empty();
+       $.ajax({
+            url: '/user/loadregions',
+            type: 'POST',
+            dataType: 'html',
+            data: "country="+$('#country').val(),
+            success: function (result){ $('#regions').append(result);regionChange();}
+       });
+   }
+   
+
+   function cities() {
+      $('#cities').empty();
+      $.ajax({
+          url: '/user/loadcities',
+          type: 'POST',
+          dataType: 'html',
+          data: "region="+$('#region').val(),
+          success: function (result){ $('#cities').append(result);}
+       });
+   }    
+
+   
+
+   function regionChange() {
+       $('#region').change(function(){
+          
+           if ($('#region').val() != '0') {
+               cities();
+            } else {
+               $('#cities').empty();
+            }
+       });
+   }   
+   
+   $('#country').change(function(){
+       if ($('#country').val() != '0') {
+           regions();
+       } else {
+           $('#regions').empty(); 
+       }
+   });
+   
+    if ($('#region').val() == '0') {
+       $('#cities').empty();
+   } else {
+       cities();
+   }
+   
+   if ($('#country').val() == '0') {
+       $('#regions').empty();              
+   } else {
+       regions();
+   }
+
+  
+   
+});
+</script>

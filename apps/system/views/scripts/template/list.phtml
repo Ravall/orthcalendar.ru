@@ -1,0 +1,33 @@
+<a href="javascript::void(0)" class="context" id="filter">фильтр</a> | <a href="/template/add">добавить шаблон</a>
+
+<hr class="space">
+<div class="filter" id="filterForm">
+    <?php echo $this->form ?>
+</div>
+
+
+<ul class="list">
+<?php foreach ($this->templateList as $template): ?>
+    <li> <span class="alt">(#<?php echo $template->getId();?>)</span>
+         <a class="<?php echo $template->getStatus();?>"
+             href="/template/edit/id/<?php echo $template->getId();?>" >
+             <?php echo $template->getTitle();?>
+         </a><br/>
+        <span class="alt"> <?php echo $template->getAnnonce();?></span>
+    </li>
+<?php endforeach;?>
+</ul>
+
+
+<script>
+$(document).ready(function() {
+    $('#filterForm').hide();
+    $('#filter').click(function(){
+        if ($("#filterForm").is(":hidden")) {
+            $('#filterForm').show();
+        } else {
+            $('#filterForm').hide();
+        }
+    });
+});
+</script>

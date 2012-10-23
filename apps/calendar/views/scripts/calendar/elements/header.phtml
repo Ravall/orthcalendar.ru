@@ -1,0 +1,27 @@
+<div class='prepend-1 span-1'>&nbsp;</div>
+<div class='span-8'>
+    <?php echo Calendar_Days::html($this->data->getM(), $this->data->getY(), $this->data->getD(), 'orthodoxy'); ?>    
+</div>
+<div class='span-1'>&nbsp;</div>
+
+<div class='span-9 prepend-3 last'>
+    <h1>
+        <a href="/orthodoxy/" class="nounderline"> Православный календарь</a>
+    </h1>
+    <?php $date = new Mindfly_Date(); ?>
+        <h3 class="alt">
+            сегодня <a href="/orthodoxy/"><?php echo $date->getFormatDay() ?></a>
+        </h3>
+ </div>
+ <div class="span-24 last">
+     <div class="prepend-1 span-6 usermenu">
+         <?php
+         $menu = new Navigation_Menu_Calendar();
+         echo $this->navigation()->menu($menu->getMenu()); ?>
+     </div>
+     <div class="prepend-12 span-5 last usermenu">
+         <?php 
+         $menu = new Navigation_Menu_Header();
+         echo $this->navigation()->menu($menu->getMenu()); ?>
+     </div>     
+  </div>

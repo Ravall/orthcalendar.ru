@@ -1,0 +1,50 @@
+<div id="days_page" class="container">
+    <div id='header' class='span-24 last'>
+        <?php echo $this->partial('calendar/elements/header.phtml',array(
+                       'data' => $this->date,
+                       'action' => 'orthodoxy',
+                    ));
+        ?>
+    </div>
+
+      <div id="content" class="span-24 last">
+            <div class="event span-15 prepend-1 text_content border">
+             <div class="span14 append-1 last">
+             <h1><?php echo $this->event->getTitle();?></h1>
+             <p>&nbsp;</p>
+             <p><?php echo $this->event->getContent(array("\n" => '</p><p>'));?></p>
+             </div>
+            </div>
+
+            <div class="prepend-1 append-1 span-6 event last">
+                <?php
+                 /**
+                  * что еще можно почитать на эту тему
+                  */
+                 echo $this->partial('event/elements/whatReadAlso.phtml',array(
+                          'event' => $this->event,
+                          'date' => $this->date,
+                          'articles' => $this->articles,
+                          'current' => null
+                 ));
+             ?>
+            </div>
+        </div>
+
+           <div class="prepend-1 append-1 span-22 last">
+            <hr/>
+        </div>
+
+        <div id ="footer" class="span-24 last">
+            <div class="prepend-1 span-10 append-1">
+              &nbsp;
+            </div>
+
+            <div class="span-12 last">
+                <?php echo $this->partial('calendar/elements/coopyright.phtml');?>                
+            </div>
+        </div>
+
+ </div>
+
+

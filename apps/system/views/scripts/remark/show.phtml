@@ -1,0 +1,30 @@
+<h3>Ремарки к событию</h3>
++ <a href="/remark/add/event_id/<?=$this->event->getId()?>">добавить ремарк</a><br/>
+<table>
+    <thead>
+        <tr>
+            <td>Приоретет</td>
+            <td>Описание</td>
+            <td>Умная функция</td>
+            <td>&nbsp;</td>
+        </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($this->remarks as $remark): ?>
+        <tr>
+            <td>
+                <?=$remark->getPriority();?>
+            </td>
+            <td>
+                <?=$remark->getContent();?>
+            </td>
+            <td>
+                <?=$remark->getSmartFunction();?>
+            </td>
+            <td>
+                <a href="/remark/edit/id/<?=$remark->getId();?>/">[edit]</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+    </table>

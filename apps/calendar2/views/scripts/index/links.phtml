@@ -1,0 +1,33 @@
+<?php echo $this->partial('calendar/elements/header_menu.phtml'); ?>
+<?php echo $this->partial('calendar/elements/month_menu.phtml',
+                          array(
+                              'data' => $this->date
+                          ));
+?>
+ <div id="page">
+    <div class="container">
+      <a href="http://www.zaistinu.ru">Православный каталог сайтов</a>
+      <a href='golden-ship.ru'>golden-ship.ru</a>
+      <!-- goon html -->
+<strong><a href="http://goon.ru/" style="font-family: Arial; font-size: 11px;">Goon поиск</a></strong>, <strong><a href="http://mail.goon.ru/" style="font-family: Arial; font-size: 11px;">бесплатная почта</a></strong>, <strong><a href="http://goon.ru/dir/" style="font-family: Arial; font-size: 11px;">каталог, добавить сайт</a></strong>, <strong><a href="http://yvolen.ru/" style="font-family: Arial; font-size: 11px;">работа</a></strong>, <strong><a href="http://www.liveqames.ru/" style="font-family: Arial; font-size: 11px;">онлайн игры</a></strong>, <strong><a href="http://poisk.goon.ru/" style="font-family: Arial; font-size: 11px;">поиск людей</a></strong>
+<!-- /goon html -->
+
+
+<div>
+</div>
+
+
+    </div>
+ </div>
+
+
+<?php echo $this->partial('calendar/elements/footer.phtml',array(
+                            'data' => $this->date,
+                            'nextEvents' => $this->nextEvents,
+                            'prevEvents' => $this->prevEvents
+                         ));
+?>
+
+<?php echo $this->partial('calendar/elements/copyright.phtml');?>
+
+

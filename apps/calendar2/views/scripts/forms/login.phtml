@@ -1,0 +1,35 @@
+<form
+    action="<?= $this->escape($this->element->getAction());  ?>"
+    method="<?= $this->escape($this->element->getMethod());  ?>"
+    >
+
+    <div class="form_element clearfix">
+        <div class="element">
+            <?php echo $this->element->email; ?>
+        </div>
+        <div class="information">
+            <div class="link">
+            <a href="<?=$this->url(array(),'registration')?>">Зарегистрироваться.</a>
+            </div>
+        </div>
+    </div>
+    <div class="form_element clearfix">
+        <div class="element">
+            <?php echo $this->element->password; ?>
+        </div>
+        <div class="information">
+            <div class="link">
+            <a href="<?=$this->url(array(),'foget')?>">Забыли пароль?</a>
+            </div>
+        </div>
+    </div>
+     <div class="form_element">
+        <div class="element">
+             <?php echo $this->element->done; ?>
+        </div>
+        <div class="information">
+            
+        </div>
+    </div>
+
+</form>

@@ -1,0 +1,12 @@
+a.category_active,
+a.category_deleted {
+    font-size: 20px !important;
+    line-height: 30px !important;
+}
+a.category_deleted {
+    text-decoration: line-through !important;
+}
+a.event_deleted {
+    text-decoration: line-through !important;
+    color: red;
+}

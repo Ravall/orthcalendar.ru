@@ -1,0 +1,64 @@
+<?php /**
+ * список событий
+ */ ?>
+
+<h2>
+    <a class="nounderline" title="вчера" href="/orthodoxy/<?=$this->data->getPrevDay()->getDay();?>">&larr;</a>
+    <?php echo $this->data->getFormatDay() ?>
+    <a class="nounderline" title="завтра" href="/orthodoxy/<?=$this->data->getNextDay()->getDay();?>">&rarr;</a>
+</h2>
+
+<span class="alt">
+    <?php
+        $count = count($this->eventsInDay);
+        echo $count . ' ' . Mindfly_Grammar::nounDeclension($count, array('событие','события','событий'))
+    ?>
+    <br/>    
+</span>
+
+
+<?php
+    // если данные о постах были получены
+    if ($this->remarkInfo): ?>
+
+<div class="event prepend-10 span-5 last">
+    <strong>Питание сегодня:</strong>
+    <div class="remark">
+        <?php echo $this->remarkInfo['remark']; ?> <br/>
+        <a class="alt" href="/event/orthodoxy/<?=$this->remarkInfo['event_id']; ?>">(<?php echo $this->remarkEvent->getTitle();?>)</a>
+    </div>
+</div>
+    <?php endif;?>
+
+
+<?php if (empty($this->eventsInDay)):?>
+<div style="height:100px">&nbsp;</div>
+<h2 class="alt">Сегодня нет событий.</h2>
+<?php else:?>
+
+<?php foreach ($this->eventsInDay as $event): ?>
+<div class="event span-15 last">
+    <div class="span-13 last">
+    <h3>
+      <a href="/event/orthodoxy/<?=$event->getId(); ?>"><?php echo $event->getTitle(); ?></a>
+    </h3>
+
+     <div class="container_for_content">
+        <div class="wrapper_for_content">
+            <div class="text_for_content alt">
+<a class="nounderline" href="/event/orthodoxy/<?=$event->getId(); ?>">                 <?php echo $event->getContent();?></a>
+            </div>
+            <div class="helper_for_content"></div>
+            <div class="fade_for_content"></div>
+        </div>
+         </div>
+        <?php $articles = Sancta_Article::getByEventId($event->getId());?>
+        <?php foreach ($articles as $article):?>
+            &rarr; <a class="alt" href="/event/article/id/<?=$article->getId();?>/event/<?=$event->getId() ?>"><?=$article->getTitle();?></a> <br/>
+        <?php endforeach;?>
+
+    </div>
+</div>
+
+<?php endforeach; ?>
+<?php endif;?>

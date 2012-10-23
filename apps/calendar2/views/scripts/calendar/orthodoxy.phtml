@@ -1,0 +1,41 @@
+<?php echo $this->partial('calendar/elements/header_menu.phtml'); ?>
+<?php echo $this->partial('calendar/elements/month_menu.phtml', 
+                          array(
+                              'data' => $this->date
+                          ));
+?>
+
+
+<div id="today_block" >    
+    <div class="container">
+        <div id="today">   
+                <h1>Православный календарь</h1>
+                <?php echo $this->partial('calendar/elements/header.phtml',
+                          array(
+                              'data' => $this->date,
+                              'action' => 'orthodoxy',    
+                              'notes' => $this->notes,
+                              'informationEvents' => $this->informationEvents,
+                              'events' => $this->events,
+                              'articlesForEveryDay' => $this->articlesForEveryDay,
+                              'saintDayEvent' => $this->saintDayEvent
+                          ));
+                ?>
+        </div>
+        <div id="calendar_navigation">
+            <?php echo Calendar_Days::html($this->date->getM(), $this->date->getY(), $this->date->getD(), 'orthodoxy'); ?>    
+        </div>
+    </div>
+</div>
+
+            
+            
+      
+<?php echo $this->partial('calendar/elements/footer.phtml',array(  
+                            'data' => $this->date,   
+                            'nextEvents' => $this->nextEvents,
+                            'prevEvents' => $this->prevEvents
+                         ));
+?>           
+ 
+<?php echo $this->partial('calendar/elements/copyright.phtml');?>               

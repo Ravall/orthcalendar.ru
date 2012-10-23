@@ -1,0 +1,50 @@
+<?php echo $this->partial('calendar/elements/header_menu.phtml'); ?>
+<?php echo $this->partial('calendar/elements/month_menu.phtml',
+                          array(
+                              'data' => $this->date
+                          ));
+?>
+
+ <div id="article_card">
+     <div class="container">
+         <div id="card">
+              <h2 class="alt">Страница не найдена</h2>
+              <h1>404</h1>
+         </div>
+     </div>
+ </div>
+
+ <div id="main_block" class="clearfix">
+      <div class="container">
+                <div id="main_content">
+  <?php if (isset($this->exception)): ?>
+        <h3>Exception information:</h3>
+        <p>
+            <b>Message:</b> <?php echo $this->exception->getMessage() ?>
+        </p>
+        <h3>Stack trace:</h3>
+        <pre><?php echo $this->exception->getTraceAsString() ?></pre>
+        <h3>Request Parameters:</h3>
+        <pre><?php echo var_export($this->request->getParams(), true) ?> </pre>
+  <?php else: ?>
+               
+                <p>
+                    Возможно вы перешли по "битой" ссылке, возможно произошла
+                    критическая ошибка. Но в любом случае - будьте уверены, письмо администратру
+                    отправлено и, скорее всего, он уже трудится над исправлением этого недоразумения.
+                </p>
+            
+  <?php endif ?>
+                </div>
+      </div>
+  </div>
+
+
+<?php echo $this->partial('calendar/elements/footer.phtml',array(
+                            'data' => $this->date,
+                            'nextEvents' => $this->nextEvents,
+                            'prevEvents' => $this->prevEvents
+                         ));
+?>
+
+<?php echo $this->partial('calendar/elements/copyright.phtml');?>

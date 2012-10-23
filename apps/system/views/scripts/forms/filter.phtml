@@ -1,0 +1,18 @@
+<form  id = "category_form"
+       action="<?= $this->escape($this->element->getAction());  ?>"
+       method="<?= $this->escape($this->element->getMethod());  ?>"
+       >
+    <div class="span-5">
+        <?php echo $this->element->statusActive; ?>
+    </div>
+    <div class="span-5">
+    <?php echo $this->element->statusPause; ?>
+    </div>
+    <div class="span-5">
+        <?php echo $this->element->statusDelete; ?>
+    </div>
+    <div class="span-5 last">
+        <?php echo $this->element->submit; ?>
+    </div>
+<hr class="space">
+</form>

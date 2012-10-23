@@ -1,0 +1,17 @@
+<form  id = "category_form"
+       action="<?= $this->escape($this->element->getAction());  ?>"
+       method="<?= $this->escape($this->element->getMethod());  ?>"
+       >
+<div class="span-20 last">
+    <?php echo $this->element->object_id; ?>
+    
+
+    <div class="span-20 last">
+        <?php echo $this->element->key; ?>
+        <?php echo $this->element->val; ?>
+        <?php echo $this->element->submit; ?>
+    </div>
+
+</div>
+
+</form>

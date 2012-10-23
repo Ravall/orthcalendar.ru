@@ -1,0 +1,143 @@
+<?php  $defaultNamespace = new Zend_Session_Namespace('Default'); ?>
+<form  id = "<?= $this->escape($this->element->getId());  ?>"
+       action="<?= $this->escape($this->element->getAction());  ?>"
+       method="<?= $this->escape($this->element->getMethod());  ?>"
+       enctype="<?= $this->element->getEnctype()?>" >
+<div class="span-20 last">
+    <?php echo $this->element->id; ?>
+    <?php echo $this->element->category_id; ?>
+    <?php echo $this->element->category; ?>
+    <?php echo $this->element->draft; ?>
+
+
+    <div class="span-14">
+        <?php echo $this->element->title; ?>
+    </div>
+    <div class="span-6 last alt">
+        <p>Заголовок дожен отражать официальное название события.
+            При наличии синонимов, целесообразно их указать в скобках<p><br/>
+    </div>
+
+    <div class="span-14">        
+        <?php echo $this->element->smart_function; ?><br/>
+
+    </div>
+    <div class="span-6 last alt">
+        <h3>Умная фукнкция имени Клименко Алексея.</h3>
+        <a href="javascript::void(0)" id="smart_function_test">протестировать формулу</a>
+        <div id="smart_function_test_result"></div>
+        <hr/>
+        
+    </div>
+    
+    
+    <div class="span-14">        
+        <?php echo $this->element->periodic; ?><br/>
+
+    </div>
+    <div class="span-6 last alt">
+        Переодичность события
+    </div>
+    
+    
+    <div class="span-14">
+
+    <?php echo $this->element->annonce; ?>
+        
+        </div>
+    <div class="span-6 last alt">
+        что делать
+    </div>
+    
+    
+    <div class="span-14">
+
+    <?php echo $this->element->description; ?>
+        
+        </div>
+    <div class="span-6 last alt">
+        Исключительно полезная информация. Текст находящийся в этом поле должен отвечать на вопрос
+        <b>"Как провести этот день и что это дает"</b>
+        <div id="draft_result"></div>
+        <div id="draft_status"></div>
+        <hr/>
+        <p></p>
+    </div>
+    <hr class="space">
+       <div class="span-6" >
+           <?php if ($this->element->event): ?>
+               <?php 
+                   if (isset($this->element->event) && $image = $this->element->event->getImage('150','100')):?>
+                   <img class="prepend-1" alt="<?php echo  $this->element->event->getTitle(); ?>"
+                   src="<?php echo Config_Interface::get('calendar', 'url') . $image; ?>">
+               <?php else: ?>
+               <span class="alt">изображение не загружено</span>
+               <?php endif;?>
+           <?php endif;?>
+           &nbsp;
+       </div>
+
+       <div class="span-5 append-3">
+          <?php echo $this->element->image; ?><br/>
+          <?php if (isset($image) && $image) {
+              /**
+               * Если изображение загружено -
+               * показываем возможность удалить его
+               */
+              echo $this->element->deleteImage;
+          }?>
+
+        </div>
+       <div class="span-6 last alt">
+        <hr/>
+        <p> Картинка на данный момент <b>не обязательна</b> и <font color="red">отключена</font>. Фактически является обязательным элементом публикации.</p>
+        <p> Загружай картинки не более мегабайта. Формат: jpg,png,gif. </p>
+        <p> Изображение нужно грузить черно-белое, что подразумевает некоторую работу над ним </p>
+    </div>
+
+    <div class="span-14">
+        <?php echo $this->element->comment; ?>
+    </div>
+    <div class="span-6 last alt">
+        <hr/>
+        <p> Коментарий. Виден только в админке. Целесообразно указывать, чего еще не хватает по данной записи</p>
+    </div>
+</div>
+
+    <?php echo $this->element->drivePanel; ?>
+</form>
+
+<script>
+$(document).ready(function(){
+    $('#smart_function_test').click(function(){
+        $.ajax({
+            url: '/event/smartfunction',
+            type: 'POST',
+            dataType: 'html',
+            data: "formula="+$('#smart_function').val(),
+            success: function (result){ $('#smart_function_test_result').html(result)}
+        });        
+    });
+
+   if ($('#draft').val() !='' && $('#draft').val() != $('#description').val()) {
+       $('#draft_status').html('<br/><font color="red">контент загружен из черновика</font> <a id="draft_clear" href="javascript::void(0)">очистить черновые записи</a>')
+   }
+
+   $('#draft_clear').click(function(){
+       $('#description').val($('#draft').val());
+       $('#draft_status').empty();
+   })
+   
+   setInterval(function(){
+       $.ajax({
+            url: '/event/savedraft',
+            type: 'POST',
+            dataType: 'html',
+            data: "content="+$('#description').val()+"&id="+$('#id').val(),
+            success: function (result){ $('#draft_result').html(result)}
+        });
+    }, 60000);
+    
+
+});
+</script>

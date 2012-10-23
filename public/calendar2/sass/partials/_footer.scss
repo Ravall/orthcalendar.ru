@@ -1,0 +1,45 @@
+@mixin footer() {
+    div#footer {
+        background: url("/images/other_fon.jpg") transparent;
+        color:#666;
+        font-size: 0.8em;
+        border-top: 1px solid #c6c4bc;
+        padding-top: 30px;
+        padding-bottom: 20px;
+        margin-top: 30px;
+        a {
+            text-decoration: underline;
+        }
+        @include color-link(#666);
+
+        div.container{
+            @include container;
+            h4 {
+                font-size: 1.2em;
+            }
+            .event {
+                margin: 7px 0px;
+                .date {
+                    @include color-link(#666);
+                }
+                .link {
+                    @include color-link(#87AF0E);
+                }
+            }
+            div#previous_events {
+                @include prepend(1);
+                @include column(7);
+            }
+            div#next_events{
+                @include column(7);
+            }
+            div#about{
+               @include column(8, true);
+               @include append(1);
+               #about_text {
+                   padding: 10px 0px;
+               }
+            }
+        }
+    }
+}

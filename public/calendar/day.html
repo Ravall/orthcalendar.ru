@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf8">
+		<title>Untitled Document</title>
+	    <!-- Framework CSS -->
+	      <link rel="stylesheet" href="css/blueprint/screen.css" type="text/css" media="screen, projection">
+	      <link rel="stylesheet" href="css/blueprint/print.css" type="text/css" media="print">
+          <!--[if lt IE 8]><link rel="stylesheet" href="web/css/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+	      <!-- Import fancy-type plugin for the sample page. -->
+	      <link rel="stylesheet" href="css/blueprint/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
+         <!-- /Framework CSS -->
+		  <link rel="stylesheet" href="css/calendar.css" type = "text/css" media = "projection, screen">
+		  <script  type="text/javascript" src='/js/jquery-1.4.1.min.js'></script>
+		  <script  type="text/javascript" src='/js/jquery.dropshadow.js'></script>
+	</head>
+	<body><div class='first_con'>
+	    <div id='top_menu'>
+		    <a href='enter'>вход</a>
+	    </div>
+		
+        <div class="container"> 
+	 	    <div id = 'calendar_container'  class='span-11 shadow' >
+		        <div id='day_date'>
+			        <div id = 'week_day'>Понедельник</div>
+			        <div id = 'date'>25</div>
+				    <div id = 'month'>январь</div>
+			    </div>
+				
+			    <div id='day_event'>
+					<div class='caption'><a href='event.html'>День красного</a></div>
+					<div class='caption'><a href='event.html'>День отрешения сознания Будды</a></div>
+			    </div>
+				
+				<div id ='day_detail' class = 'info'>
+			        <div class='span-5'> 
+					    <span class='text'>Солнце</span> <br/>
+						Восход: <b>08:37</b> <br/>
+						Заход: <b>16:49 </b><br/>
+						Долгота дня: <b>08.12 </b><br/>
+					 </div>
+					 <div class='span-4 prepend-1 last' >
+					     <span class='text'>Луна</span> <br/>
+						 11 лунный день <br/>	
+					     Растущая луна <br/>
+					     Восход луны: <b>11:10 </b><br/>
+						 Заход луны: <b>04:09 </b><br/>
+					 </div>
+				</div>
+			</div>
+			
+			<div class = 'span-2'>&nbsp;</div> 
+				
+			<div class='span-8 prepend-1 last'>
+			    <div id = 'calendar_month_container' class='shadow'>
+                    <div id = 'month_year'> 
+				        <a href='left' class='notunderline'>&#8592;</a>  январь <a href='right' class='notunderline'> &#8594;</a>
+			        </div>
+				
+                    <table id = 'calendr_table' cellspacing=0 cellpadding=0>
+                    	<tr>
+                    		<td>Пн</td>
+							<td>Вт</td>
+							<td>Ср</td>
+							<td>Чт</td>
+							<td>Пт</td>
+							<td>Сб</td>
+							<td>Вс</td>
+                    	</tr>
+						<tr>
+                    		<td>&nbsp</td>
+							<td>&nbsp</td>
+							<td>&nbsp</td>
+							<td>&nbsp</td>
+							<td><a href='25' class='sacral'>1</a></td>
+							<td>2</td>
+							<td>3</td>
+                    	</tr>
+					    <tr>
+                    		<td>4</td>
+							<td>5</td>
+							<td>6</td>
+							<td>7</td>
+							<td>8</td>
+							<td><a href='25' class='sacral'>9</a></td>
+							<td>10</td>
+                    	</tr>
+						<tr>
+                    		<td>11</td>
+							<td>12</td>
+							<td><a href='25' class='sacral'>13</a></td>
+							<td>14</td>
+							<td>15</td>
+							<td>16</td>
+							<td>17</td>
+                    	</tr>
+						<tr>
+                    		<td>18</td>
+							<td>19</td>
+							<td>20</td>
+							<td>21</td>
+							<td>22</td>
+							<td>23</td>
+							<td>24</td>
+                    	</tr>
+						<tr>
+                    		<td class='current'><a href='25' class='sacral'>25</a></td>
+							<td>26</td>
+							<td>27</td>
+							<td>28</td>
+							<td>29</td>
+							<td>30</td>
+							<td class='today'>31</td>
+                    	</tr>
+                    </table>
+			        <div id='addinfo'>2010</div>
+		        </div>
+		       <img src='web/images/calendar.jpg' alt="календарь">
+		   </div>
+	
+		   
+		   <!-- футер -->
+		   <div class='span-22' id='footer' >
+                       <a href = '#'>дзен-буддизм</a> | <a href = '#'>вайшнаизм</a> | <a href = '#'>христаинство</a> | <a href = '#'>майя</a> | <a href = '#'>иудаизм</a> <br/>
+			 	<a href = 'about.html'>цель проекта</a> | <a href = 'about.html'>как этим пользоваться</a> | <a href = 'about.html'>mindfly</a> <br/>
+			 	(с) mindFlY 2010
+		   </div>
+			 
+			 
+    </div>
+	</div>
+	</body>
+</html>
+<script  type="text/javascript">
+	$(document).ready(function(){
+	    $('.shadow').dropShadow();
+	});
+	
+</script>

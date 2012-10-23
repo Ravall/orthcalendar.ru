@@ -1,0 +1,53 @@
+<div id="days_page" class="container">
+    <div id='header' class='span-24 last'>
+        <?php echo $this->partial('calendar/elements/header.phtml',array(
+                       'data' => $this->date,
+                       'action' => 'orthodoxy',
+                    ));
+        ?>
+    </div>
+    <div id="content" class="prepend-2 span-22 last">
+                <div class="event prepend-1">
+        <h2>Все прошедшие события православного календаря на сегодня</h2>
+        </div><br/><br/>
+        <div id="year_events">
+            <?php foreach ($this->events as $eventDate => $events):?>
+                <?php list($year,$month) = explode('-', $eventDate);?>
+                 <br/>
+                <div class="event prepend-1">
+                    <h3>&nbsp;<b><?php echo SmartFunction::getFullMonthNamesArray($month);?></b></h3>
+                </div>
+                <?php foreach ($events as $event):?>
+                    
+                    <div class="event prepend-1">
+                        <?php $datesOfEvent = SmartFunction::getDates($event->getSmartFunction(), $year);?>
+                        <a class="dates alt" href="/orthodoxy/<?php echo current($datesOfEvent) ?>">
+                            <?php echo SmartFunction::toString($datesOfEvent);  ?>
+                        </a>
+                        <br/>
+                        <div>
+                            <a href="/event/orthodoxy/<?=$event->getId();?>"><?=$event->getTitle();?></a>
+                        </div>
+                    </div>
+                <?php endforeach;?>
+            <?php endforeach;?>
+        </div>
+    </div>
+    <hr class="space"/>
+    <hr/>
+    <div id ="footer" class="span-24 last">
+        <div class="prepend-1 span-10 append-1">&nbsp;</div>
+        <div class="span-12 last">
+            <?php echo $this->partial('calendar/elements/coopyright.phtml');?>           
+        </div>
+    </div>
+</div>
+<script>
+$(document).ready(function(){
+    $('a.dates').addClass("dontend");    
+    $('h3').addClass("dontend");
+    $('#year_events').columnize({ columns: 3 });
+    $('div.column').addClass('border');
+    $('div.last').removeClass('border');
+});
+</script>

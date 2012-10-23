@@ -1,0 +1,25 @@
+<ul>
+    <?php foreach ($this->events as $event): ?>
+    <li>
+        <?php $active = $event->getStatus() == STATUS_DELETED ? false : true; ?>
+         <span class="alt">(#<?php echo $event->getId()?>)</span> 
+             <a href="/event/edit/id/<?php echo $event->getId()?>"<?php if (!$active): ?> class="event_deleted" <?php endif;?>><?php echo $event->getTitle()?></a>
+           | <a href="/remark/show/event_id/<?php echo $event->getId();?>">ремарки</a>         
+           | <a href="/params/list/id/<?php echo $event->getId();?>"> параметры </a>
+         <?php $articleList = Sancta_Peer_Article::getByEventId($event->getId());?>
+         <?php if ($articleList):?>
+         <ul>
+             <?php foreach ($articleList as $article):?>
+                  <?php $active = $article->getStatus() == STATUS_DELETED ? false : true; ?>
+                  <li> &rarr; <span class="alt">(#<?php echo $article->getId();?>)</span>
+                      <a  <?php if (!$active): ?> class="event_deleted" <?php endif;?>
+                             href="/article/edit/id/<?php echo $article->getId();?>" >
+                          <?php echo $article->getTitle();?>
+                          </a>
+                   </li>
+             <?php endforeach;?>
+         </ul>
+         <?php endif; ?>
+    </li>
+<?php endforeach;?>
+</ul>

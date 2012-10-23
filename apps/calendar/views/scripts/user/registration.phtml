@@ -1,0 +1,23 @@
+ <div id="event_page" class="container">
+         <div class="span-8 border">
+             <?php echo $this->partial(
+                     'index/elements/links.phtml', array(
+                         'links' => $this->links,
+                         'template' => $this->template,
+                         'navigation' => $this->aboutNavigation
+                     ));
+             ?>
+         </div>
+         <div class="span-15 prepend-1 last">
+             <h2 class="alt">Календарь</h2>
+             <h1>Регистрация</h1>
+             
+              <?php echo $this->registrationForm; ?>
+         </div>
+
+        <div id ="footer" class="span-24 last">
+            <hr class="prepend-1 append-1"/>
+                 <?php echo $this->partial('index/elements/footer.phtml'); ?>
+        </div>
+    </div>
+

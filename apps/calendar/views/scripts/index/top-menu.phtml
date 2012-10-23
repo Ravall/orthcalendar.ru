@@ -1,0 +1,10 @@
+<ul id="top_menu">
+    
+<?php if ($this->hasIdentity): ?>
+    <li>  <a href = "<?php echo $this->url(array(),'logout',true); ?>">выход</a> </li>
+<?php else: ?>
+    <li> <a href = "<?php echo $this->url(array(),'login',true); ?>">вход</a> </li>
+<?php endif; ?>
+    <li>&nbsp;</li>
+</ul>
+

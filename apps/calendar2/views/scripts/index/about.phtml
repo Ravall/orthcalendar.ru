@@ -1,0 +1,31 @@
+<?php echo $this->partial('calendar/elements/header_menu.phtml'); ?>
+<?php echo $this->partial('calendar/elements/month_menu.phtml',
+                          array(
+                              'data' => $this->date
+                          ));
+?>
+ <div id="page_about">
+    <div class="container">
+        <div id='logo'>
+          <img src='/images/logo.png'>
+        </div>
+        <div id="content">
+              <?php  echo Sancta_Peer_Template::getByName('about_project')->getContent(array("\n" => '</p><p>')); ?>
+        </div>
+    </div>
+ </div>
+
+
+ 
+
+<?php echo $this->partial('calendar/elements/footer.phtml',array(
+                            'data' => $this->date,
+                            'nextEvents' => $this->nextEvents,
+                            'prevEvents' => $this->prevEvents
+                         ));
+?>
+
+<?php echo $this->partial('calendar/elements/copyright.phtml');?>
+
+
+

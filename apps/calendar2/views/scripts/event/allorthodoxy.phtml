@@ -1,0 +1,58 @@
+<?php echo $this->partial('calendar/elements/header_menu.phtml'); ?>
+<?php echo $this->partial('calendar/elements/month_menu.phtml',
+                          array(
+                              'data' => $this->date
+                          ));
+?>
+ <div id="article_card" class="clearfix">
+     <div class="container">
+         <div id="card" class="clearfix">
+            <h1>Православный календарь</h1>
+            <h2>карта сайта</h2>
+            <div id="information">
+                события календаря на <?php echo $this->date->getY()?> год
+            </div>
+         </div>
+     </div>
+ </div>
+
+
+<div id="main_block" class="clearfix">
+    <div class="container">
+        <div id="main_content">
+            <div id="allevent">
+                <ul>
+                    <?php foreach ($this->events as $event):?>
+                        <ul>
+                            <?php $datesOfEvent = SmartFunction::getDates($event->getSmartFunction(), $this->date->getY());?>                        
+                            <a class="date" href="/orthodoxy/<?=current($datesOfEvent) ?>"><?=SmartFunction::toString($datesOfEvent);?></a>:                         
+                            <?php echo $event->getLink($event->getTitle());?>
+                            <?php $articles = Sancta_Peer_Article::getByEventId($event->getId()); ?>
+                            <ul class='articles'>
+                            <?php foreach ($articles as $article): ?>
+                                <li><?php echo $article->getLink($article->getTitle());?></li>
+                            <?php endforeach; ?>
+                            </ul>
+                        </ul>
+                    <?php endforeach;?>
+                </ul>
+            </div>            
+        </div>
+        <div id="add_content" class="clearfix">
+            <h4>Заметки православному на каждый день</h4>    
+                <?php foreach ($this->articlesForEveryDay as $article): ?>
+                <ul>
+                    <li><?php echo $article->getLink($article->getTitle());?></li>        
+                </ul>
+            <?php endforeach;?>
+        </div>
+    </div>
+</div>
+<?php echo $this->partial('calendar/elements/footer.phtml',array(
+                            'data' => $this->date,
+                            'nextEvents' => $this->nextEvents,
+                            'prevEvents' => $this->prevEvents
+                         ));
+?>
+
+<?php echo $this->partial('calendar/elements/copyright.phtml');?>

@@ -1,0 +1,76 @@
+<div class="span-20 last">
+    <?php if ($this->status == STATUS_ACTIVE): ?>
+        <div class="span-5">
+            <button type="submit" class="button positive">
+	      <img src="/css/blueprint/plugins/buttons/icons/tick.png" alt=""/> сохранить
+	    </button>
+        </div>
+        <div class="span-5">
+            <button class="button" onClick="return cancell();">
+               <img src="/css/blueprint/plugins/buttons/icons/cancell.png" alt=""/> отмена
+            </button>
+        </div>
+        <?php if ((int) $this->statusId) :?>
+            <div class="span-5 append-5 last">
+                <button href="#" class="button negative"  onClick="return buttonDelete(<?php echo $this->statusId;?>);">
+                    <img src="/css/blueprint/plugins/buttons/icons/cross.png" alt=""/> удалить
+                </button>
+            </div>
+        <?php else: ?>
+            <div class="span-5 append-5 last">&nbsp;</div>
+        <?php endif;?>
+    <?php else: ?>
+         <div class="error span-15 last">
+            Объект удален. Для Активации - нажимите кнопку восстановить
+         </div>
+         <div class="span-5">
+             <button href="#" class="button positive" onClick="return buttonRecover(<?=$this->statusId;?>);">
+                 <img src="/css/blueprint/plugins/buttons/icons/tick.png" alt=""/> восстановить
+             </button>
+         </div>    
+         <div class="span-5 append-10 last">
+             <button class="button" onClick="return cancell();">
+                 <img src="/css/blueprint/plugins/buttons/icons/cancell.png" alt=""/> отмена
+             </button>
+         </div>
+     <?php endif;?>
+</div>
+
+
+<script>
+function buttonDelete(id) {
+    jConfirm('Вы действительно хотите удалить?',
+             'Удаление',
+             function(r) {
+                if (r) {
+                    window.location.href= '<?php echo $this->buttonDeleteUrl ?>' + id;
+                }
+       });
+       return false;
+}
+
+
+function buttonRecover(id) {
+    jConfirm('Вы действительно хотите восстановить?',
+             'Восстановление',
+             function(r) {
+                if (r) {
+                    $("#form").attr("action","?active=1"),
+                    $('#form').submit();
+                }
+       });
+       return false;
+}
+
+function cancell() {
+    jConfirm('Вы действительно хотите отменить?',
+             'Отмена',
+             function(r) {
+                if (r) {
+                    window.location.href= '<?php echo $this->buttonCancellUrl ?>';
+                }
+       });
+       return false;
+}
+
+</script>

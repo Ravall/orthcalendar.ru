@@ -1,0 +1,89 @@
+div.form {
+    @include prepend(2);
+    padding-top: 10px;
+    h1 { font-size:25px;
+         padding-bottom: 20px;
+    }
+
+  
+   div.form_element {
+       @include column(22, true);
+   }
+   div.element {
+     
+       @include column(10);
+       padding-bottom: 30px;
+       input {
+           width: 400px;
+           height: 40px;
+           font-size: 1.2em;
+       }
+       input.submit {
+           width: 404px;
+       }
+
+       select {
+            width: 400px;
+            height: 40px;
+            font-size: 1.2em;
+
+       }
+
+       div.day {
+           @include column(2);
+           select {
+               width: 70px;
+           }
+       }
+       div.month {
+           @include column(4);
+           select {
+               width: 160px;
+           }
+       }
+       div.year {
+           input {
+               width: 130px;
+               height: 35px;
+           }
+           @include column(4, true);
+       }
+
+       input#isorthodoxy {
+             width: 10px;
+
+       }
+       dt#isorthodoxy-label  {
+             @include column(6);
+       }
+       dd#isorthodoxy-element {
+           @include column(4,true);
+           input {
+                 width: 20px;
+                height: 24px;
+           }
+       }
+           
+    
+   }
+   div.information {
+       @include column(14, true);
+      
+       padding: 20px 20px;
+       .link {
+           padding-top: 10px;
+       }
+       width: 300px;
+       font-family: Georgia,"Times New Roman",Times,serif;
+       color: #666;
+   }
+
+   ul.errors{
+       li {
+           color:red;
+           font-size: 0.8em;
+        }
+   }
+   div.error{color: red;font-size: 0.8em;}
+   div.success{color: green;font-size: 0.8em;}
+}

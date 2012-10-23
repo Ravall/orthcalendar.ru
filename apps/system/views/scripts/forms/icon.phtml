@@ -1,0 +1,60 @@
+<form 
+       method="<?= $this->escape($this->element->getMethod());  ?>"
+       enctype="<?= $this->element->getEnctype()?>" 
+       >
+<div class="span-20 last">
+    <?php echo $this->element->id; ?>
+    
+    <div class="span-14">
+        <?php echo $this->element->title; ?>
+    </div>
+    <div class="span-6 last alt">
+        <p> заглавие иконы <p><br/>
+    </div>
+
+
+    <div class="span-14">
+        <?php echo $this->element->event_id; ?>
+    </div>
+    <div class="span-6 last alt">
+        <p> Икона привязана к событию <p><br/>
+    </div>
+
+    <hr class="space">
+       <div class="span-6" >
+           <?php if ($this->element->icon): ?>
+               <?php 
+                   if (isset($this->element->icon) && $image = $this->element->icon->getImage('100','150')):?>
+                   <img class="prepend-1" alt="<?php echo  $this->element->icon->getTitle(); ?>"
+                   src="<?php echo $image; ?>">
+               <?php else: ?>
+               <span class="alt">изображение не загружено</span>
+               <?php endif;?>
+           <?php endif;?>
+           &nbsp;
+       </div>
+
+       <div class="span-5 append-3">
+          <?php 
+echo $this->element->image; 
+          if (isset($image) && $image) {
+              /**
+               * Если изображение загружено -
+               * показываем возможность удалить его
+               */
+              echo $this->element->deleteImage;
+          }  else {
+              
+          }?>
+
+        </div>
+       <div class="span-6 last alt">
+        <hr/>
+        <p> сама икона </p>
+    </div>
+
+
+    <hr class="space">
+</div>
+    <?php echo $this->element->drivePanel; ?>
+</form>

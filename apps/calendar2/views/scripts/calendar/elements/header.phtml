@@ -1,0 +1,37 @@
+<h2><?php echo ($this->data->isToday() ? 'Сегодня ' : '') . $this->data->getFormatDay() ?></h2>
+
+<div class="note">
+    <?=($this->notes)?('В этот день: '.implode(', ', $this->notes)):'';?>
+</div>
+
+
+<?php if ($this->events->getCount()):?>
+<div id="events">
+  События дня: <?php echo implode(', ', $this->events->getLinkArray())?><?php if ($this->informationEvents->getCount()):?>,
+  а так же
+  <?php echo implode(', ', $this->informationEvents->getLinkArray())?>
+</div>
+<?php endif;?>
+
+
+<?php elseif ($this->informationEvents->getCount()):?>
+<div id="events">
+  События дня:  <?php echo implode(', ', $this->informationEvents->getLinkArray())?>
+</div>
+<?php endif;?>
+
+
+<?php if ($this->saintDayEvent->getCount()):?>
+<div id="saint">
+  Святые, почитаемые в этот день: <?php echo implode(', ', $this->saintDayEvent->getLinkArray())?>
+</div>
+<?php endif;?>
+
+<?php if ($this->articlesForEveryDay->getCount()):?>
+<div id="articles">
+  Заметки православному на каждый день: <?php echo implode(', ', $this->articlesForEveryDay->getLinkArray())?>
+</div>
+<?php endif;?>
+        
+
+

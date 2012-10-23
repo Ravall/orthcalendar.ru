@@ -1,0 +1,35 @@
+body {
+    #{headings(all)} {
+        font-family: Georgia,"Times New Roman",Times,serif;
+        color: rgb(171, 128, 0);
+    }
+    @include color-link(#87AF0E);
+    ul {
+        @include horizontal-list;
+    }
+    color: #666;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    line-height: 1.5;
+    text-indent: 0px;
+    text-align: left;
+    .container {
+        @include container;
+      
+    
+    }
+
+    p {
+        padding-top:10px;
+      
+    }
+}
+
+
+@mixin main-block() {
+    background: url("/images/line_fon.png") repeat scroll left top transparent;
+    width: 100%;
+    padding-top:30px;
+    margin: 80px 0px;
+    padding-bottom: 20px;
+}

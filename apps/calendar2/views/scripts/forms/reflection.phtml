@@ -1,0 +1,28 @@
+<form
+    action="<?= $this->escape($this->element->getAction());  ?>"
+    method="<?= $this->escape($this->element->getMethod());  ?>">
+    <div class="form_element clearfix">
+        <div class="element">
+            <?php echo $this->element->email; ?>
+        </div>
+        
+    </div>
+    Если у вас есть вопросы, предложения или замечания, воспользутесь формой для обратной связи. Мы обязательно прочтем ваше письмо и ответим вам.
+    <div class="form_element clearfix">
+
+        <div class="element">
+            <?php echo $this->element->text; ?>
+        </div>        
+        
+    </div>
+
+     <div class="form_element clearfix">
+        <div class="element">
+             <?php echo $this->element->done; ?>
+        </div>
+        <div class="information clearfix">
+
+        </div>
+    </div>
+
+</form>

@@ -1,0 +1,30 @@
+<h3>Грядущие события</h3>
+<?php foreach ($this->nextEvents as $event): ?>
+    <div class="event">
+        <?php $datesOfEvent = SmartFunction::getDates($event->getSmartFunction(), $this->data->getY());?>
+        <a class="alt" href="/orthodoxy/<?php echo current($datesOfEvent) ?>">
+            <?php echo SmartFunction::toString($datesOfEvent);  ?>
+        </a>
+        <br/>
+        <div>
+            <a href="/event/orthodoxy/<?=$event->getId();?>"><?=$event->getTitle();?></a>
+        </div>
+     </div>
+ <?php endforeach; ?>
+<hr/>
+<h3 class="alt"> Прошедшие события </h3>
+<?php foreach ($this->prevEvents as $event): ?>
+    <div class="event">
+        <?php $datesOfEvent = SmartFunction::getDates($event->getSmartFunction(), $this->data->getY());?>
+        <a class="alt" href="/orthodoxy/<?php echo current($datesOfEvent) ?>">
+            <?php echo SmartFunction::toString($datesOfEvent);  ?>
+        </a>
+        <br/>
+        <div>
+            <a href="/event/orthodoxy/<?=$event->getId();?>"><?=$event->getTitle();?></a>
+        </div>
+     </div>
+ <?php endforeach; ?>
+ <div class="event">
+    <a class="alt" href="/event/all/orthodoxy">все прошедшие события года</a>
+ </div>

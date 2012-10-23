@@ -1,0 +1,109 @@
+<?php  $defaultNamespace = new Zend_Session_Namespace('Default'); ?>
+
+<form  id = "category_form"
+       action="<?= $this->escape($this->element->getAction());  ?>"
+       method="<?= $this->escape($this->element->getMethod());  ?>"
+       >
+<div class="span-20 last">
+    <?php echo $this->element->id; ?>
+    <?php echo $this->element->parent_id; ?>
+
+    <div class="span-14">
+        <?php echo $this->element->title; ?>
+    </div>
+    <div class="span-6 last alt">
+        <p> Заголовок должен быть короктким и емким <p><br/>
+    </div>
+
+
+    <div class="span-14">
+    <?php echo $this->element->description; ?>
+        </div>
+    <div class="span-6 last alt">
+        <hr/>
+        <p> Описание раздела, не является необходимым, но является желательным </p>
+        <p> На данный момент нигде кроме админки информация не выводится. </p>
+    </div>
+    <hr class="space">
+</div>
+
+    <div class="span-20 last">
+
+        <?php if ($this->element->status == STATUS_ACTIVE): ?>
+        <div class="span-5">
+            <button type="submit" class="button positive">
+	      <img src="/css/blueprint/plugins/buttons/icons/tick.png" alt=""/> сохранить
+	    </button>
+        </div>
+        <div class="span-5">
+            <button class="button" onClick="return cancell(<?=$defaultNamespace->categoryId ?>);">
+               <img src="/css/blueprint/plugins/buttons/icons/cancell.png" alt=""/> отмена
+            </button>
+        </div>
+
+        <div class="span-5 append-5 last">
+            <button href="#" class="button negative"  onClick="return buttonDelete(<?=$this->element->id->getValue();?>);">
+                <img src="/css/blueprint/plugins/buttons/icons/cross.png" alt=""/> удалить
+            </button>
+        </div>
+        <?php else: ?>
+
+
+           <div class="span-5">
+                <button href="#" class="button positive" onClick="return buttonRecover(<?=$this->element->id->getValue();?>);">
+                    <img src="/css/blueprint/plugins/buttons/icons/tick.png" alt=""/> восстановить
+                </button>
+            </div>
+
+            <div class="span-5 append-10 last">
+                <button class="button" onClick="return cancell(<?= $defaultNamespace->categoryId ?>);">
+                    <img src="/css/blueprint/plugins/buttons/icons/cancell.png" alt=""/> отмена
+                </button>
+            </div>
+
+
+
+        <?php endif;?>
+
+
+
+
+    </div>
+</form>
+
+<script>
+function buttonDelete(id) {
+    jConfirm('Вы действительно хотите удалить категорию?',
+             'Удаление события',
+             function(r) {
+                if (r) {
+                    window.location.href= '/calendar/category-delete/id/'+id;
+                }
+       });
+       return false;
+}
+
+
+function buttonRecover(id) {
+    jConfirm('Вы действительно хотите восстановить категорию?',
+             'Восстановление события',
+             function(r) {
+                if (r) {
+                    $('#category_form').submit();
+                }
+       });
+       return false;
+}
+
+function cancell(id) {
+    jConfirm('Вы действительно хотите отменить редактирование?',
+             'Отмена',
+             function(r) {
+                if (r) {                    
+                    window.location.href= '/calendar/category-list/id/'+id;
+                }
+       });
+       return false;
+}
+
+</script>

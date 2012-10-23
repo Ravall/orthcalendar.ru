@@ -1,0 +1,30 @@
+<div id="settings_menu">
+    <h3>Настройки</h3>
+    <a href = "/user/settings">Пользователь</a>
+    <a href = "/user/calendar">Календарь</a>
+</div>
+
+
+<div class="container">
+
+    <div class="span-7">
+        <ul class="gallery clearfix">
+            <li><em><a href="/calendar/settings/id/<?php echo $this->category->id;?>" class="current">описание</a>
+                  | <a href="/calendar/events/id/<?php echo $this->category->id;?>">события</a></em>
+                <img src="/images/icona.jpg" alt="image" /></li>
+        </ul>
+        
+        <ul class="categoryes">
+            <?php echo $this->categoryesTree($this->categoryes);?>
+        </ul>
+    </div>
+
+    <div class="span-17 last">
+        <?php echo $this->category->getText()->content; ?>
+    </div>
+
+
+</div>
+           
+
+

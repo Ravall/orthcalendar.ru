@@ -1,0 +1,107 @@
+<form  id = "category_form"
+       action="<?= $this->escape($this->element->getAction());  ?>"
+       method="<?= $this->escape($this->element->getMethod());  ?>"
+       >
+<div class="span-15 last">
+    <?php echo $this->element->email; ?>
+    <label>Дата рождения:</label><br/>
+    <div class="span-2">
+            <?php echo $this->element->day; ?>
+    </div>
+    <div class="span-3">
+            <?php echo $this->element->month; ?>
+    </div>
+    <div class="span-2 append-7 last">
+            <?php echo $this->element->year; ?>
+    </div>
+
+    <div class="span-15 last">
+        <?php echo $this->element->pass; ?>
+    </div>
+
+    <div class="span-15 last">
+         <?php echo $this->element->country; ?>
+    </div>
+
+    <div class="span-15 last">
+        <div id="regions">
+        <?php        
+        if ($this->element->country->getValue()):?>
+            <?php echo $this->element->region; ?>
+        <?php endif; ?>        
+        </div>
+    </div>
+
+    <div class="span-15 last">
+        <div id="cities">
+        <?php if ($this->element->region->getValue()):?>
+            <?php echo $this->element->city; ?>
+        <?php endif; ?>
+        </div>
+    </div>
+    
+    <div class="span-15 last">
+        <?php echo $this->element->mycity; ?>
+    </div>
+
+    <div class="span-15 last">
+        <?php echo $this->element->isorthodoxy; ?>
+    </div>
+
+    
+
+    <?php echo $this->element->done; ?>
+    <?php echo $this->element->userid; ?>
+    <hr/>
+    <h4 class="alt">Aвтоматически выставленнные данные</h4>
+    <?php echo $this->element->gmt; ?>
+    
+</div>
+    <hr class="space">
+</form>
+
+<script>
+$(document).ready(function(){
+   var t = new Date();
+   var gmtHours = -t.getTimezoneOffset()/60;
+   <?php if (!$this->element->gmt->getValue()):?>
+       $('#gmt').val(gmtHours);
+   <?php endif;?>
+   $('#gmt').attr("readOnly", true);
+
+   function regions() {
+       $('#regions').empty();
+       $('#cities').empty();
+       var select = $.ajax({
+            url: '/user/loadregions',
+            type: 'POST',
+            dataType: 'html',
+            data: "country="+$('#country').val(),
+            success: function (result){ $('#regions').append(result);regionChange();}
+       });
+   }
+
+   function cities() {
+      $('#cities').empty();
+      var select = $.ajax({
+          url: '/user/loadcities',
+          type: 'POST',
+          dataType: 'html',
+          data: "region="+$('#region').val(),
+          success: function (result){ $('#cities').append(result);}
+       });
+   }
+   $('#country').change(function(){
+       $('#gmt').val(gmtHours);
+       regions();
+   });
+
+   function regionChange() {
+       $('#region').change(function(){
+           $('#gmt').val(gmtHours);
+           cities();
+       });
+   }
+   
+});
+</script>

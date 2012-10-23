@@ -1,0 +1,24 @@
+
+@mixin small-link($color, $hover:#000) {
+    a {
+        text-decoration: none;
+        font-size: 12px;    
+    }
+    @include color-link($color,$hover);
+}
+
+@mixin color-link($color, $hover:#000) {
+    a,a:visited {
+        color: $color;
+    }
+    a:hover {
+        color: $hover;
+    }
+}
+
+// серая ссылка. ссылка в контексте. Цель - сделать частью текста
+@mixin context_link {
+    @include color-link(#666);
+}
+
+// зеленая ссылка

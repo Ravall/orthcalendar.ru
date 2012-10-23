@@ -1,0 +1,71 @@
+<form  id = "category_form"
+       action="<?= $this->escape($this->element->getAction());  ?>"
+       method="<?= $this->escape($this->element->getMethod());  ?>"
+       >
+<div class="span-20 last">
+    <?php echo $this->element->id; ?>
+    <?php echo $this->element->parent_id; ?>
+    <?php echo $this->element->draft; ?>
+
+    <div class="span-14">
+        <?php echo $this->element->title; ?>
+    </div>
+    <div class="span-6 last alt">
+        <p> Заглавие должно отражать суть статьи.
+            При этом должно быть интригующе - что бы пользователь захотел
+            открыть ее, только прочтя название.
+            Это важно для продвижения.  <p><br/>
+    </div>
+
+
+    <div class="span-14">
+    <?php echo $this->element->description; ?>
+        </div>
+    <div class="span-6 last alt">
+        <hr/>
+        <p> Содержание статьи. Статья должна быть самописной. 
+            Крайне нежелательно полностью переписывать статьи с чужих ресурсов.
+            Статья должна раскрывать ту тему, которая заявлена в заголовке.
+            Не больше, не меньше.
+        </p>
+        <div id="draft_result"></div>
+        <div id="draft_status"></div>
+    </div>
+<hr class="space">
+     <div class="span-14">
+    <?php echo $this->element->relation; ?>
+        </div>
+    <div class="span-6 last alt">
+        <hr/>
+        <p> Идентификаторы событий к которым привязана статья (через запятую)
+        </p>
+    </div>
+    <hr class="space">
+</div>
+    <?php echo $this->element->drivePanel; ?>
+</form>
+
+<script>
+$(document).ready(function(){
+   if ($('#draft').val() !='' && $('#draft').val() != $('#description').val()) {
+       $('#draft_status').html('<br/><font color="red">контент загружен из черновика</font> <a id="draft_clear" href="javascript::void(0)">очистить черновые записи</a>')
+   }
+
+   $('#draft_clear').click(function(){
+       $('#description').val($('#draft').val());
+       $('#draft_status').empty();
+   })
+
+   setInterval(function(){
+       $.ajax({
+            url: '/article/savedraft',
+            type: 'POST',
+            dataType: 'html',
+            data: "content="+$('#description').val()+"&id="+$('#id').val(),
+            success: function (result){ $('#draft_result').html(result)}
+        });
+    }, 60000);
+
+
+});
+</script>

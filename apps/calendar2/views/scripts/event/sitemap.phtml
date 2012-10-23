@@ -1,0 +1,34 @@
+<?='<?'?>xml version="1.0" encoding="UTF-8"<?='?>'?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<?php foreach ($this->events as $event):?>
+<url>
+    <loc><?=$event->getLink();?></loc>
+    <changefreq>weekly</changefreq>
+</url>
+<?php endforeach; ?>
+<?php foreach ($this->articlesForEveryDay as $article):?>
+<url>
+    <loc><?=$article->getLink();?></loc>
+    <changefreq>weekly</changefreq>
+</url>
+<?php endforeach; ?>
+<?php foreach ($this->allArticles as $article):?>
+<url>
+    <loc><?=$article->getLink();?></loc>
+    <changefreq>weekly</changefreq>
+</url>
+<?php endforeach; ?>
+<url>
+    <loc><?=$this->url(array(),'home')?></loc>
+    <changefreq>weekly</changefreq>
+</url>
+<url>
+<loc><?=$this->url(array(),'about')?></loc>
+    <changefreq>weekly</changefreq>
+</url>
+<url>
+    <loc><?=$this->url(array(),'event_all')?></loc>
+    <changefreq>weekly</changefreq>
+</url>
+</urlset>

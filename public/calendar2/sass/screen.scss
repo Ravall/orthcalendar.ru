@@ -1,0 +1,296 @@
+@import "partials/base";
+@import "partials/links";
+@import "partials/coopyright";
+@import "partials/footer";
+@import "partials/default";
+@import "partials/forms";
+@import "blueprint/form";
+
+body{
+    
+    background: url(../images/body_fon.jpg);
+
+    // самое вернхнее меню. содержит навигацию по сайту (домой, rss)
+    // и пользовательскую (вход, выход)
+    #header_menu {
+        height: 30px;
+        background: $background-top-down;
+        border-bottom: 1px solid #000;
+        @include small-link($link-color-top-down, $link-color-top-down-hover);
+    }
+    
+    // сама навигация
+    div.navigation {
+        padding-top: 3px;
+        @include container;
+        // навигация по сайту
+        ul.sitemenu {
+            @include prepend(1);
+            @include column(4);
+            li#rss {
+                a {
+                    margin-top: 2px;
+                    @include link-icon('rss.png');
+                }
+            }
+            li#home {
+                a {
+                    @include link-icon('home.png');
+                }
+            }
+        }
+        // пользовательская навигация
+        ul.usermenu {
+            @include prepend(12);
+            @include column(8, true);
+            li {
+                padding-left:20px;
+            }
+        }
+    }
+    div#month_menu {
+        border-bottom: 1px solid #E4E4E4;
+        div.navigation {
+            @include container;
+            ul {
+                display: table;
+                margin: 0 auto;
+                li {
+                    margin: 10px 10px 0px 0px;
+                    height: 30px;
+                    width: 70px;
+                    text-align: center;
+                    @include small-link(#666);                    
+                }
+                li.active {
+                    background: url("/images/sancta_sprite.png") no-repeat scroll -50px -200px transparent;
+                    a {
+                        font-weight: bold;
+                        color: black;
+                    }
+                }
+            }
+        }
+    }
+
+
+    div#page{
+        @include main-block();
+        div#content {
+            @include prepend(12);
+            @include column(12,true);
+            font-style: italic;
+            color: #666;
+        }
+    }
+    div#page_about{
+        @include main-block();
+        div#logo{
+            @include prepend(3);
+            @include column(9);
+        }
+        div#content {
+            @include column(12,true);
+            font-style: italic;
+            color: #666;
+        }
+    }
+    div#page_donate{
+        @include main-block();
+        div#inform{
+            @include column(12);
+            div#example {
+                margin-top:3px;
+                @include column(3);
+            }
+             div#banner {
+                @include column(9,true);
+            }
+
+        }
+        div#content {
+            @include column(12,true);
+            font-style: italic;
+            color: #666;
+        }
+    }
+
+
+
+
+
+    div#today_block, div#article_card {
+        @include main-block();
+        
+        div.container {
+            @include container;
+            .information {
+              color:#666;   
+              a {
+                font-style: italic;
+                font-family: Georgia,"Times New Roman",Times,serif;
+                padding:10px 0 10px 0;
+                font-size: 16px;
+              }
+              @include color-link(#666);
+            }
+            div#today {
+                @include prepend(1);
+                @include append(1);
+                @include column(13);
+
+                h2 {
+                    font-size: 2em;
+                    font-weight: bold;
+                    letter-spacing: -1px; 
+                    font-family: "ff-scala-sans-web-1","ff-scala-sans-web-2","Lucida Grande","Helvetica",sans-serif;
+                    padding-bottom:0px;
+                }
+
+                #events,#articles {
+                    margin-top:20px;
+                }
+
+                #articles {
+                    border-top: 1px solid #E4E4E4;
+                }
+                
+                div.note {
+                    @include context_link;
+                }
+                
+            }
+            div#calendar_navigation {
+                @include prepend(1);
+                @include column(8, true);
+                #links {
+                    padding-top: 10px;
+                    a {
+                        font-size: 0.8em;
+                        padding-left: 10px;
+                    }
+                }
+                table {
+                    width: 300px;
+                    font-size: 14px;
+                    td {
+                        text-align:center;
+                        padding: 4px 10px 4px 5px;
+                        border:1px dashed transparent;
+                        a {
+                            text-decoration: none;
+                        }
+                        @include color-link(#666);
+                    }
+                    td.current {
+                        border: 1px dashed #666;
+                    }
+                    td.today {
+                        border: 1px solid black;
+                    }   
+                    td.holiday {
+                        a {
+                           font-weight: bold;
+                        }
+                    }
+                    td.weekend {
+                        @include color-link(#F60);                            
+                    }
+                    td.great {
+                        @include color-link(red);
+                    }
+                }  
+            }
+            
+        }
+    }
+
+
+
+    div#article_card {
+        div#img {float: left;
+            @include prepend(1);
+            @include column(7);
+
+        
+            img {
+                margin: 5px;
+                width: 300px;
+                height: 200px;
+                border: 1px solid #E4E4E4;
+                padding: 5px;
+            }
+        }
+        div#card {
+            @include prepend(1);
+            @include append(1);
+            @include column(14, true);
+            h1 {
+                line-height:80%;font-size: 2.5em;
+            }
+        }
+    }
+
+    div#main_block {
+        div#main_content {
+            @include prepend(1);
+            @include column(13);
+
+            span.autor {
+                font-style: italic;
+                color:#666;
+                font-size:12px;
+            }
+
+            div#allevent {
+                a.date {
+
+                    color: #666;
+                
+                }
+                ul.articles {
+                     font-size:13px;
+                     font-style: italic;
+                     padding-left: 30px;
+                }
+            }
+            div.epigraph {
+                line-height:0.9;
+                font-size:12px;
+                text-align:right;
+            }
+        }
+        div#add_content {
+            div#adSense {
+                padding-top:25px;
+            }
+            @include prepend(1);
+            @include append(1);
+            @include column(8, true);
+            a#to_future_show {
+                text-decoration:none;
+                border-bottom: 1px dashed #87AF0E;
+            }
+
+            div#otherDates {
+                display:none;
+            }
+
+            div#articles{
+                padding-top:50px;
+                font-size:14px;
+                @include color-link(#666);
+                p.current {
+                    @include color-link(#000);
+                    a {
+                        text-decoration:none;
+                    }
+                }
+            }
+
+        }
+    }
+    
+    @include footer();
+    @include coopyright();
+}

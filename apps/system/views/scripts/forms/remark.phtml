@@ -1,0 +1,51 @@
+<form  id = "category_form"
+       action="<?= $this->escape($this->element->getAction());  ?>"
+       method="<?= $this->escape($this->element->getMethod());  ?>"
+       >
+<div class="span-20 last">
+    <?php echo $this->element->id; ?>
+    <?php echo $this->element->event_id; ?>
+
+    <div class="span-14">
+        <?php echo $this->element->priority; ?>
+    </div>
+
+    <div class="span-6 last alt">
+        <p>Приоритет. Чем больше число - тем выше. <p><br/>
+    </div>
+
+    
+    <div class="span-14">
+        <?php echo $this->element->smart_function; ?>
+    </div>
+
+    <div class="span-6 last alt">
+        <p>Умная функция<p><br/>
+    </div>
+    
+    
+    <div class="span-14">
+        <?php echo $this->element->annonce; ?>
+    </div>
+
+    <div class="span-6 last alt">
+        <p>ToDo<p><br/>
+    </div>
+    
+
+    <div class="span-14">
+    <?php echo $this->element->description; ?>
+        </div>
+    <div class="span-6 last alt">
+        <hr/>
+        <p> описание. Не участвует в выводе</p>
+        <div id="draft_result"></div>
+        <div id="draft_status"></div>
+    </div>
+
+
+<hr class="space">
+    <hr class="space">
+</div>
+    <?php echo $this->element->drivePanel; ?>
+</form>

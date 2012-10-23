@@ -1,0 +1,33 @@
+<div class="container">
+  <?php if (isset($this->exception)): ?>
+        <h3>Exception information:</h3>
+        <p>
+            <b>Message:</b> <?php echo $this->exception->getMessage() ?>
+        </p>
+        <h3>Stack trace:</h3>
+        <pre><?php echo $this->exception->getTraceAsString() ?></pre>
+        <h3>Request Parameters:</h3>
+        <pre><?php echo var_export($this->request->getParams(), true) ?> </pre>
+  <?php else: ?>
+        <div id="event_page" class="container">
+            <div class="span-8 border">
+                <h2>&larr;  <a href="/orthodoxy/">  Православный календарь </a></h2>
+                <hr/>
+            </div>
+            <div class="span-14 append-1 prepend-1 last ">
+                <h2 class="alt">Страница не найдена</h2>
+                <h1>404</h1>
+                <p>
+                    Возможно вы перешли по "битой" ссылке, возможно произошла
+                    критическая ошибка. Но в любом случае - будьте уверены, письмо администратру
+                    отправлено и, скорее всего, он уже трудится над исправлением этого недоразумения.
+                </p>
+            </div>
+            <div id ="footer" class="span-24 last">
+                <hr class="prepend-1 append-1"/>
+                (c) 2009 -2010 sancta.ru.  <br/>
+                <a href="/"> Православный календарь </a>
+            </div>
+        </div>
+  <?php endif ?>
+  </div>

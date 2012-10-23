@@ -1,0 +1,11 @@
+<?php echo $this->partial('calendar/elements/header.phtml',
+    array(
+        'data' => $this->date,
+        'action' => 'orthodoxy',    
+        'notes' => $this->notes,
+        'informationEvents' => $this->informationEvents,
+        'events' => $this->events,
+        'articlesForEveryDay' => $this->articlesForEveryDay,
+        'saintDayEvent' => $this->saintDayEvent
+    ));
+?>
