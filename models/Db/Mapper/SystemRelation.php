@@ -40,9 +40,11 @@
             return true;
         }
 
-        public function getRelatedObjectsByParentId($parentId) {
+        public function getRelatedObjectsByParentId($parentId, $relationType = 1) {
             $parentId = (int) $parentId;
-            $sql = 'select mf_object_id id from mf_system_relation where parent_object_id = '.$parentId;
+            $sql = "select mf_object_id id from mf_system_relation"
+                 . " where parent_object_id = {$parentId} "
+                 . " and relation_id = {$relationType}"
             return $this->getDbTable()->getAdapter()->fetchAll($sql);
         }
 
