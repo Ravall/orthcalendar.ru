@@ -1,7 +1,7 @@
 <?php
     require_once dirname(__FILE__) . '/Abstract.php';
     require_once PATH_BASE . '/models/Db/Gateway/SystemRelation.php';
-    
+
     class Db_Mapper_SystemRelation extends Db_Mapper_Abstract {
 
         public function  __construct() {
@@ -16,18 +16,18 @@
          */
         public function relate($objectId, $parentObjectId, $type) {
             $relate = $this->getDbTable()->createRow();
-            $relate->object_id = $objectId;
+            $relate->mf_object_id = $objectId;
             $relate->parent_object_id = $parentObjectId;
             $relate->relation_id = $type;
-            $relate->save();            
-            return $relate;            
+            $relate->save();
+            return $relate;
         }
 
 
         public function setRelates($objectId, $array) {
             $this->beginTransaction();
             try {
-                $where = $this->getDbTable()->getAdapter()->quoteInto('object_id = ?', $objectId);
+                $where = $this->getDbTable()->getAdapter()->quoteInto('mf_object_id = ?', $objectId);
                 $this->getDbTable()->delete($where);
                 foreach ($array as $parentObjectId) {
                     $this->relate($objectId, $parentObjectId);
@@ -40,14 +40,14 @@
             return true;
         }
 
-        public function getRelatedObjectsByParentId($parentId) {     
+        public function getRelatedObjectsByParentId($parentId) {
             $parentId = (int) $parentId;
-            $sql = 'select object_id id from mf_system_relation where parent_object_id = '.$parentId;
+            $sql = 'select mf_object_id id from mf_system_relation where parent_object_id = '.$parentId;
             return $this->getDbTable()->getAdapter()->fetchAll($sql);
         }
 
         public function findById($id) {
-            return $this->getDbTable()->fetchAll(array('object_id = ?' => $id));
+            return $this->getDbTable()->fetchAll(array('mf_object_id = ?' => $id));
         }
 
 

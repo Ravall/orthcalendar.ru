@@ -9,15 +9,15 @@
 
         public function create($params) {
             $row = $this->getDbTable()->createRow();
-            $row->id = $params['object_id'];     
+            $row->mfsystemobject_ptr_id = $params['object_id'];
             $row->object_id = $params['object_id'];
             $row->save();
             return $row;
         }
-        
+
         public function getAll() {
-            $sql = 'SELECT icon.id FROM mf_calendar_icon icon                    
-                    JOIN mf_system_object object ON object.id = icon.id';                    
+            $sql = 'SELECT icon.id FROM mf_calendar_icon icon
+                    JOIN mf_system_object object ON object.id = icon.mfsystemobject_ptr_id';
             return $this->getDbTable()->getAdapter()->fetchAll($sql);
         }
     }
