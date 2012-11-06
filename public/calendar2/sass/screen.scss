@@ -158,6 +158,28 @@ body{
                 div.note {
                     @include context_link;
                 }
+                div#icons_day {
+                    padding-top:30px;
+                    div.icon {
+                        margin:2px;
+                        border:1px solid #E4E4E4;
+                        height:auto;
+                        width:180px;
+                        float:left;
+                        text-align:center;
+                        img {
+                            display:inline;
+                            margin:3px;
+                            border:1px solid #ffffff;
+                        }
+                        span.desc {
+                            text-align:center;
+                            font-weight:normal;
+                            width:120px;
+                            margin:2px;
+                        }
+                    }
+                }
                 
             }
             div#calendar_navigation {

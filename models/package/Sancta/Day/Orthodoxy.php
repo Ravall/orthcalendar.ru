@@ -5,6 +5,7 @@ require_once SANCTA_PATH . '/Peer/Remark.php';
 require_once SANCTA_PATH . '/Peer/Event.php';
 require_once SANCTA_PATH . '/Peer/Article.php';
 require_once PATH_BASE . '/models/package/Calendar/Days.php';
+require_once SANCTA_PATH . '/Api.php';
 
 class Sancta_Day_Orthodoxy 
 {
@@ -84,7 +85,8 @@ class Sancta_Day_Orthodoxy
         return $informationEvents;
     }
     
-    public function getArticleForEveryDay() {
+    public function getArticleForEveryDay() 
+    {
         /**
          * заметки на каждый день - это статьи привязанные к событию "каждый день"
          */
@@ -94,8 +96,15 @@ class Sancta_Day_Orthodoxy
         return $articlesForEveryDay;
     }
     
-    public function getRssPost() {
-        
+    public function getRssPost() 
+    {
         Sancta_Peer_Template::getByName('rss_post')->getContent();
+    }
+
+        
+    public function getIcons()
+    {   
+        $result = Sancta_Api::getDay($this->day);
+        return (!$result) ? false : $result->icons;
     }
 }

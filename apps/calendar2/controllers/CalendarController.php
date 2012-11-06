@@ -26,6 +26,8 @@ class CalendarController extends SystemController {
         $this->view->saintDayEvent = $orthodoxyDay->getDayOfSaint();
         $this->view->informationEvents = $orthodoxyDay->getNotMainEvents();         
         $this->view->articlesForEveryDay = $orthodoxyDay->getArticleForEveryDay();
+
+        $this->view->icons = $orthodoxyDay->getIcons();
     }
     
     public function rssAction() {

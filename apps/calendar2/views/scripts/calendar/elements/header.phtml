@@ -32,6 +32,29 @@
   Заметки православному на каждый день: <?php echo implode(', ', $this->articlesForEveryDay->getLinkArray())?>
 </div>
 <?php endif;?>
+
+ <div id='icons_day' class='clearfix'>
+ 	<?php if (!empty($this->icons)):?>
+ 		<h3>Иконы дня</h3>
+ 	<?php endif;?>
+    <?php 
+    	$count=0;
+    	foreach ($this->icons as $icon): ?> 
+    	<?php if ($count++==5) {
+    		break;
+    	}?>
+    	<div class='icon'>
+    	<img 
+    		src='<?php echo $icon->urls->{'150x200'};?>'
+    		title='<?php echo $icon->text->title;?>'
+    		alt='<?php echo $icon->text->annonce;?>'
+    	><br/>
+    	<span class='desc'><?php echo $icon->text->annonce;?></span>
+    	</div>
+    <?php endforeach;?>
+</div>
+
+
         
 
 
