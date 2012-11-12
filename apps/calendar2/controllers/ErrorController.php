@@ -30,7 +30,7 @@ class ErrorController extends SystemController
         ));
         Sancta_Peer_Mail::addMailToAdmin('calendar.sancta error:', $text);
         
-        if (!Config_Interface::isProduction()) {
+        if (Config_Interface::isProduction()) {
           
         
             switch ($errors->type) {

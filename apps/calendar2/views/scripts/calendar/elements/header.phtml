@@ -36,11 +36,12 @@
  <div id='icons_day' class='clearfix'>
  	<?php if (!empty($this->icons)):?>
  		<h3>Иконы дня</h3>
- 	<?php endif;?>
+
     <?php 
     	$count=0;
     	foreach ($this->icons as $icon): ?> 
-    	<?php if ($count++==5) {
+    	<?php 
+       if ($count++==3) {
     		break;
     	}?>
     	<div class='icon'>
@@ -52,6 +53,10 @@
     	<span class='desc'><?php echo $icon->text->annonce;?></span>
     	</div>
     <?php endforeach;?>
+    <?php if ($this->iconsCount > 3):?>
+      <a href='#'>посмотреть другие <?php echo $this->iconsCount;?> икон дня</a>
+    <?php endif;?>
+    <?php endif;?>
 </div>
 
 
