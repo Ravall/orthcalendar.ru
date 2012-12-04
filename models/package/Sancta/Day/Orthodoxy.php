@@ -7,36 +7,36 @@ require_once SANCTA_PATH . '/Peer/Article.php';
 require_once PATH_BASE . '/models/package/Calendar/Days.php';
 require_once SANCTA_PATH . '/Api.php';
 
-class Sancta_Day_Orthodoxy 
+class Sancta_Day_Orthodoxy
 {
     protected $day;
     protected $eventsInDay;
-    
-    public function __construct($day) 
+
+    public function __construct($day)
     {
         $this->day = $day;
         /**
          * получаем список событий за выбранный день
          */
         $eventsInDay = Sancta_Peer_Event::getEventListInDay(
-            Config_Interface::get('orthodoxy', 'category'), $this->day           
+            Config_Interface::get('orthodoxy', 'category'), $this->day
         );
         $this->eventsInDay = $eventsInDay;
     }
-    
+
     public function getToDoNotes() {
         /*
          * получаем список заметок по выбранному дню
          */
         $toDoNotes = $this->eventsInDay->getToDoNotes();
         /**
-         * берем ремарки этого дня, выбираем из них приоритетный 
-         * указываем его заголовок и даем ссылку по нему на событие, 
+         * берем ремарки этого дня, выбираем из них приоритетный
+         * указываем его заголовок и даем ссылку по нему на событие,
          * к которому привязан ремарк
          */
-        $remarksInfo = Sancta_Peer_Remark::getRemarksByDay($this->day);        
-        if ($remark = $remarksInfo->getMaxPriorityRemark()) 
-        {                
+        $remarksInfo = Sancta_Peer_Remark::getRemarksByDay($this->day);
+        if ($remark = $remarksInfo->getMaxPriorityRemark())
+        {
             /**
              * Добавим ремарк в список заметок
              */
@@ -44,7 +44,7 @@ class Sancta_Day_Orthodoxy
         }
         return $toDoNotes;
     }
-    
+
     public function getMainEvents() {
         /**
          * Выбираем не переодические события
@@ -61,17 +61,17 @@ class Sancta_Day_Orthodoxy
         $notPeriodicEvents = $notPeriodicEvents->getCategory(array($categoryOfSaint), FALSE);
         return $notPeriodicEvents;
     }
-    
+
     public function getDayOfSaint() {
         /**
          * дни почитания святых
          */
         $notPeriodicEvents = $this->eventsInDay->getPeriodicEvents(FALSE);
         $categoryOfSaint = Config_Interface::get('saint', 'category');
-        $saintDayEvent = $notPeriodicEvents->getCategory(array($categoryOfSaint));  
+        $saintDayEvent = $notPeriodicEvents->getCategory(array($categoryOfSaint));
         return $saintDayEvent;
     }
-    
+
     public function getNotMainEvents() {
         /**
          * события которые следует отметить как информационные и не нагружать основной вывод
@@ -84,8 +84,8 @@ class Sancta_Day_Orthodoxy
         ));
         return $informationEvents;
     }
-    
-    public function getArticleForEveryDay() 
+
+    public function getArticleForEveryDay()
     {
         /**
          * заметки на каждый день - это статьи привязанные к событию "каждый день"
@@ -95,33 +95,45 @@ class Sancta_Day_Orthodoxy
         );
         return $articlesForEveryDay;
     }
-    
-    public function getRssPost() 
+
+    public function getRssPost()
     {
         Sancta_Peer_Template::getByName('rss_post')->getContent();
     }
 
-        
-    public function getIcons(&$count = null, &$notUnicIcons)
-    {   
+
+    /**
+     *  получим иконы из апи
+     */
+    public function getIcons()
+    {
         $result = Sancta_Api::getDay($this->day);
-        if ($count !== null) {
-            $count = count($result->icons);
+
+        $icons = array('unic' => array(), 'other' => array(), 'count' => 0, 'row' => array());
+        if (!$result) {
+            return $icons;
         }
-        $notUnicIcons = array();
+        $icons['count'] = count($result->icons);
+        $icons['all'] = $result->icons;
         foreach ($result->icons as $icon) {
-            $inUnic = False;
-            foreach ($result->icons_unic as $unicIcon) {
-                if ($unicIcon == $icon) {
-                    $inUnic = True;
-                    break;
-                }
+            $icons[in_array(
+                $icon->event_id,
+                array_map(
+                    create_function('$x', 'return $x->event_id;'),
+                    $icons['unic']
+                )
+            ) ? 'other' : 'unic'][] = $icon;
+        }
+        $countUnic = count($icons['unic']);
+        for ($i=0; $i<3; $i++) {
+            if ($i < $countUnic) {
+                $icons['row'][] =  $icons['unic'][$i];
+            } elseif ( $i - $countUnic < count($icons['other']))  {
+                $icons['row'][] =  $icons['other'][$i - $countUnic];
             }
-            if (!$inUnic) {
-                $notUnicIcons[] = $icon;
-            }
-         } 
-        return (!$result) ? false : $result->icons_unic;
+        }
+
+        return $icons;
     }
 
 

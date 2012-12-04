@@ -1,0 +1,56 @@
+<?php echo $this->partial('calendar/elements/header_menu.phtml'); ?>
+<?php echo $this->partial('calendar/elements/month_menu.phtml',
+                          array(
+                              'data' => $this->date
+                          ));
+?>
+
+
+<div id="today_block" >
+    <div class="container">
+        <div id="today">
+
+
+    <?php if ($this->icons['count']):?>
+        <h1>Иконы дня на <?php echo $this->date->getFormatDay()?></h1>
+        <?php $count = 0;?>
+        <div id='icons_day' class='clearfix'>
+        <?php foreach ($this->icons['all'] as $icon): ?>
+            <?php if ($count >0 && $count % 3 == 0): ?>
+              </div>
+              <div id='icons_day' class='clearfix'>
+            <?php endif;?>
+            <div class='icon'>
+                <a href='<?=$this->url(array('id'=>$icon->id), 'icon')?>'>
+                  <img
+                    src='<?php echo $icon->urls->{'150x200'};?>'
+                    title='<?php echo $icon->text->title;?>'
+                    alt='<?php echo $icon->text->annonce;?>'>
+                </a><br/>
+                <span class='desc'><?php echo $icon->text->annonce;?></span>
+            </div>
+
+        <?php $count++;?>
+        <?php endforeach;?>
+        </div>
+
+    <?php endif;?>
+
+        </div>
+        <div id="calendar_navigation">
+            <?php echo Calendar_Days::html($this->date->getM(), $this->date->getY(), $this->date->getD(), 'orthodoxy'); ?>
+        </div>
+    </div>
+</div>
+
+
+
+
+<?php echo $this->partial('calendar/elements/footer.phtml',array(
+                            'data' => $this->date,
+                            'nextEvents' => $this->nextEvents,
+                            'prevEvents' => $this->prevEvents
+                         ));
+?>
+
+<?php echo $this->partial('calendar/elements/copyright.phtml');?>

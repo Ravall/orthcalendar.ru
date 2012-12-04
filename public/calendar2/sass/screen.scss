@@ -7,7 +7,7 @@
 @import "blueprint/form";
 
 body{
-    
+
     background: url(../images/body_fon.jpg);
 
     // самое вернхнее меню. содержит навигацию по сайту (домой, rss)
@@ -18,7 +18,7 @@ body{
         border-bottom: 1px solid #000;
         @include small-link($link-color-top-down, $link-color-top-down-hover);
     }
-    
+
     // сама навигация
     div.navigation {
         padding-top: 3px;
@@ -60,7 +60,7 @@ body{
                     height: 30px;
                     width: 70px;
                     text-align: center;
-                    @include small-link(#666);                    
+                    @include small-link(#666);
                 }
                 li.active {
                     background: url("/images/sancta_sprite.png") no-repeat scroll -50px -200px transparent;
@@ -121,11 +121,11 @@ body{
 
     div#today_block, div#article_card {
         @include main-block();
-        
+
         div.container {
             @include container;
             .information {
-              color:#666;   
+              color:#666;
               a {
                 font-style: italic;
                 font-family: Georgia,"Times New Roman",Times,serif;
@@ -142,7 +142,7 @@ body{
                 h2 {
                     font-size: 2em;
                     font-weight: bold;
-                    letter-spacing: -1px; 
+                    letter-spacing: -1px;
                     font-family: "ff-scala-sans-web-1","ff-scala-sans-web-2","Lucida Grande","Helvetica",sans-serif;
                     padding-bottom:0px;
                 }
@@ -154,15 +154,15 @@ body{
                 #articles {
                     border-top: 1px solid #E4E4E4;
                 }
-                
+
                 div.note {
                     @include context_link;
                 }
                 div#icons_day {
                     padding-top:30px;
+                    @include column(13, true);
                     div.icon {
                         margin:2px;
-                        border:1px solid #E4E4E4;
                         height:auto;
                         width:180px;
                         float:left;
@@ -170,7 +170,11 @@ body{
                         img {
                             display:inline;
                             margin:3px;
-                            border:1px solid #ffffff;
+                            padding:10px;
+                            border:1px solid #E4E4E4;
+                        }
+                        a img:hover {
+                            border:1px solid #000;
                         }
                         span.desc {
                             text-align:center;
@@ -180,7 +184,7 @@ body{
                         }
                     }
                 }
-                
+
             }
             div#calendar_navigation {
                 @include prepend(1);
@@ -209,21 +213,21 @@ body{
                     }
                     td.today {
                         border: 1px solid black;
-                    }   
+                    }
                     td.holiday {
                         a {
                            font-weight: bold;
                         }
                     }
                     td.weekend {
-                        @include color-link(#F60);                            
+                        @include color-link(#F60);
                     }
                     td.great {
                         @include color-link(red);
                     }
-                }  
+                }
             }
-            
+
         }
     }
 
@@ -234,7 +238,7 @@ body{
             @include prepend(1);
             @include column(7);
 
-        
+
             img {
                 margin: 5px;
                 width: 300px;
@@ -268,7 +272,7 @@ body{
                 a.date {
 
                     color: #666;
-                
+
                 }
                 ul.articles {
                      font-size:13px;
@@ -312,7 +316,7 @@ body{
 
         }
     }
-    
+
     @include footer();
     @include coopyright();
 }

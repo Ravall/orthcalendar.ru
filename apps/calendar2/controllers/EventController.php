@@ -88,4 +88,10 @@ class EventController extends SystemController {
         $allArticles = $events->getArticles();
         $this->view->allArticles = $allArticles;
     }
+
+
+    public function iconAction()
+    {
+
+    }
 }
