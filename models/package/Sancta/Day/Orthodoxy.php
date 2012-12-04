@@ -102,12 +102,25 @@ class Sancta_Day_Orthodoxy
     }
 
         
-    public function getIcons(&$count = null)
+    public function getIcons(&$count = null, &$notUnicIcons)
     {   
         $result = Sancta_Api::getDay($this->day);
         if ($count !== null) {
             $count = count($result->icons);
         }
+        $notUnicIcons = array();
+        foreach ($result->icons as $icon) {
+            $inUnic = False;
+            foreach ($result->icons_unic as $unicIcon) {
+                if ($unicIcon == $icon) {
+                    $inUnic = True;
+                    break;
+                }
+            }
+            if (!$inUnic) {
+                $notUnicIcons[] = $icon;
+            }
+         } 
         return (!$result) ? false : $result->icons_unic;
     }
 

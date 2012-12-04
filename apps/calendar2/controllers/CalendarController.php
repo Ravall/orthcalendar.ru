@@ -14,9 +14,9 @@ class CalendarController extends SystemController {
          * @seo
          * Устанавливаем заголовк
          */
-        $this->addTitle('Православный календарь на ' . $this->mindflyDate->getFormatDay());
-        
-        
+        $this->addTitle(
+            'Православный календарь на ' . $this->mindflyDate->getFormatDay()
+        );
         $orthodoxyDay = new Sancta_Day_Orthodoxy($this->mindflyDate);
         /**
          * view
