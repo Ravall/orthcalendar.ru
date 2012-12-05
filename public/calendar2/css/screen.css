@@ -603,7 +603,7 @@ body div#today_block div.container div#today div#icons_day div.icon, body div#ar
   height: auto;
   width: 180px;
   float: left;
-  text-align: center;
+  font-size: 12px;
 }
 /* line 170, ../sass/screen.scss */
 body div#today_block div.container div#today div#icons_day div.icon img, body div#article_card div.container div#today div#icons_day div.icon img, body div#icons_card div.container div#today div#icons_day div.icon img {
@@ -812,6 +812,7 @@ body div#main_block div#add_content div#icons {
   float: left;
   margin-right: 0;
   width: 580.417px;
+  padding-bottom: 30px;
 }
 /* line 147, ../../../../../.rvm/gems/ruby-1.9.2-p318/gems/compass-0.12.2/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
 * html body div#main_block div#add_content div#icons {
@@ -822,16 +823,15 @@ body div#main_block div#add_content div#icons div.icon {
   height: auto;
   width: 100px;
   float: left;
-  text-align: center;
 }
-/* line 328, ../sass/screen.scss */
+/* line 327, ../sass/screen.scss */
 body div#main_block div#add_content div#icons div.icon img {
   display: inline;
   margin: 1px;
   padding: 1px;
   border: 1px solid #E4E4E4;
 }
-/* line 334, ../sass/screen.scss */
+/* line 333, ../sass/screen.scss */
 body div#main_block div#add_content div#icons div.icon a img:hover {
   border: 1px solid #000;
 }

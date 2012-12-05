@@ -166,7 +166,7 @@ body{
                         height:auto;
                         width:180px;
                         float:left;
-                        text-align:center;
+                        font-size:12px;
                         img {
                             display:inline;
                             margin:3px;
@@ -324,7 +324,6 @@ body{
                     height:auto;
                     width:100px;
                     float:left;
-                    text-align:center;
                     img {
                         display:inline;
                         margin:1px;
@@ -335,8 +334,9 @@ body{
                         border:1px solid #000;
                     }
                 }
+                padding-bottom:30px;
             }
-            
+
             div#articles{
                 padding-top:50px;
                 font-size:14px;
