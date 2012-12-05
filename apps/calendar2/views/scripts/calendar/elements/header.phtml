@@ -38,9 +38,14 @@
  		    <h3>Иконы дня</h3>
         <?php foreach ($this->icons['row'] as $icon): ?>
     	      <div class='icon'>
-    	          <a href='<?=$this->url(array('id'=>$icon->id), 'icon')?>'>
+    	          <a
+                  href='<?php echo str_replace('*size*', '600x800', $icon->url);?>'
+                  rel="lightbox[icons]"
+                  title='<?php echo $icon->text->title;?>'
+                >
+
                     <img
-    		              src='<?php echo $icon->urls->{'150x200'};?>'
+    		              src='<?php echo str_replace('*size*', '150x200', $icon->url);?>'
     		              title='<?php echo $icon->text->title;?>'
     		              alt='<?php echo $icon->text->annonce;?>'>
                 </a><br/>

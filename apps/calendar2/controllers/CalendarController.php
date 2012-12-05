@@ -17,6 +17,8 @@ class CalendarController extends SystemController {
         $this->addTitle(
             'Православный календарь на ' . $this->mindflyDate->getFormatDay()
         );
+        $this->addJsFile('lightbox/js/lightbox.js');
+        $this->addCssFile('lightbox/css/lightbox.css');
         $orthodoxyDay = new Sancta_Day_Orthodoxy($this->mindflyDate);
         /**
          * view
@@ -32,8 +34,8 @@ class CalendarController extends SystemController {
 
     }
 
-     /**
-     * события выбранного дня
+    /**
+     * все иконы дня дня
      */
     public function iconsAction() {
         /**
@@ -41,11 +43,13 @@ class CalendarController extends SystemController {
          * Устанавливаем заголовк
          */
         $this->addTitle(
-            'Православный календарь на ' . $this->mindflyDate->getFormatDay()
+            'иконы дня на ' . $this->mindflyDate->getFormatDay()
         );
+        $this->addJsFile('lightbox/js/lightbox.js');
+        $this->addCssFile('lightbox/css/lightbox.css');
         $orthodoxyDay = new Sancta_Day_Orthodoxy($this->mindflyDate);
         $this->view->icons = $orthodoxyDay->getIcons();
-        #$this->view->day = $this->mindflyDate;
+        $this->view->articles = $orthodoxyDay->getArticleForEveryDay();
     }
 
     public function rssAction() {

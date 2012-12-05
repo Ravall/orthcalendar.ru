@@ -21,9 +21,13 @@
               <div id='icons_day' class='clearfix'>
             <?php endif;?>
             <div class='icon'>
-                <a href='<?=$this->url(array('id'=>$icon->id), 'icon')?>'>
+                 <a
+                  href='<?php echo str_replace('*size*', '600x800', $icon->url);?>'
+                  rel="lightbox[allicons]"
+                  title='<?php echo $icon->text->title;?>'
+                >
                   <img
-                    src='<?php echo $icon->urls->{'150x200'};?>'
+                    src='<?php echo str_replace('*size*', '150x200', $icon->url);?>'
                     title='<?php echo $icon->text->title;?>'
                     alt='<?php echo $icon->text->annonce;?>'>
                 </a><br/>
@@ -37,8 +41,15 @@
     <?php endif;?>
 
         </div>
-        <div id="calendar_navigation">
-            <?php echo Calendar_Days::html($this->date->getM(), $this->date->getY(), $this->date->getD(), 'orthodoxy'); ?>
+        <div id="add_content">
+            <div id="articles">
+                <h4>Что еще можно прочесть по теме:</h4>
+                    <?php foreach ($this->articles as $article): ?>
+                        <p><?php echo $article->getLink($article->getTitle());?>
+                        </p>
+                    <?php endforeach;?>
+            </div>
+            <?php echo $this->partial('calendar/elements/adSense.phtml'); ?>
         </div>
     </div>
 </div>

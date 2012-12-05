@@ -31,8 +31,6 @@ class ErrorController extends SystemController
         Sancta_Peer_Mail::addMailToAdmin('calendar.sancta error:', $text);
 
         if (!Config_Interface::isProduction()) {
-
-
             switch ($errors->type) {
                 case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ROUTE:
                 case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_CONTROLLER:

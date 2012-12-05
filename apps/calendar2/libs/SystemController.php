@@ -21,19 +21,19 @@ class SystemController extends Mindfly_Controller_Action {
     const CALENDAR = 2;
 
     /**
-     * текущая дата. 
+     * текущая дата.
      * @var <type>
      */
     protected $mindflyDate;
-    
+
     /**
      * сессия
-     * 
-     * @var type 
+     *
+     * @var type
      */
     protected $defaultNamespace;
 
-   
+
     /**
      * получаем следущие и предыдущие события для категории
      * @param <type> $categoryId
@@ -57,13 +57,13 @@ class SystemController extends Mindfly_Controller_Action {
         return $mindflyData;
     }
 
-    
-    public function  init() {        
-        parent::init();        
+
+    public function  init() {
+        parent::init();
         $this->defaultNamespace = new Zend_Session_Namespace('Default');
-        // заголовок        
-        $this->view->headTitle()->setSeparator(' | ');        
-        $this->addJsFile('jquery-1.4.1.min.js');                
+        // заголовок
+        $this->view->headTitle()->setSeparator(' | ');
+        $this->addJsFile('jquery-1.7.2.min.js');
         $this->flash = $this->_helper->getHelper('flashMessenger');
         /**
          * получаем текущую дату
@@ -73,16 +73,16 @@ class SystemController extends Mindfly_Controller_Action {
          * подгружаем информацию о текущих и следующих событиях
          * которые отображаем в футере
          */
-        $this->getPrevNextEvent(Config_Interface::get('orthodoxy', 'category')); 
+        $this->getPrevNextEvent(Config_Interface::get('orthodoxy', 'category'));
     }
 
-   
+
     public function preDispatch() {
         parent::preDispatch();
         if ($this->flash->hasMessages()) {
             $this->view->messages = $this->flash->getMessages();
         }
         // если запрос идет с авторизацией
-              
+
     }
 }
