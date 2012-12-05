@@ -1,13 +1,8 @@
 <?php
 class Sancta_Api
-{
-	private $day_url = 'calendar/2012-08-19/?format=json';
-
-	public static function getDay($day)
+{	
+	private static function _request($url)
 	{
-		$url = Config_Interface::get('api', 'url')
-		         . "calendar/{$day->getDay()}/?format=json";
-
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); //do not output directly, use variable
@@ -18,5 +13,19 @@ class Sancta_Api
 			return false;
 		}
 		return json_decode($info);
+	}
+
+	public static function getDay($day)
+	{
+		$url = Config_Interface::get('api', 'url')
+		         . "calendar/{$day->getDay()}/?format=json";
+		return self::_request($url);
+	}
+
+	public static function getEventInfo($eventId)
+	{
+		$url = Config_Interface::get('api', 'url')
+		         . "event/{$eventId}/?format=json";
+		return self::_request($url);
 	}
 }

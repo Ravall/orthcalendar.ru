@@ -6,13 +6,29 @@
 ?>
 
 
-<div id="today_block" >
+
+<div id="icons_card" class="clearfix">
+            <div class="container">
+                <div id="card" class="clearfix">
+                    <h1>Иконы дня на <?php echo $this->date->getFormatDay()?></h1>
+                    <h2>Православный календарь</h2>
+                    <a href="<?=$this->url(array('date'=>$this->date->getDay()), 'orthodoxy')?>"> &larr; к странице календаря</a>
+                </div>
+            </div>
+        </div>
+
+
+
+<div id="today_block" class='icons'>
     <div class="container">
         <div id="today">
 
 
+
+      
+
     <?php if ($this->icons['count']):?>
-        <h1>Иконы дня на <?php echo $this->date->getFormatDay()?></h1>
+        
         <?php $count = 0;?>
         <div id='icons_day' class='clearfix'>
         <?php foreach ($this->icons['all'] as $icon): ?>
@@ -22,7 +38,7 @@
             <?php endif;?>
             <div class='icon'>
                  <a
-                  href='<?php echo str_replace('*size*', '600x800', $icon->url);?>'
+                  href='<?php echo str_replace('*size*', '450x600', $icon->url);?>'
                   rel="lightbox[allicons]"
                   title='<?php echo $icon->text->title;?>'
                 >
@@ -42,6 +58,8 @@
 
         </div>
         <div id="add_content">
+          
+
             <div id="articles">
                 <h4>Что еще можно прочесть по теме:</h4>
                     <?php foreach ($this->articles as $article): ?>
@@ -49,6 +67,7 @@
                         </p>
                     <?php endforeach;?>
             </div>
+
             <?php echo $this->partial('calendar/elements/adSense.phtml'); ?>
         </div>
     </div>

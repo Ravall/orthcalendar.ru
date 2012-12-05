@@ -3,6 +3,7 @@ require_once 'SystemController.php';
 require_once PATH_LIBS . '/Mindfly/Grammar.php';
 require_once SANCTA_PATH . '/Peer/Article.php';
 require_once PATH_BASE . '/models/package/Calendar/Days.php';
+require_once SANCTA_PATH . '/Api.php';
 /*
  * Контроллер событие
  */
@@ -22,15 +23,21 @@ class EventController extends SystemController {
          * Устанавливаем заголовк
          */
         $this->addTitle($event->getTitle() . ' ' . $this->mindflyDate->getY() . '. Православный календарь.');
+        $this->addJsFile('lightbox/js/lightbox.js');
+        $this->addCssFile('lightbox/css/lightbox.css');
         /**
          * получаем дополнительные статьи
          */
         $articles = Sancta_Peer_Article::getByEventId($eventId);
+        $eventInfo = Sancta_Api::getEventInfo($eventId);
+
+        
         /**
          * view
          */
         $this->view->everyDay = Sancta_Peer_Event::getById(Config_Interface::get('everydayId', 'events'));
         $this->view->event = $event;
+        $this->view->icons = $eventInfo->icons;
         $this->view->articles = $articles;
     }
 
