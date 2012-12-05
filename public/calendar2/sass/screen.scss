@@ -166,7 +166,6 @@ body{
                         height:auto;
                         width:180px;
                         float:left;
-                        font-size:12px;
                         img {
                             display:inline;
                             margin:3px;
@@ -176,8 +175,10 @@ body{
                         a img:hover {
                             border:1px solid #000;
                         }
-                        span.desc {
-                            text-align:center;
+                        div.desc {
+                            font-size:13px;
+                            padding:0px 10px;
+                            text-align:left;
                             font-weight:normal;
                             width:120px;
                             margin:2px;
