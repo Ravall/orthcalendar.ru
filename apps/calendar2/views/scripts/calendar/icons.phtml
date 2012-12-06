@@ -19,16 +19,16 @@
 
 
 
-<div id="today_block" class='icons'>
+<div id="main_block" class='icons'>
     <div class="container">
-        <div id="today">
+        <div id="main_content">
 
 
 
-      
+
 
     <?php if ($this->icons['count']):?>
-        
+
         <?php $count = 0;?>
         <div id='icons_day' class='clearfix'>
         <?php foreach ($this->icons['all'] as $icon): ?>
@@ -58,16 +58,12 @@
 
         </div>
         <div id="add_content">
-          
-
             <div id="articles">
                 <h4>Что еще можно прочесть по теме:</h4>
-                    <?php foreach ($this->articles as $article): ?>
-                        <p><?php echo $article->getLink($article->getTitle());?>
-                        </p>
-                    <?php endforeach;?>
+                <?php foreach ($this->articles as $article): ?>
+                    <p><?php echo $article->getLink($article->getTitle());?></p>
+                <?php endforeach;?>
             </div>
-
             <?php echo $this->partial('calendar/elements/adSense.phtml'); ?>
         </div>
     </div>
