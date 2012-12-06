@@ -1,0 +1,27 @@
+@mixin icons_day() {
+	padding-top:30px;
+    @include column(13, true);
+    div.icon {
+        margin:2px;
+        height:auto;
+        width:180px;
+        float:left;
+        img {
+            display:inline;
+            margin:3px;
+            padding:10px;
+            border:1px solid #E4E4E4;
+        }
+        a img:hover {
+            border:1px solid #000;
+        }
+        div.desc {
+            font-size:13px;
+            padding:0px 10px;
+            text-align:left;
+            font-weight:normal;
+            width:120px;
+            margin:2px;
+        }
+    }
+}
