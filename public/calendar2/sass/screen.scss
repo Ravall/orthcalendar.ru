@@ -7,7 +7,7 @@
 @import "blueprint/form";
 
 body{
-    
+
     background: url(../images/body_fon.jpg);
 
     // самое вернхнее меню. содержит навигацию по сайту (домой, rss)
@@ -18,7 +18,7 @@ body{
         border-bottom: 1px solid #000;
         @include small-link($link-color-top-down, $link-color-top-down-hover);
     }
-    
+
     // сама навигация
     div.navigation {
         padding-top: 3px;
@@ -60,7 +60,7 @@ body{
                     height: 30px;
                     width: 70px;
                     text-align: center;
-                    @include small-link(#666);                    
+                    @include small-link(#666);
                 }
                 li.active {
                     background: url("/images/sancta_sprite.png") no-repeat scroll -50px -200px transparent;
@@ -119,13 +119,13 @@ body{
 
 
 
-    div#today_block, div#article_card {
+    div#today_block, div#article_card, div#icons_card {
         @include main-block();
-        
+
         div.container {
             @include container;
             .information {
-              color:#666;   
+              color:#666;
               a {
                 font-style: italic;
                 font-family: Georgia,"Times New Roman",Times,serif;
@@ -142,7 +142,7 @@ body{
                 h2 {
                     font-size: 2em;
                     font-weight: bold;
-                    letter-spacing: -1px; 
+                    letter-spacing: -1px;
                     font-family: "ff-scala-sans-web-1","ff-scala-sans-web-2","Lucida Grande","Helvetica",sans-serif;
                     padding-bottom:0px;
                 }
@@ -154,11 +154,38 @@ body{
                 #articles {
                     border-top: 1px solid #E4E4E4;
                 }
-                
+
                 div.note {
                     @include context_link;
                 }
-                
+                div#icons_day {
+                    padding-top:30px;
+                    @include column(13, true);
+                    div.icon {
+                        margin:2px;
+                        height:auto;
+                        width:180px;
+                        float:left;
+                        img {
+                            display:inline;
+                            margin:3px;
+                            padding:10px;
+                            border:1px solid #E4E4E4;
+                        }
+                        a img:hover {
+                            border:1px solid #000;
+                        }
+                        div.desc {
+                            font-size:13px;
+                            padding:0px 10px;
+                            text-align:left;
+                            font-weight:normal;
+                            width:120px;
+                            margin:2px;
+                        }
+                    }
+                }
+
             }
             div#calendar_navigation {
                 @include prepend(1);
@@ -187,32 +214,32 @@ body{
                     }
                     td.today {
                         border: 1px solid black;
-                    }   
+                    }
                     td.holiday {
                         a {
                            font-weight: bold;
                         }
                     }
                     td.weekend {
-                        @include color-link(#F60);                            
+                        @include color-link(#F60);
                     }
                     td.great {
                         @include color-link(red);
                     }
-                }  
+                }
             }
-            
+
         }
     }
 
 
 
-    div#article_card {
+    div#article_card,div#icons_card {
         div#img {float: left;
             @include prepend(1);
             @include column(7);
 
-        
+
             img {
                 margin: 5px;
                 width: 300px;
@@ -229,7 +256,21 @@ body{
                 line-height:80%;font-size: 2.5em;
             }
         }
+
     }
+
+    div#icons_card {
+        padding-top:0px;
+        padding-bottom:0px;
+        div.container {
+            padding-top:0px;
+            padding-bottom:0px;
+            margin-top:0px;
+            margin-bottom:0px;
+        }
+    }
+
+
 
     div#main_block {
         div#main_content {
@@ -246,7 +287,7 @@ body{
                 a.date {
 
                     color: #666;
-                
+
                 }
                 ul.articles {
                      font-size:13px;
@@ -259,7 +300,9 @@ body{
                 font-size:12px;
                 text-align:right;
             }
+            
         }
+
         div#add_content {
             div#adSense {
                 padding-top:25px;
@@ -276,6 +319,25 @@ body{
                 display:none;
             }
 
+            div#icons {
+                @include column(13, true);
+                div.icon {
+                    height:auto;
+                    width:100px;
+                    float:left;
+                    img {
+                        display:inline;
+                        margin:1px;
+                        padding:1px;
+                        border:1px solid #E4E4E4;
+                    }
+                    a img:hover {
+                        border:1px solid #000;
+                    }
+                }
+                padding-bottom:30px;
+            }
+
             div#articles{
                 padding-top:50px;
                 font-size:14px;
@@ -286,11 +348,15 @@ body{
                         text-decoration:none;
                     }
                 }
+                h4 {
+                    margin-top:30px;
+                    padding-top:30px;
+                }
             }
 
         }
     }
-    
+
     @include footer();
     @include coopyright();
 }

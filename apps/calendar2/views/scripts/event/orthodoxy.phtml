@@ -39,6 +39,9 @@
                         <div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="none" data-yashareQuickServices="yaru,vkontakte,facebook,twitter,odnoklassniki,moimir,lj,friendfeed,moikrug"></div> 
                     </div>
                 </div>
+
+              
+
             </div>
         </div>
 
@@ -46,6 +49,8 @@
  <div id="main_block">
             <div class="container">
                 <div id="main_content">
+ 
+
                     <div id="description" class="content">
                         <!-- google_ad_section_start -->
                         <?php echo $this->event->getContent(array("\n" => '</p><p>')); ?>
@@ -65,6 +70,31 @@
                 </div>
 
             <div id="add_content">
+                 <?php if ($this->icons): ?>
+                 <h4> 
+                    Иконы к событию 
+                    <strong>"<?php echo $this->event->getTitle();?>"</strong>
+                 </h4>
+                 <div id="icons">
+                    <?php foreach ($this->icons as $icon): ?>
+                    <div class='icon'>
+                    <a href='<?php echo str_replace(
+                                  '*size*', '450x600', 
+                                  $icon->url
+                             );?>'
+                      rel="lightbox[icons]"
+                      title='<?php echo $icon->text->annonce;?>'
+                    >
+                    <img
+                      src='<?php echo str_replace('*size*', '75x100', $icon->url);?>'
+                      title='<?php echo $icon->text->title;?>'
+                      alt='<?php echo $icon->text->annonce;?>'>
+                     </a>
+                    </div>
+                  <?php endforeach;?>
+                </div>
+              <?php endif;?>
+
                 <?php if ($this->event->getId() !=  Config_Interface::get('everyWeekFast', 'events')):?>
                 <div id="event_in_future">
                    
