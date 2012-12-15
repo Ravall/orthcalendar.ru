@@ -5,6 +5,7 @@ require_once PATH_LIBS . '/Mindfly/Grammar.php';
 require_once SANCTA_PATH . '/Peer/Article.php';
 require_once SANCTA_PATH . '/Peer/Event.php';
 require_once PATH_BASE . '/models/package/Calendar/Days.php';
+require_once SANCTA_PATH . '/Api.php';
 
 /*
  * Контроллер событие
@@ -20,7 +21,8 @@ class ArticleController extends SystemController {
 
         $article = Sancta_Peer_Article::getById($articleId);        
         $this->getPrevNextEvent(Config_Interface::get('orthodoxy','category'));
-
+        #получим информацию о событии через апи
+        $eventInfo = Sancta_Api::getEventInfo($eventId);
         /**
          * @seo
          * Устанавливаем заголовк
@@ -29,6 +31,7 @@ class ArticleController extends SystemController {
         /**
          * view
          */
+        $this->view->icons = $eventInfo ? $eventInfo->icons : False;
         $this->view->event = $eventId ? Sancta_Peer_Event::getById($eventId) : false;
         $this->view->article = $article;
         $this->view->cardShow =  !$article->isRelateTo(Config_Interface::get('everydayId', 'events'));

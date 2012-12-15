@@ -3,6 +3,8 @@ require_once 'SystemController.php';
 require_once PATH_LIBS . '/Mindfly/Grammar.php';
 require_once SANCTA_PATH . '/Peer/Article.php';
 require_once PATH_BASE . '/models/package/Calendar/Days.php';
+require_once SANCTA_PATH . '/Api.php';
+require_once SANCTA_PATH . '/Day/Orthodoxy.php';
 /*
  * Контроллер событие
  */
@@ -22,16 +24,44 @@ class EventController extends SystemController {
          * Устанавливаем заголовк
          */
         $this->addTitle($event->getTitle() . ' ' . $this->mindflyDate->getY() . '. Православный календарь.');
+        $this->addJsFile('lightbox/js/lightbox.js');
+        $this->addCssFile('lightbox/css/lightbox.css');
         /**
          * получаем дополнительные статьи
          */
         $articles = Sancta_Peer_Article::getByEventId($eventId);
+        $eventInfo = Sancta_Api::getEventInfo($eventId);
+
+        
         /**
          * view
          */
         $this->view->everyDay = Sancta_Peer_Event::getById(Config_Interface::get('everydayId', 'events'));
         $this->view->event = $event;
+        $this->view->icons = $eventInfo->icons;
         $this->view->articles = $articles;
+    }
+
+    public function iconsAction()
+    {
+        # получаем иконы по api по названию события
+        $eventInfo = Sancta_Api::getEventInfo(
+            $param = $this->getRequest()->getParam('event_name')
+        );
+        if (!$eventInfo) {
+            throw new Exception(
+                "Не удалось получить событие по параметру {$param}"
+            );
+        }
+        $this->addTitle(
+            "{$eventInfo->text->title} иконы. Православный календарь"
+        );
+        $this->addJsFile('lightbox/js/lightbox.js');
+        $this->addCssFile('lightbox/css/lightbox.css');
+        $this->view->articles = Sancta_Peer_Article::getByEventId(
+            $eventInfo->id
+        );
+        $this->view->eventInfo = $eventInfo;
     }
 
     /**

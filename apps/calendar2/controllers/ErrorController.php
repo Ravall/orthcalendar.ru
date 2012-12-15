@@ -4,9 +4,9 @@ require_once PATH_LIBS . '/Mindfly/Date.php';
 require_once SANCTA_PATH . '/Peer/Mail.php';
 
 
-class ErrorController extends SystemController 
+class ErrorController extends SystemController
 {
-    
+
     public function setNoIndex()
     {
         $this->view->headMeta()->appendName('robots', 'noindex');
@@ -18,7 +18,7 @@ class ErrorController extends SystemController
         $this->addTitle('Ошибка | Православный календарь');
         $this->setNoIndex();
         $errors = $this->_getParam('error_handler');
-        
+
         if ($log = $this->getLog()) {
             $log->crit($this->view->message, $errors->exception);
         }
@@ -29,10 +29,8 @@ class ErrorController extends SystemController
             '%url%' => $this->getRequest()->getBaseUrl() . $this->getRequest()->getRequestUri(),
         ));
         Sancta_Peer_Mail::addMailToAdmin('calendar.sancta error:', $text);
-        
+
         if (!Config_Interface::isProduction()) {
-          
-        
             switch ($errors->type) {
                 case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ROUTE:
                 case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_CONTROLLER:

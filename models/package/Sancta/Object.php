@@ -13,6 +13,7 @@ abstract class Sancta_Object extends Sancta_Abstract_ImagedObject {
     private $updated;
     private $created_class;
     private $parent_ids;
+    private $url;
 
 
 
@@ -32,6 +33,10 @@ abstract class Sancta_Object extends Sancta_Abstract_ImagedObject {
         $this->_setObject($object);
     }
 
+    public function getUrl()
+    {
+        return $this->url;
+    }
     /**
      * получить идентификатор объекта
      * @return <type>
@@ -101,6 +106,7 @@ abstract class Sancta_Object extends Sancta_Abstract_ImagedObject {
         $this->updated = $object->updated;
         $this->created_class = $object->created_class;
         $this->parent_ids = $object->parent_ids;
+        $this->url = $object->url;
         parent::_setObject($object);
     }
 
