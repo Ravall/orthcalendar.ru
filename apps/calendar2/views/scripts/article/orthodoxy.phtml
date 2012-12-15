@@ -67,7 +67,20 @@
                     <div id ='articles'>
                         <h2>Что еще можно прочесть по теме &laquo<?php echo $this->event->getLink($this->event->getTitle());?>&raquo;:</h2>
                         <hr/>
-                        
+                        <?php if ($this->icons): ?>
+                        <p> 
+                        <a href='
+                            <?php
+                            echo $this->url(
+                            array('event_name' => $this->event->getUrl()), 'eventicons'
+                            )
+                        ?>'>
+                        <?php echo $this->event->getTitle();?>. Иконы
+                        </a>
+                        </p>
+                        <?php endif;?>
+
+
                             <?php foreach (Sancta_Peer_Article::getByEventId($this->event->getId()) as $article): ?>
                               <p <?php if ($this->article->getId() == $article->getId()) echo "class='current'";?>>
                                   <?php echo $article->getLink($article->getTitle(), array('event_id' => $this->event->getId()));?>

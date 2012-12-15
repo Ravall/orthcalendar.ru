@@ -1,0 +1,87 @@
+<?php echo $this->partial('calendar/elements/header_menu.phtml'); ?>
+<?php echo $this->partial(
+  'calendar/elements/month_menu.phtml',
+  array('data' => $this->date)
+);
+?>
+<div id="icons_card" class="clearfix">
+  <div class="container">
+    <div id="card" class="clearfix">
+      <h1><?php echo $this->eventInfo->text->title?>. Иконы.</h1>
+      <h2>Православный календарь</h2>
+    </div>
+  </div>
+</div>
+<div id="main_block" class='icons'>
+  <div class="container">
+    <div id="main_content">
+    <?php if (count($this->eventInfo->icons)):?>
+      <?php $count = 0;?>
+        <div id='icons_day' class='clearfix'>
+        <?php foreach ($this->eventInfo->icons as $icon): ?>
+          <?php if ($count >0 && $count % 3 == 0): ?>
+            </div>
+            <div id='icons_day' class='clearfix'>
+          <?php endif;?>
+          <div class='icon'>
+            <a
+              href='<?php echo str_replace('*size*', '450x600', $icon->url);?>'
+              rel="lightbox[allicons]"
+              title='<?php echo $icon->text->annonce;?>'
+            >
+              <img
+                src='<?php echo str_replace('*size*', '150x200', $icon->url);?>'
+                title='<?php echo $icon->text->title;?>'
+                alt='<?php echo $icon->text->annonce;?>'>
+            </a><br/>
+            <div class='desc'><?php echo $icon->text->annonce;?></div>
+          </div>
+          <?php $count++;?>
+        <?php endforeach;?>
+        </div>
+      <?php endif;?>
+    </div>
+    <div id="add_content">
+      <div id="articles">
+        <h2>
+          Что еще можно прочесть по теме 
+          &laquo
+          <a href='
+            <?php echo $this->url(array(
+                'id' => $this->eventInfo->id), 'event'
+            )?>'>
+          <?php echo $this->eventInfo->text->title;?>
+          </a>
+          &raquo;:
+        </h2>
+        <p class='current'> 
+          <a href='
+            <?php
+              echo $this->url(
+                array('event_name' => $this->eventInfo->name), 'eventicons'
+              )
+            ?>'>
+            <?php echo $this->eventInfo->text->title;?>. Иконы
+          </a>
+        </p>
+        <?php foreach ($this->articles as $article): ?>
+          <p>
+            <?php echo $article->getLink(
+              $article->getTitle(),
+              array('event_id' => $this->eventInfo->id)
+            );
+            ?>
+          </p>
+        <?php endforeach;?>
+      </div>
+      <?php echo $this->partial('calendar/elements/adSense.phtml'); ?>
+    </div>
+  </div>
+</div>
+<?php echo $this->partial('calendar/elements/footer.phtml', array(
+  'data' => $this->date,
+  'nextEvents' => $this->nextEvents,
+  'prevEvents' => $this->prevEvents
+));
+?>
+<?php echo $this->partial('calendar/elements/copyright.phtml');?>

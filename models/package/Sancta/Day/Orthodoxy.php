@@ -107,14 +107,16 @@ class Sancta_Day_Orthodoxy
      */
     public function getIcons()
     {
+        #получаем иконы из api
         $result = Sancta_Api::getDay($this->day);
-
-        $icons = array('unic' => array(), 'other' => array(), 'count' => 0, 'row' => array());
+        $icons = array(
+            'unic'  => array(), 
+            'other' => array(), 
+        );
         if (!$result) {
             return $icons;
         }
-        $icons['count'] = count($result->icons);
-        $icons['all'] = $result->icons;
+        # выделим в параметр unic по одной иконе от каждого события
         foreach ($result->icons as $icon) {
             $icons[in_array(
                 $icon->event_id,
@@ -124,16 +126,7 @@ class Sancta_Day_Orthodoxy
                 )
             ) ? 'other' : 'unic'][] = $icon;
         }
-        $countUnic = count($icons['unic']);
-        for ($i=0; $i<3; $i++) {
-            if ($i < $countUnic) {
-                $icons['row'][] =  $icons['unic'][$i];
-            } elseif ( $i - $countUnic < count($icons['other']))  {
-                $icons['row'][] =  $icons['other'][$i - $countUnic];
-            }
-        }
-
-        return $icons;
+        return $icons['unic'];
     }
 
 

@@ -279,6 +279,25 @@ body{
             div#icons_day {
                 @include icons_day();
             }
+            div#icons {
+                @include column(13, true);
+                padding-top:10px;
+                padding-bottom:10px;
+                div.icon {
+                    
+                    @include column(2);
+                    img {
+                        display:inline;
+                        margin:1px;
+                        padding:1px;
+                        border:1px solid #E4E4E4;
+                    }
+                    a img:hover {
+                        border:1px solid #000;
+                    }
+                }
+
+            }
 
         }
 
@@ -298,24 +317,7 @@ body{
                 display:none;
             }
 
-            div#icons {
-                @include column(13, true);
-                div.icon {
-                    height:auto;
-                    width:100px;
-                    float:left;
-                    img {
-                        display:inline;
-                        margin:1px;
-                        padding:1px;
-                        border:1px solid #E4E4E4;
-                    }
-                    a img:hover {
-                        border:1px solid #000;
-                    }
-                }
-                padding-bottom:30px;
-            }
+           
 
             div#articles{
                 padding-top:50px;

@@ -34,9 +34,14 @@
 <?php endif;?>
 
 <div id='icons_day' class='clearfix'>
- 	  <?php if ($this->icons['count']):?>
+    <?php $count=0;?>
+ 	  <?php if (count($this->icons)):?>
  		    <h3>Иконы дня</h3>
-        <?php foreach ($this->icons['row'] as $icon): ?>
+        <?php foreach ($this->icons as $icon): ?>
+            <?php if ($count >0 && $count % 3 == 0): ?>
+              </div>
+              <div id='icons_day' class='clearfix'>
+            <?php endif;?>
     	      <div class='icon'>
     	          <a
                   href='<?php echo str_replace('*size*', '450x600', $icon->url);?>'
@@ -51,17 +56,11 @@
                 </a><br/>
                 <div class='desc'><?php echo $icon->text->annonce;?></div>
     	      </div>
-
+        <?php $count++?>
         <?php endforeach;?>
 
     <?php endif;?>
 </div>
-<?php if ($this->icons['count'] > 3):?>
-          <a href='<?=$this->url(array('date'=>$this->data->getDay()), 'orthodoxyicons')?>'>
-              посмотреть все иконы дня на <?php echo $this->data->getFormatDay()?>
-          </a>
-<?php endif;?>
-
 
 
 
