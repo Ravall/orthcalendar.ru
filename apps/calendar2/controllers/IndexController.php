@@ -23,7 +23,24 @@ class IndexController extends SystemController
 
     private function _getRouteParam($route)
     {
-        return $this->getRequest()->getParams();
+        switch ($route) {
+            case 'oldarticle':
+                $routeParam = array(
+                    'event_id' => $this->getRequest()->getParam('event_id'),
+                    'id' => $this->getRequest()->getParam('article_id')
+                );
+                break;
+            case 'eventorthodoxy':
+            case 'eventorthodoxytemp':
+                $routeParam = array(
+                    'id' => $this->getRequest()->getParam('id')
+                );
+                break;
+            default:
+                $routeParam = array();
+                break;
+        }
+        return array_merge($this->getRequest()->getParams(), $routeParam);
     }
 
     /**
