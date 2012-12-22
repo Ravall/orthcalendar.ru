@@ -104,18 +104,4 @@ class EventController extends SystemController {
          $this->_loadAllEvents($this->view);
 
     }
-
-    /**
-     * sitemap.xml для поисковых систем
-     *
-     */
-    public function sitemapAction()
-    {
-        header ('Content-type: text/xml;charset=utf-8');
-        $this->setLayout('ajax');
-        $result = $this->_loadAllEvents($this->view);
-        $events = $result['events'];
-        $allArticles = $events->getArticles();
-        $this->view->allArticles = $allArticles;
-    }
 }

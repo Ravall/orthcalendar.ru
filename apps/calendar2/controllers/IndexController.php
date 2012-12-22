@@ -13,15 +13,15 @@ class IndexController extends SystemController
     public function topMenuAction() {
         $this->view->hasIdentity = Zend_Auth::getInstance()->hasIdentity();
     }
-  
+
     public function pageAction() {
-        $template = $this->getRequest()->getParam('template');                        
-        $this->view->template = $template;    
+        $template = $this->getRequest()->getParam('template');
+        $this->view->template = $template;
         $this->render($template);
     }
-    
-    
-    private function _getRouteParam($route) 
+
+
+    private function _getRouteParam($route)
     {
         switch ($route) {
             case 'oldarticle':
@@ -40,13 +40,13 @@ class IndexController extends SystemController
                 $routeParam = array();
                 break;
         }
-        return $routeParam;
+        return array_merge($this->getRequest()->getParams(), $routeParam);
     }
 
     /**
      * перелинковка, сохранение
-     * 
-     * @return type 
+     *
+     * @return type
      */
     public function redirectAction()
     {
@@ -63,7 +63,7 @@ class IndexController extends SystemController
      */
     public function contactAction()
     {
-        $reflectionForm = new Form_Calendar_Reflection();        
+        $reflectionForm = new Form_Calendar_Reflection();
         if ($this->getRequest()->isPost() && $reflectionForm->isValid($_POST)) {
             $text = Sancta_Peer_Template::getByName('error_mail_to_admin')->getContent(array(
                 '%message%' => $reflectionForm->getValue('text'),
@@ -71,7 +71,7 @@ class IndexController extends SystemController
                 '%url%' => '',
             ));
             Sancta_Peer_Mail::addMailToAdmin('FORM CONTACT:', $text);
-            $this->view->successText = Config_Interface::get('reflection_success', 'flash_text');               
+            $this->view->successText = Config_Interface::get('reflection_success', 'flash_text');
         }
          /**
          * view
