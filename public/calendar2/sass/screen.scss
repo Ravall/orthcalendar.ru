@@ -98,21 +98,24 @@ body{
     }
     div#page_donate{
         @include main-block();
-        div#inform{
-            @include column(12);
-            div#example {
-                margin-top:3px;
-                @include column(3);
+        div.donate {
+            padding-top:30px;
+            @include column(24, true);
+            div#inform{
+                @include column(12);
+                div#example {
+                    margin-top:3px;
+                    @include column(3);
+                }
+                div#banner {
+                    @include column(9,true);
+                }
             }
-             div#banner {
-                @include column(9,true);
+            div#content {
+                @include column(12, true);
+                font-style: italic;
+                color: #666;
             }
-
-        }
-        div#content {
-            @include column(12,true);
-            font-style: italic;
-            color: #666;
         }
     }
 
@@ -284,7 +287,7 @@ body{
                 padding-top:10px;
                 padding-bottom:10px;
                 div.icon {
-                    
+
                     @include column(2);
                     img {
                         display:inline;
@@ -317,7 +320,7 @@ body{
                 display:none;
             }
 
-           
+
 
             div#articles{
                 padding-top:50px;
