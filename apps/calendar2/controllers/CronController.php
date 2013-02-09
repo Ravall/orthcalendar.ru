@@ -44,7 +44,7 @@ class CronController extends Zend_Controller_Action
                 $dateOfRasp = $dateOfRasp->getPrevDay();
             }
             $orthodoxyDay = new Sancta_Day_Orthodoxy($dateOfRasp);
-            $application = new Zend_Application('devel', CALENDAR2_PATH . '/config/application.ini');
+            $application = new Zend_Application('production', CALENDAR2_PATH . '/config/application.ini');
             $view = new Zend_View();        
             $view->assign(array(
                 'notes'               => $orthodoxyDay->getToDoNotes(),

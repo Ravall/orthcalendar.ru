@@ -6,38 +6,43 @@
 ?>
  <div id="page_donate">
     <div class="container">
-        <?/*
-        <div id="content">
-              <h2>Благотворительный взнос</h2>
-              <p>Проект <strong>православный календарь</strong> не коммерческий.
-              Однако, если вам он понравился и показался удобным, вы можете поддержать проект материально.
-              Полученные средства пойдут на оплату доменного имени и хостинга.</p><br/>
-
-              <form method="POST"  class="application"  accept-charset="UTF-8" action="https://partner.a1pay.ru/a1lite/input/">
-                  <input type="hidden" name="key" value="HEStkRlISd+lpfU8n6em1r2Gk6Nwc8BdQMhLvDCdGW8=" />
-                  <input type="hidden" name="cost" value="10" />
-                  <input type="hidden" name="name" value="Пожертвовать" />
-                  <input type="hidden" name="default_email" value="" />
-                  <input type="hidden" name="order_id" value="0" />
-                  <input type="image" style="border:0;" src="https://partner.a1pay.ru/gui/images/a1lite_buttons/button_small.png" value="Пожертвовать" />
-              </form>
-        </div>
-        */?>
         <h1>Поддержать православный календарь</h1>
-        <div id='inform'>
-        <b>Установить кнопку на свой сайт:</b><br/>
-        <div id='example'>
-          <a href='http://orthcalendar.ru/orthodoxy'><img src='/images/banner.png' border=0 alt='православный календарь' title='православный календарь'></a>
-        </div>
-        <div id='banner'>
-          <textarea cols="42" rows="4"><a href='http://orthcalendar.ru/orthodoxy'><img src='http://orthcalendar.ru/images/banner.png' border=0 alt='православный календарь' title='православный календарь'></a></textarea>
-        </div>
+        <div class='donate'>
+            <div id='inform'>
+                <b>Установить кнопку на свой сайт:</b><br/>
+                <div id='example'>
+                    <a href='http://orthcalendar.ru/orthodoxy'><img src='/images/banner.png' border=0 alt='православный календарь' title='православный календарь'></a>
+                </div>
+                <div id='banner'>
+                    <textarea cols="42" rows="4"><a href='http://orthcalendar.ru/orthodoxy'><img src='http://orthcalendar.ru/images/banner.png' border=0 alt='православный календарь' title='православный календарь'></a></textarea>
+                </div>
+            </div>
+            <div id="content">
+              <p>Если вы владеете православным сайтом, вы можете установить на свой сайт кнопку, чтобы аудитория вашего сайта, узнала о существовании нашего ресурса и смогла легко к нам попасть.</p>
+            </div>
       </div>
-
-        <div id="content">
-            <p>Если вы владеете православным сайтом, вы можете установить на свой сайт кнопку, чтобы аудитория вашего сайта, узнала о существовании нашего ресурса и смогла легко к нам попасть.</p>
-        </div>
-    </div>
+      <div class='donate'>
+          <div id='inform'>
+            <b>Поддержать проект материально. </b>
+            <form method="POST"  class="application"  accept-charset="UTF-8" action="https://partner.a1pay.ru/a1lite/input/">
+                <input type="hidden" name="key" value="ZOaGW8KFqv1/u4tlNFTgKvuXQvn6MtQbF7iT/bLmeNc=" />
+                <input type="hidden" name="cost" value="10" />
+                <input type="hidden" name="name" value="Поддержать православный календарь материально" />
+                <input type="hidden" name="default_email" value="" />
+                <input type="hidden" name="order_id" value="0" />
+                <input type="image" style="border:0;" src="https://partner.a1pay.ru/gui/images/a1lite_buttons/button_small.png" value="Оплатить" />
+            </form>
+          </div>
+          <div id="content">
+            <p>Проект <strong>православный календарь</strong> не коммерческий.
+              Однако, если вам он понравился и показался удобным, вы можете поддержать проект материально. Оплатив символическую плату - 10 рублей.
+              Накопленные средства пойдут на оплату доменного имени и хостинга.</p>
+            <p>При возникновении проблем или вопросов связанных с оплатой, вы можете связаться с нами
+               через <a href='<?php echo $this->url(array(), 'contact', true); ?>'>
+               форму обратной связи</a></p>
+          </div>
+      </div>
+  </div>
  </div>
 
 
