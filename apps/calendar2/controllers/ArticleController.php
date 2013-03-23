@@ -5,7 +5,7 @@ require_once PATH_LIBS . '/Mindfly/Grammar.php';
 require_once SANCTA_PATH . '/Peer/Article.php';
 require_once SANCTA_PATH . '/Peer/Event.php';
 require_once PATH_BASE . '/models/package/Calendar/Days.php';
-require_once SANCTA_PATH . '/Api.php';
+
 
 /*
  * Контроллер событие
@@ -19,15 +19,15 @@ class ArticleController extends SystemController {
         }
         $eventId =  $this->getRequest()->getParam('event_id');
 
-        $article = Sancta_Peer_Article::getById($articleId);        
+        $article = Sancta_Peer_Article::getById($articleId);
         $this->getPrevNextEvent(Config_Interface::get('orthodoxy','category'));
         #получим информацию о событии через апи
-        $eventInfo = Sancta_Api::getEventInfo($eventId);
+        $eventInfo = $this->api->getEventInfo($eventId);
         /**
          * @seo
          * Устанавливаем заголовк
          */
-        $this->addTitle($article->getTitle() . '. Православный календарь.');        
+        $this->addTitle($article->getTitle() . '. Православный календарь.');
         /**
          * view
          */

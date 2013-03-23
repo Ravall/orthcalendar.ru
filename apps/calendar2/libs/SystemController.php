@@ -1,10 +1,14 @@
 <?php
-
+require_once PATH_LIBS . '/plugins/autoload.php';
 require_once PATH_LIBS . '/Mindfly/Date.php';
 require_once SANCTA_PATH . '/Peer/Template.php';
 require_once PATH_LIBS . '/Mindfly/Controller/Action.php';
 require_once SANCTA_PATH . '/Peer/User.php';
 require_once SANCTA_PATH . '/Peer/Event.php';
+
+
+use OrthodoxyClient\Api as SanctaApi;
+
 
 class SystemController extends Mindfly_Controller_Action {
 
@@ -60,6 +64,7 @@ class SystemController extends Mindfly_Controller_Action {
 
     public function  init() {
         parent::init();
+
         $this->defaultNamespace = new Zend_Session_Namespace('Default');
         // заголовок
         $this->view->headTitle()->setSeparator(' | ');
@@ -69,6 +74,11 @@ class SystemController extends Mindfly_Controller_Action {
          * получаем текущую дату
          */
         $this->mindflyDate = $this->getDate();
+
+        $this->api = new SanctaApi(
+            Config_Interface::get('api', 'url')
+        );
+
         /**
          * подгружаем информацию о текущих и следующих событиях
          * которые отображаем в футере
