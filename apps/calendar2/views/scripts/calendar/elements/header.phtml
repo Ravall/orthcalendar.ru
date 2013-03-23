@@ -44,13 +44,13 @@
             <?php endif;?>
     	      <div class='icon'>
     	          <a
-                  href='<?php echo str_replace('*size*', '450x600', $icon->url);?>'
+                  href='http://img.sancta.ru/crop/450x600/<?php echo $icon->image;?>'
                   rel="lightbox[icons]"
                   title='<?php echo $icon->text->annonce;?>'
                 >
 
                     <img
-    		              src='<?php echo str_replace('*size*', '150x200', $icon->url);?>'
+                      src='http://img.sancta.ru/crop/15x200/<?php echo $icon->image;?>'
     		              title='<?php echo $icon->text->title;?>'
     		              alt='<?php echo $icon->text->annonce;?>'>
                 </a><br/>
