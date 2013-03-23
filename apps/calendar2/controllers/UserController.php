@@ -9,23 +9,23 @@ require_once 'SystemController.php';
  * Контроллер пользователя
  */
 class UserController extends SystemController {
-    
-    
+
+
 
     protected $_js = array(
         'settings' => array('detect_timezone.js')
     );
-    
+
     private function mustBeNotAutorized() {
         return $this->isAutorized(false);
     }
     private function mustBeAutorized() {
         return $this->isAutorized(true);
-    }    
+    }
     private function isAutorized($is) {
         if (Zend_Auth::getInstance()->hasIdentity() !== $is) {
             $this->_helper->redirector->gotoRoute(array(), 'home');
-        }            
+        }
         return;
     }
 
@@ -45,20 +45,20 @@ class UserController extends SystemController {
                     ->setCredential($password);
         if ($authAdapter->authenticate()->isValid()) {
             self::setUser(Sancta_Peer_User::getById($authAdapter->getResultRowObject()->id));
-                       
+
             $session = new Zend_Session_Namespace('Zend_Auth');
             // Установить время действия залогинености
             $session->setExpirationSeconds(Config_Interface::get('rememberMe', 'system'));
-            
+
             Zend_Session::rememberMe();
-            
+
             return true;
         }
         return false;
     }
-    
-      
-   
+
+
+
 
 
     /**
@@ -73,35 +73,35 @@ class UserController extends SystemController {
                     $formAutorization->getValue('password')
             )) {
                 /**
-                 * @todo нужно переделать на переход на туже страницу, 
+                 * @todo нужно переделать на переход на туже страницу,
                  *       с которой была осуществлена авторизация.
                  */
                 $this->_helper->redirector->gotoRoute(array(), 'home');
-            } else {                
+            } else {
                 // авторизироваться не удалось
                 $this->view->authError = Config_Interface::get('auth_error', 'error_text');
             }
-        } 
+        }
         /**
          * view
          */
         $this->view->form = $formAutorization;
     }
 
-    
-    
+
+
     /**
      * выход из системы
      */
-    public function logoutAction() {    
+    public function logoutAction() {
         $this->mustBeAutorized();
         Zend_Auth::getInstance()->clearIdentity();
         Zend_Session::forgetMe();
-        Zend_Session::expireSessionCookie();    
+        Zend_Session::expireSessionCookie();
         $this->_helper->redirector->gotoRoute(array(), 'home');
     }
 
- 
+
 
     /**
      * экшен восстановление пароля
@@ -110,18 +110,18 @@ class UserController extends SystemController {
         $this->mustBeNotAutorized();
         $formFogetPassword = new Form_Calendar_FogetPassword();
         if ($this->getRequest()->isPost() && $formFogetPassword->isValid($_POST)) {
-            $user = Sancta_Peer_User::getByLogin($formFogetPassword->getValue('email'));            
+            $user = Sancta_Peer_User::getByLogin($formFogetPassword->getValue('email'));
             if ($user) {
                 $text = Sancta_Peer_Template::getByName('email_fogot_password')->getContent(array(
                     '%hash%' => $user->createHash(),
                     '%id%' => $user->getId()
                 ));
-                Sancta_Peer_Mail::addMailToStack($user->getLogin(), 'Восстановление пароля. Sancta.ru', $text);                
+                Sancta_Peer_Mail::addMailToStack($user->getLogin(), 'Восстановление пароля. Sancta.ru', $text);
             }
             /**
              * даже если такого пользователя нет, нужно вывести положительное сообщение
              */
-            $this->view->successText = Config_Interface::get('foget_success', 'flash_text');            
+            $this->view->successText = Config_Interface::get('foget_success', 'flash_text');
         }
         /**
          * view
@@ -137,8 +137,6 @@ class UserController extends SystemController {
                 'login' => $login = $formRegistration->getValue('reg_email'),
                 'pass'  => $password = $formRegistration->getValue('reg_password')
             ));
-            $text = Sancta_Peer_Template::getByName('email_user_registration')->getContent();
-            Sancta_Peer_Mail::addMailToStack($login, 'Регистрация на сайте Sancta.ru', $text);
             if (self::login($login, $password)) {
                 $this->_helper->redirector->gotoRoute(array(), 'home');
             }
@@ -148,23 +146,23 @@ class UserController extends SystemController {
          */
         $this->view->form = $formRegistration;
     }
-   
+
 
     /**
      * Меню настроек пользователя
      */
-    public function settingsAction() { 
+    public function settingsAction() {
         $this->mustBeAutorized();
-        
+
         $form = new Form_Calendar_UserSettings();
-       
+
         $form->setUser($this->getUser());
         if ($this->getRequest()->isPost()) {
 
             // заполняем селекты. Для валидации
             $form->setCountryId($_POST['country']);
             $form->setRegionId($_POST['region']);
-            if ($form->isValid($_POST)) {               
+            if ($form->isValid($_POST)) {
                 $values = $form->getValues();
                 $changes = array(
                     'email' => $values['email'],
@@ -174,13 +172,13 @@ class UserController extends SystemController {
                     'city_id' => $values['city'] ? $values['city'] : null,
                     'mycity' => $values['mycity'] ? $values['mycity'] : null
                 );
-                
+
                 $user = $this->getUser();
 
-                $values['isorthodoxy'] ? 
+                $values['isorthodoxy'] ?
                     $user->subscribe(Config_Interface::get('orthodoxy', 'category'))
                   : $user->unSubscribe(Config_Interface::get('orthodoxy', 'category'));
-                                
+
                 if (isset($values['pass']) && $values['pass']) {
                     $changes['pass'] = md5($values['pass']);
                 }
@@ -188,8 +186,8 @@ class UserController extends SystemController {
                 $user->setGmtRaw($values['gmt']);
                 $this->setUser($user);
                 $this->_redirect('settings');
-            }  
-        }        
+            }
+        }
         $this->view->form = $form;
     }
 
@@ -200,13 +198,13 @@ class UserController extends SystemController {
         $this->getUser();
     }
 
-    public function loadregionsAction() {        
+    public function loadregionsAction() {
         $form = new Form_Calendar_UserSettings();
         $form->setCountryId((int) $_POST['country']);
         $form->setUser($this->getUser());
 
         $this->view->form = $form;
-        $this->setLayout('ajax');    
+        $this->setLayout('ajax');
     }
 
     public function loadcitiesAction() {
@@ -219,7 +217,7 @@ class UserController extends SystemController {
 
     /**
      * получить авторизированного пользователя
-     * @return type 
+     * @return type
      */
     public static function getUser() {
         $auth = Zend_Auth::getInstance();
@@ -237,8 +235,8 @@ class UserController extends SystemController {
          $auth->getStorage()->write($user);
          return true;
     }
- 
-    
-  
+
+
+
 }
 ?>
