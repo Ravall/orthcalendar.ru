@@ -5,15 +5,20 @@ require_once SANCTA_PATH . '/Peer/Remark.php';
 require_once SANCTA_PATH . '/Peer/Event.php';
 require_once SANCTA_PATH . '/Peer/Article.php';
 require_once PATH_BASE . '/models/package/Calendar/Days.php';
-require_once SANCTA_PATH . '/Api.php';
+require_once PATH_LIBS . '/plugins/autoload.php';
+
+use OrthodoxyClient\Api as SanctaApi;
+use OrthodoxyClient\Adapter as SanctaAdapter;
 
 class Sancta_Day_Orthodoxy
 {
     protected $day;
     protected $eventsInDay;
+    protected $api;
 
     public function __construct($day)
     {
+
         $this->day = $day;
         /**
          * получаем список событий за выбранный день
@@ -22,6 +27,11 @@ class Sancta_Day_Orthodoxy
             Config_Interface::get('orthodoxy', 'category'), $this->day
         );
         $this->eventsInDay = $eventsInDay;
+        $this->api = new SanctaApi(
+            Config_Interface::get('api', 'url')
+        );
+
+
     }
 
     public function getToDoNotes() {
@@ -108,25 +118,9 @@ class Sancta_Day_Orthodoxy
     public function getIcons()
     {
         #получаем иконы из api
-        $result = Sancta_Api::getDay($this->day);
-        $icons = array(
-            'unic'  => array(), 
-            'other' => array(), 
+        return SanctaAdapter::getUnicIconsByDay(
+            $this->api->getDay($this->day->getDay())
         );
-        if (!$result) {
-            return $icons;
-        }
-        # выделим в параметр unic по одной иконе от каждого события
-        foreach ($result->icons as $icon) {
-            $icons[in_array(
-                $icon->event_id,
-                array_map(
-                    create_function('$x', 'return $x->event_id;'),
-                    $icons['unic']
-                )
-            ) ? 'other' : 'unic'][] = $icon;
-        }
-        return $icons['unic'];
     }
 
 

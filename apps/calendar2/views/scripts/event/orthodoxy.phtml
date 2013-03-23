@@ -40,15 +40,15 @@
       </div>
       <div>
         Поделиться статьей:
-        <script 
-          type="text/javascript" 
-          src="//yandex.st/share/share.js" 
+        <script
+          type="text/javascript"
+          src="//yandex.st/share/share.js"
           charset="utf-8">
         </script>
-        <div 
-          class="yashare-auto-init" 
-          data-yashareL10n="ru" 
-          data-yashareType="none" 
+        <div
+          class="yashare-auto-init"
+          data-yashareL10n="ru"
+          data-yashareType="none"
           data-yashareQuickServices="yaru,vkontakte,facebook,twitter,odnoklassniki,moimir,lj,friendfeed,moikrug">
         </div>
       </div>
@@ -63,7 +63,7 @@
         <!-- google_ad_section_start -->
         <?php echo $this->event->getContent(array("\n" => '</p><p>')); ?>
         <?php if ($this->icons): ?>
-        
+
         <?php $count = 0;?>
         <div id="icons" class='clearfix'>
           <h4>"<?php echo $this->event->getTitle();?>". Иконы.</h4>
@@ -73,13 +73,13 @@
               <div id='icons' class='clearfix'>
             <?php endif;?>
             <div class='icon'>
-              <a href='<?php echo str_replace(
-                '*size*', '450x600', $icon->url);?>'
+              <a
+                href='http://img.sancta.ru/crop/450x600/<?php echo $icon->image;?>'
                 rel="lightbox[icons]"
                 title='<?php echo $icon->text->annonce;?>'
               >
-                <img 
-                  src='<?php echo str_replace('*size*', '75x100', $icon->url);?>'
+                <img
+                  src='http://img.sancta.ru/crop/15x200/<?php echo $icon->image;?>'
                   title='<?php echo $icon->text->title;?>'
                   alt='<?php echo $icon->text->annonce;?>'
                 >
@@ -102,7 +102,7 @@
       </div>
     </div>
     <div id="add_content">
-      
+
       <?php if (
         $this->event->getId() != Config_Interface::get(
           'everyWeekFast', 'events'
@@ -122,11 +122,11 @@
   <?php if ($this->articles->getCount() || $this->icons): ?>
     <div id="articles">
     <h4>
-      Что еще можно прочесть по теме 
+      Что еще можно прочесть по теме
       <strong>"<?php echo $this->event->getTitle();?>"</strong>:
     </h4>
     <?php if ($this->icons): ?>
-      <p> 
+      <p>
         <a href='
           <?php
             echo $this->url(

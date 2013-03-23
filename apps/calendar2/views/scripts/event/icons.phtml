@@ -25,12 +25,12 @@
           <?php endif;?>
           <div class='icon'>
             <a
-              href='<?php echo str_replace('*size*', '450x600', $icon->url);?>'
+              href='http://img.sancta.ru/crop/450x600/<?php echo $icon->image;?>'
               rel="lightbox[allicons]"
               title='<?php echo $icon->text->annonce;?>'
             >
               <img
-                src='<?php echo str_replace('*size*', '150x200', $icon->url);?>'
+                src='http://img.sancta.ru/crop/15x200/<?php echo $icon->image;?>'
                 title='<?php echo $icon->text->title;?>'
                 alt='<?php echo $icon->text->annonce;?>'>
             </a><br/>
@@ -44,7 +44,7 @@
     <div id="add_content">
       <div id="articles">
         <h2>
-          Что еще можно прочесть по теме 
+          Что еще можно прочесть по теме
           &laquo
           <a href='
             <?php echo $this->url(array(
@@ -54,7 +54,7 @@
           </a>
           &raquo;:
         </h2>
-        <p class='current'> 
+        <p class='current'>
           <a href='
             <?php
               echo $this->url(

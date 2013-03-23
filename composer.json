@@ -1,0 +1,28 @@
+{
+    "name": "Orthodoxy calendar",
+    "description": "Orthodoxy calendar",
+    "license": "GPL",
+    "keywords": [
+        "orthodoxy",
+        "calendar"
+    ],
+    "homepage": "http://orthcalendar.ru/",
+    "require": {
+        "php": ">=5.3.0",
+        "Sancta/OrthdoxyApiClient": "dev-master",
+        "Sancta/SmartDate": "dev-master"
+    },
+    "repositories":[
+        {
+            "type": "git",
+            "url": "http://github.com/Ravall/orthodoxyApiClient"
+        },
+        {
+            "type": "git",
+            "url": "http://github.com/Ravall/smartDate"
+        }
+    ],
+    "config": {
+        "vendor-dir": "libs/plugins"
+    }
+}

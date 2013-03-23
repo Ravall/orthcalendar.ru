@@ -3,8 +3,9 @@ require_once 'SystemController.php';
 require_once PATH_LIBS . '/Mindfly/Grammar.php';
 require_once SANCTA_PATH . '/Peer/Article.php';
 require_once PATH_BASE . '/models/package/Calendar/Days.php';
-require_once SANCTA_PATH . '/Api.php';
 require_once SANCTA_PATH . '/Day/Orthodoxy.php';
+
+
 /*
  * Контроллер событие
  */
@@ -30,9 +31,7 @@ class EventController extends SystemController {
          * получаем дополнительные статьи
          */
         $articles = Sancta_Peer_Article::getByEventId($eventId);
-        $eventInfo = Sancta_Api::getEventInfo($eventId);
-
-        
+        $eventInfo = $this->api->getEventInfo($eventId);
         /**
          * view
          */
@@ -45,7 +44,7 @@ class EventController extends SystemController {
     public function iconsAction()
     {
         # получаем иконы по api по названию события
-        $eventInfo = Sancta_Api::getEventInfo(
+        $eventInfo = $this->api->getEventInfo(
             $param = $this->getRequest()->getParam('event_name')
         );
         if (!$eventInfo) {
