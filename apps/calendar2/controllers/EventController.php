@@ -37,7 +37,7 @@ class EventController extends SystemController {
          */
         $this->view->everyDay = Sancta_Peer_Event::getById(Config_Interface::get('everydayId', 'events'));
         $this->view->event = $event;
-        $this->view->icons = $eventInfo ? $eventInfo->icons : False;
+        $this->view->icons = ($eventInfo && isset($eventInfo->icons)) ? $eventInfo->icons : False;
         $this->view->articles = $articles;
     }
 
