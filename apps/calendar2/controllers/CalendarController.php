@@ -4,7 +4,7 @@ require_once SANCTA_PATH . '/Day/Orthodoxy.php';
 /*
  * Контроллер пользователя
  */
-class CalendarController extends SystemController 
+class CalendarController extends SystemController
 {
     /**
      * устанавилваем правило 'rel' => 'canonical'
@@ -20,13 +20,13 @@ class CalendarController extends SystemController
         if (
             ($date > $nextYear or $date < $prevYear)
             or (
-              $date != date('Y-m-d', time()) 
+              $date != date('Y-m-d', time())
               and !$orthodoxyDay->getMainEvents()->getCount()
             )
         ) {
             $this->view->headLink(
                 array(
-                    'rel'  => 'canonical', 
+                    'rel'  => 'canonical',
                     'href' => $this->view->url(
                         array('date' => ''), 'orthodoxy'
                     )
@@ -38,7 +38,7 @@ class CalendarController extends SystemController
     /**
      * события выбранного дня
      */
-    public function orthodoxyAction() 
+    public function orthodoxyAction()
     {
         /**
          * @seo
@@ -51,6 +51,9 @@ class CalendarController extends SystemController
         $this->addCssFile('lightbox/css/lightbox.css');
         $orthodoxyDay = new Sancta_Day_Orthodoxy($this->mindflyDate);
         $this->orthodoxyActionCanonical($orthodoxyDay);
+
+
+
         /**
          * view
          */
@@ -65,7 +68,7 @@ class CalendarController extends SystemController
     /**
      * все иконы дня дня
      */
-    public function iconsAction() 
+    public function iconsAction()
     {
         /**
          * @seo
@@ -81,7 +84,7 @@ class CalendarController extends SystemController
         $this->view->articles = $orthodoxyDay->getArticleForEveryDay();
     }
 
-    public function rssAction() 
+    public function rssAction()
     {
 
         $rssConfig = new Zend_Config_Ini(CALENDAR_PATH . '/config/rss.ini', 'orthodoxy');

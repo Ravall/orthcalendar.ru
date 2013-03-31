@@ -8,14 +8,11 @@
                 <a href="<?=$this->url(array(),'rss')?>" title="православный календарь в rss ленте"></a>
             </li>
         </ul>
-        <ul class="usermenu">                        
-            <li><a href="<?=$this->url(array('date' => $this->TodayDate()),'orthodoxy')?>" title="православный календарь на сегодня">Сегодня</a></li>                
-                <?php if (!Zend_Auth::getInstance()->hasIdentity()):?>
-            <li><a href="<?=$this->url(array(), 'login');?>">Вход</a></li>
-                <?php else: ?>
-            <li><a href="<?=$this->url(array(), 'settings');?>">Настройки</a></li>
-            <li><a href="<?=$this->url(array(), 'logout');?>">Выход</a></li>
-                 <?php endif; ?>
-        </ul>      
+        <ul class="usermenu">
+            <li>
+                <a
+                href="<?=$this->url(array('date' => $this->TodayDate()),'orthodoxy')?>" title="православный календарь на сегодня">Сегодня</a>
+            </li>
+        </ul>
     </div>
 </div>
