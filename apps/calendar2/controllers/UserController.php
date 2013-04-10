@@ -12,10 +12,9 @@ require_once 'SystemController.php';
  */
 class UserController extends SystemController {
 
-
-
     protected $_js = array(
-        'settings' => array('detect_timezone.js')
+        'settings'      => array('detect_timezone.js'),
+        'subscription'  => array('user_subscription.js')
     );
 
     private function mustBeNotAutorized() {
@@ -58,10 +57,6 @@ class UserController extends SystemController {
         }
         return false;
     }
-
-
-
-
 
     /**
      * вход в систему
@@ -238,6 +233,11 @@ class UserController extends SystemController {
          return true;
     }
 
+    /**
+     *
+     * православная подписка 82
+     *
+     */
     public function subscriptionAction() {
         $serverHours = date('H');
         $sendHour = 7;

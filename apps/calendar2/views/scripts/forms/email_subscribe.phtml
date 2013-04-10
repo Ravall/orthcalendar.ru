@@ -1,22 +1,60 @@
+<style type="text/css">
+.clocks {
+    margin: 25px auto;
+    position: relative;
+    text-align: center;
+}
+div.category dt, div.category dd {
+    float: left;
+}
+div.category dt {
+    padding-left: 20px;
+}
+div.form {
+ text-align: center;
+}
+
+</style>
+
+<div class="clocks">
+    <div>
+        <a href='<?php echo $this->url(array(),"emailsubscr");?>'>подписаться на рассылку</a> |
+        <a href='<?php echo $this->url(array(),"emailsubscredit");?>'>отредатктировать подписку</a>
+    </div>
+    <canvas id="canvas" width="200" height="200"></canvas>
+    <div>Хочу получать рассылку в</div>
+    <span id='hours'><?php echo $this->sendHour;?></span>:00 <br/>
+    <a href='#' id='before'>раньше</a> <a href='#' id='after'>позже</a>
+<div class='form'>
 <form
-    action="<?= $this->escape($this->element->getAction());  ?>"
-    method="<?= $this->escape($this->element->getMethod());  ?>">
-    <div class="form_element clearfix">
-        <div class="element">
-            <?php echo $this->element->email; ?>
+        action="<?= $this->escape($this->element->getAction());  ?>"
+        method="<?= $this->escape($this->element->getMethod());  ?>">
+        <div class="form_element clearfix">
+            <?php echo $this->element->hours; ?>
+            <div class="element">
+                <?php echo $this->element->email; ?>
+            </div>
+            <div class="information clearfix"></div>
         </div>
-        <div class="information clearfix">
-
+        <div class="form_element clearfix category">
+            <dd>Подписаться на следущие категории праздников:</dd><br/>
+            <?php echo $this->element->great; ?>
+            <?php echo $this->element->mean; ?>
+            <?php echo $this->element->small; ?>
+            <?php echo $this->element->simple; ?>
+            <div class="information clearfix"></div>
         </div>
+        <div class="form_element clearfix">
+            <?php echo $this->element->tomorow; ?>
+            <div class="information clearfix"></div>
+        </div>
+        <div class="form_element clearfix">
+            <div class="element">
+                <?php echo $this->element->done; ?>
+            </div>
+            <div class="information clearfix"></div>
+        </div>
+    </form>
     </div>
 
-     <div class="form_element clearfix">
-        <div class="element">
-             <?php echo $this->element->done; ?>
-        </div>
-        <div class="information clearfix">
-
-        </div>
-    </div>
-
-</form>
+</div>

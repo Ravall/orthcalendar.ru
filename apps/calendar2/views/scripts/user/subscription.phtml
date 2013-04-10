@@ -1,11 +1,9 @@
 <?php echo $this->partial('calendar/elements/header_menu.phtml'); ?>
 <?php echo $this->partial('calendar/elements/month_menu.phtml', array('data' => $this->date));?>
 <div id="main_block" class="clearfix">
-    <div class="container">
-        Хочу получать рассылку в <br/>
-        <span id='hours'><?php echo $this->sendHour;?></span>:00 <br/>
-        <a href='#'>раньше</a> <a href='#'>позже</a>
-    </div>
+  <div class="container">
+        <?php echo $this->form;?>
+  </div>
 </div>
 <?php echo $this->partial('calendar/elements/footer.phtml',array(
     'data' => $this->date,
@@ -14,18 +12,8 @@
 )); ?>
 <?php echo $this->partial('calendar/elements/copyright.phtml');?>
 
+
 <script type="text/javascript">
-$(document).ready(function(){
-    var d = new Date();
-    var n = d.getHours();
-    var diff = n - <?php echo $this->serverHours;?>;
-    var hour = <?php echo $this->sendHour;?> + diff;
-    if (hour > 24) {
-        hour = hour - 24;
-    }
-    if (hour < 0) {
-        hour = hour + 24;
-    }
-    $('#hours').html(hour)
-})
+var serverHours = <?php echo $this->serverHours;?>;
+var sendHour = <?php echo $this->sendHour;?>;
 </script>

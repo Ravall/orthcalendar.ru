@@ -11,7 +11,7 @@
             Ваш действующий адрес электронной почты, на него будет приходить рассылка, если вы на нее подпишитесь.
         </div>
     </div>
-    
+
     <div class="form_element">
         <div class="element">
             <div class="day">
@@ -28,7 +28,7 @@
             Дата рождения.
         </div>
     </div>
-    
+
     <div class="form_element">
         <div class="element">
             <?php echo $this->element->pass; ?>
@@ -37,8 +37,8 @@
              Новый пароль (Оставьте поле пустым, если не хотите менять)
         </div>
     </div>
-    
-    
+
+
     <div class="form_element">
         <div class="element">
             <?php echo $this->element->country; ?>
@@ -47,7 +47,7 @@
             Страна, где вы сейчас проживаете
         </div>
     </div>
-    
+
     <div class="form_element" id="regions">
         <div class="element">
             <?php echo $this->element->region; ?>
@@ -56,19 +56,19 @@
             Регион страны, где вы сейчас проживаете
         </div>
     </div>
-    
-    
+
+
     <div class="form_element" id="cities">
         <div class="element">
                 <?php echo $this->element->city; ?>
         </div>
         <div class="information">
             Город, в котором вы сейчас проживаете.
-            GMT (часовой пояс). Устанавливается при изменении города            
+            GMT (часовой пояс). Устанавливается при изменении города
         </div>
     </div>
-    
-        
+
+
     <div class="form_element">
         <div class="element">
             <?php echo $this->element->mycity; ?>
@@ -78,11 +78,11 @@
         </div>
     </div>
 
-    
-    
+
+
      <div class="form_element">
-            
-        <div class="element">            
+
+        <div class="element">
             Подписка:<br/>
             <?php echo $this->element->isorthodoxy; ?>
         </div>
@@ -90,17 +90,17 @@
             Подписаться на уведомления о предстоящих праздниках
         </div>
     </div>
-    
-    
+
+
      <div class="form_element">
         <div class="element">
              <?php echo $this->element->done; ?>
         </div>
         <?php echo $this->element->userid; ?>
          <?php echo $this->element->gmt; ?>
-        
+
     </div>
-    
+
 
 </form>
 
@@ -121,7 +121,7 @@ $(document).ready(function(){
             success: function (result){ $('#regions').append(result);regionChange();}
        });
    }
-   
+
 
    function cities() {
       $('#cities').empty();
@@ -132,42 +132,42 @@ $(document).ready(function(){
           data: "region="+$('#region').val(),
           success: function (result){ $('#cities').append(result);}
        });
-   }    
+   }
 
-   
+
 
    function regionChange() {
        $('#region').change(function(){
-          
+
            if ($('#region').val() != '0') {
                cities();
             } else {
                $('#cities').empty();
             }
        });
-   }   
-   
+   }
+
    $('#country').change(function(){
        if ($('#country').val() != '0') {
            regions();
        } else {
-           $('#regions').empty(); 
+           $('#regions').empty();
        }
    });
-   
+
     if ($('#region').val() == '0') {
        $('#cities').empty();
    } else {
        cities();
    }
-   
+
    if ($('#country').val() == '0') {
-       $('#regions').empty();              
+       $('#regions').empty();
    } else {
        regions();
    }
 
-  
-   
+
+
 });
 </script>
