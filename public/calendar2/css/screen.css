@@ -526,7 +526,52 @@ body div#page_donate div.donate div#content {
 * html body div#page_donate div.donate div#content {
   overflow-x: hidden;
 }
-/* line 126, ../sass/screen.scss */
+/* line 123, ../sass/screen.scss */
+body div#subscribe_block {
+  background: url("/images/line_fon.png") repeat scroll left top transparent;
+  width: 100%;
+  padding-top: 30px;
+  margin: 80px 0px;
+  padding-bottom: 20px;
+}
+/* line 125, ../sass/screen.scss */
+body div#subscribe_block div.container {
+  width: 1080px;
+  margin: 0 auto;
+  overflow: hidden;
+  *zoom: 1;
+}
+/* line 127, ../sass/screen.scss */
+body div#subscribe_block div.container div#image {
+  padding-left: 40px;
+  padding-right: 40px;
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 353.333px;
+}
+/* line 147, ../../../../../ravall/.rvm/gems/ruby-1.9.3-p125@sancta/gems/compass-0.12.2/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html body div#subscribe_block div.container div#image {
+  overflow-x: hidden;
+}
+/* line 131, ../sass/screen.scss */
+body div#subscribe_block div.container div#image img {
+  padding-left: 40px;
+}
+/* line 135, ../sass/screen.scss */
+body div#subscribe_block div.container div#subscribe_info {
+  margin-top: 20px;
+  padding-left: 40px;
+  display: inline;
+  float: left;
+  margin-right: 0;
+  width: 580.417px;
+}
+/* line 147, ../../../../../ravall/.rvm/gems/ruby-1.9.3-p125@sancta/gems/compass-0.12.2/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html body div#subscribe_block div.container div#subscribe_info {
+  overflow-x: hidden;
+}
+/* line 144, ../sass/screen.scss */
 body div#today_block, body div#article_card, body div#icons_card {
   background: url("/images/line_fon.png") repeat scroll left top transparent;
   width: 100%;
@@ -534,18 +579,18 @@ body div#today_block, body div#article_card, body div#icons_card {
   margin: 80px 0px;
   padding-bottom: 20px;
 }
-/* line 129, ../sass/screen.scss */
+/* line 147, ../sass/screen.scss */
 body div#today_block div.container, body div#article_card div.container, body div#icons_card div.container {
   width: 1080px;
   margin: 0 auto;
   overflow: hidden;
   *zoom: 1;
 }
-/* line 131, ../sass/screen.scss */
+/* line 149, ../sass/screen.scss */
 body div#today_block div.container .information, body div#article_card div.container .information, body div#icons_card div.container .information {
   color: #666;
 }
-/* line 133, ../sass/screen.scss */
+/* line 151, ../sass/screen.scss */
 body div#today_block div.container .information a, body div#article_card div.container .information a, body div#icons_card div.container .information a {
   font-style: italic;
   font-family: Georgia,"Times New Roman",Times,serif;
@@ -560,7 +605,7 @@ body div#today_block div.container .information a, body div#today_block div.cont
 body div#today_block div.container .information a:hover, body div#article_card div.container .information a:hover, body div#icons_card div.container .information a:hover {
   color: black;
 }
-/* line 141, ../sass/screen.scss */
+/* line 159, ../sass/screen.scss */
 body div#today_block div.container div#today, body div#article_card div.container div#today, body div#icons_card div.container div#today {
   padding-left: 40px;
   padding-right: 40px;
@@ -573,7 +618,7 @@ body div#today_block div.container div#today, body div#article_card div.containe
 * html body div#today_block div.container div#today, * html body div#article_card div.container div#today, * html body div#icons_card div.container div#today {
   overflow-x: hidden;
 }
-/* line 146, ../sass/screen.scss */
+/* line 164, ../sass/screen.scss */
 body div#today_block div.container div#today h2, body div#article_card div.container div#today h2, body div#icons_card div.container div#today h2 {
   font-size: 2em;
   font-weight: bold;
@@ -581,11 +626,11 @@ body div#today_block div.container div#today h2, body div#article_card div.conta
   font-family: "ff-scala-sans-web-1","ff-scala-sans-web-2","Lucida Grande","Helvetica",sans-serif;
   padding-bottom: 0px;
 }
-/* line 154, ../sass/screen.scss */
+/* line 172, ../sass/screen.scss */
 body div#today_block div.container div#today #events, body div#today_block div.container div#today #articles, body div#article_card div.container div#today #events, body div#article_card div.container div#today #articles, body div#icons_card div.container div#today #events, body div#icons_card div.container div#today #articles {
   margin-top: 20px;
 }
-/* line 158, ../sass/screen.scss */
+/* line 176, ../sass/screen.scss */
 body div#today_block div.container div#today #articles, body div#article_card div.container div#today #articles, body div#icons_card div.container div#today #articles {
   border-top: 1px solid #E4E4E4;
 }
@@ -597,7 +642,7 @@ body div#today_block div.container div#today div.note a, body div#today_block di
 body div#today_block div.container div#today div.note a:hover, body div#article_card div.container div#today div.note a:hover, body div#icons_card div.container div#today div.note a:hover {
   color: black;
 }
-/* line 165, ../sass/screen.scss */
+/* line 183, ../sass/screen.scss */
 body div#today_block div.container div#today div#icons_day, body div#article_card div.container div#today div#icons_day, body div#icons_card div.container div#today div#icons_day {
   padding-top: 30px;
   display: inline;
@@ -636,7 +681,7 @@ body div#today_block div.container div#today div#icons_day div.icon div.desc, bo
   width: 120px;
   margin: 2px;
 }
-/* line 169, ../sass/screen.scss */
+/* line 187, ../sass/screen.scss */
 body div#today_block div.container div#calendar_navigation, body div#article_card div.container div#calendar_navigation, body div#icons_card div.container div#calendar_navigation {
   padding-left: 40px;
   display: inline;
@@ -648,27 +693,27 @@ body div#today_block div.container div#calendar_navigation, body div#article_car
 * html body div#today_block div.container div#calendar_navigation, * html body div#article_card div.container div#calendar_navigation, * html body div#icons_card div.container div#calendar_navigation {
   overflow-x: hidden;
 }
-/* line 172, ../sass/screen.scss */
+/* line 190, ../sass/screen.scss */
 body div#today_block div.container div#calendar_navigation #links, body div#article_card div.container div#calendar_navigation #links, body div#icons_card div.container div#calendar_navigation #links {
   padding-top: 10px;
 }
-/* line 174, ../sass/screen.scss */
+/* line 192, ../sass/screen.scss */
 body div#today_block div.container div#calendar_navigation #links a, body div#article_card div.container div#calendar_navigation #links a, body div#icons_card div.container div#calendar_navigation #links a {
   font-size: 0.8em;
   padding-left: 10px;
 }
-/* line 179, ../sass/screen.scss */
+/* line 197, ../sass/screen.scss */
 body div#today_block div.container div#calendar_navigation table, body div#article_card div.container div#calendar_navigation table, body div#icons_card div.container div#calendar_navigation table {
   width: 300px;
   font-size: 14px;
 }
-/* line 182, ../sass/screen.scss */
+/* line 200, ../sass/screen.scss */
 body div#today_block div.container div#calendar_navigation table td, body div#article_card div.container div#calendar_navigation table td, body div#icons_card div.container div#calendar_navigation table td {
   text-align: center;
   padding: 4px 10px 4px 5px;
   border: 1px dashed transparent;
 }
-/* line 186, ../sass/screen.scss */
+/* line 204, ../sass/screen.scss */
 body div#today_block div.container div#calendar_navigation table td a, body div#article_card div.container div#calendar_navigation table td a, body div#icons_card div.container div#calendar_navigation table td a {
   text-decoration: none;
 }
@@ -680,15 +725,15 @@ body div#today_block div.container div#calendar_navigation table td a, body div#
 body div#today_block div.container div#calendar_navigation table td a:hover, body div#article_card div.container div#calendar_navigation table td a:hover, body div#icons_card div.container div#calendar_navigation table td a:hover {
   color: black;
 }
-/* line 191, ../sass/screen.scss */
+/* line 209, ../sass/screen.scss */
 body div#today_block div.container div#calendar_navigation table td.current, body div#article_card div.container div#calendar_navigation table td.current, body div#icons_card div.container div#calendar_navigation table td.current {
   border: 1px dashed #666;
 }
-/* line 194, ../sass/screen.scss */
+/* line 212, ../sass/screen.scss */
 body div#today_block div.container div#calendar_navigation table td.today, body div#article_card div.container div#calendar_navigation table td.today, body div#icons_card div.container div#calendar_navigation table td.today {
   border: 1px solid black;
 }
-/* line 198, ../sass/screen.scss */
+/* line 216, ../sass/screen.scss */
 body div#today_block div.container div#calendar_navigation table td.holiday a, body div#article_card div.container div#calendar_navigation table td.holiday a, body div#icons_card div.container div#calendar_navigation table td.holiday a {
   font-weight: bold;
 }
@@ -708,7 +753,7 @@ body div#today_block div.container div#calendar_navigation table td.great a, bod
 body div#today_block div.container div#calendar_navigation table td.great a:hover, body div#article_card div.container div#calendar_navigation table td.great a:hover, body div#icons_card div.container div#calendar_navigation table td.great a:hover {
   color: black;
 }
-/* line 217, ../sass/screen.scss */
+/* line 235, ../sass/screen.scss */
 body div#article_card div#img, body div#icons_card div#img {
   float: left;
   padding-left: 40px;
@@ -721,7 +766,7 @@ body div#article_card div#img, body div#icons_card div#img {
 * html body div#article_card div#img, * html body div#icons_card div#img {
   overflow-x: hidden;
 }
-/* line 222, ../sass/screen.scss */
+/* line 240, ../sass/screen.scss */
 body div#article_card div#img img, body div#icons_card div#img img {
   margin: 5px;
   width: 300px;
@@ -729,7 +774,7 @@ body div#article_card div#img img, body div#icons_card div#img img {
   border: 1px solid #E4E4E4;
   padding: 5px;
 }
-/* line 230, ../sass/screen.scss */
+/* line 248, ../sass/screen.scss */
 body div#article_card div#card, body div#icons_card div#card {
   padding-left: 40px;
   padding-right: 40px;
@@ -742,24 +787,24 @@ body div#article_card div#card, body div#icons_card div#card {
 * html body div#article_card div#card, * html body div#icons_card div#card {
   overflow-x: hidden;
 }
-/* line 234, ../sass/screen.scss */
+/* line 252, ../sass/screen.scss */
 body div#article_card div#card h1, body div#icons_card div#card h1 {
   line-height: 80%;
   font-size: 2.5em;
 }
-/* line 241, ../sass/screen.scss */
+/* line 259, ../sass/screen.scss */
 body div#icons_card {
   padding-top: 0px;
   padding-bottom: 0px;
 }
-/* line 244, ../sass/screen.scss */
+/* line 262, ../sass/screen.scss */
 body div#icons_card div.container {
   padding-top: 0px;
   padding-bottom: 0px;
   margin-top: 0px;
   margin-bottom: 0px;
 }
-/* line 255, ../sass/screen.scss */
+/* line 273, ../sass/screen.scss */
 body div#main_block div#main_content {
   padding-left: 40px;
   display: inline;
@@ -771,29 +816,29 @@ body div#main_block div#main_content {
 * html body div#main_block div#main_content {
   overflow-x: hidden;
 }
-/* line 259, ../sass/screen.scss */
+/* line 277, ../sass/screen.scss */
 body div#main_block div#main_content span.autor {
   font-style: italic;
   color: #666;
   font-size: 12px;
 }
-/* line 266, ../sass/screen.scss */
+/* line 284, ../sass/screen.scss */
 body div#main_block div#main_content div#allevent a.date {
   color: #666;
 }
-/* line 271, ../sass/screen.scss */
+/* line 289, ../sass/screen.scss */
 body div#main_block div#main_content div#allevent ul.articles {
   font-size: 13px;
   font-style: italic;
   padding-left: 30px;
 }
-/* line 277, ../sass/screen.scss */
+/* line 295, ../sass/screen.scss */
 body div#main_block div#main_content div.epigraph {
   line-height: 0.9;
   font-size: 12px;
   text-align: right;
 }
-/* line 282, ../sass/screen.scss */
+/* line 300, ../sass/screen.scss */
 body div#main_block div#main_content div#icons_day {
   padding-top: 30px;
   display: inline;
@@ -832,7 +877,7 @@ body div#main_block div#main_content div#icons_day div.icon div.desc {
   width: 120px;
   margin: 2px;
 }
-/* line 285, ../sass/screen.scss */
+/* line 303, ../sass/screen.scss */
 body div#main_block div#main_content div#icons {
   display: inline;
   float: left;
@@ -845,7 +890,7 @@ body div#main_block div#main_content div#icons {
 * html body div#main_block div#main_content div#icons {
   overflow-x: hidden;
 }
-/* line 289, ../sass/screen.scss */
+/* line 307, ../sass/screen.scss */
 body div#main_block div#main_content div#icons div.icon {
   display: inline;
   float: left;
@@ -856,18 +901,18 @@ body div#main_block div#main_content div#icons div.icon {
 * html body div#main_block div#main_content div#icons div.icon {
   overflow-x: hidden;
 }
-/* line 292, ../sass/screen.scss */
+/* line 310, ../sass/screen.scss */
 body div#main_block div#main_content div#icons div.icon img {
   display: inline;
   margin: 1px;
   padding: 1px;
   border: 1px solid #E4E4E4;
 }
-/* line 298, ../sass/screen.scss */
+/* line 316, ../sass/screen.scss */
 body div#main_block div#main_content div#icons div.icon a img:hover {
   border: 1px solid #000;
 }
-/* line 307, ../sass/screen.scss */
+/* line 325, ../sass/screen.scss */
 body div#main_block div#add_content {
   padding-left: 40px;
   padding-right: 40px;
@@ -876,7 +921,7 @@ body div#main_block div#add_content {
   margin-right: 0;
   width: 353.333px;
 }
-/* line 308, ../sass/screen.scss */
+/* line 326, ../sass/screen.scss */
 body div#main_block div#add_content div#adSense {
   padding-top: 25px;
 }
@@ -884,16 +929,16 @@ body div#main_block div#add_content div#adSense {
 * html body div#main_block div#add_content {
   overflow-x: hidden;
 }
-/* line 314, ../sass/screen.scss */
+/* line 332, ../sass/screen.scss */
 body div#main_block div#add_content a#to_future_show {
   text-decoration: none;
   border-bottom: 1px dashed #87AF0E;
 }
-/* line 319, ../sass/screen.scss */
+/* line 337, ../sass/screen.scss */
 body div#main_block div#add_content div#otherDates {
   display: none;
 }
-/* line 325, ../sass/screen.scss */
+/* line 343, ../sass/screen.scss */
 body div#main_block div#add_content div#articles {
   padding-top: 50px;
   font-size: 14px;
@@ -914,11 +959,11 @@ body div#main_block div#add_content div#articles p.current a, body div#main_bloc
 body div#main_block div#add_content div#articles p.current a:hover {
   color: black;
 }
-/* line 331, ../sass/screen.scss */
+/* line 349, ../sass/screen.scss */
 body div#main_block div#add_content div#articles p.current a {
   text-decoration: none;
 }
-/* line 335, ../sass/screen.scss */
+/* line 353, ../sass/screen.scss */
 body div#main_block div#add_content div#articles h4 {
   margin-top: 30px;
   padding-top: 30px;

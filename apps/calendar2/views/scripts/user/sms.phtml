@@ -1,0 +1,31 @@
+<?php echo $this->partial('calendar/elements/header_menu.phtml'); ?>
+<?php echo $this->partial('calendar/elements/month_menu.phtml', array('data' => $this->date));?>
+
+
+<div id="main_block">
+    <div class="container">
+        <div class="form">
+            <form>
+                <div class="element">
+                    <b>Номер телефона:</b>
+                    <input type='text' class='tilte' name='phone'>
+                </div>
+            </form>
+        </div>
+        <div class='right'>
+            <iframe
+                width="1000" height="200" scrolling="YES"
+                src="<?php echo $this->url(array(), 'smsrights'); ?>"></iframe>
+        </div>
+
+    </div>
+
+</div>
+
+<?php echo $this->partial('calendar/elements/footer.phtml',array(
+    'data' => $this->date,
+    'nextEvents' => $this->nextEvents,
+    'prevEvents' => $this->prevEvents
+)); ?>
+
+<?php echo $this->partial('calendar/elements/copyright.phtml');?>

@@ -88,7 +88,18 @@ class UserController extends SystemController {
         $this->view->form = $formAutorization;
     }
 
+    /**
+     * смс подписка
+     */
+    public function smsAction()
+    {
 
+    }
+
+    public function smssubscriberightAction()
+    {
+      $this->setLayout('ajax');
+    }
 
     /**
      * выход из системы
