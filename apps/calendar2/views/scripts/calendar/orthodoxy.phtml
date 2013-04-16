@@ -1,19 +1,19 @@
 <?php echo $this->partial('calendar/elements/header_menu.phtml'); ?>
-<?php echo $this->partial('calendar/elements/month_menu.phtml', 
+<?php echo $this->partial('calendar/elements/month_menu.phtml',
                           array(
                               'data' => $this->date
                           ));
 ?>
 
 
-<div id="today_block" >    
+<div id="today_block" >
     <div class="container">
-        <div id="today">   
+        <div id="today">
                 <h1>Православный календарь</h1>
                 <?php echo $this->partial('calendar/elements/header.phtml',
                           array(
                               'data' => $this->date,
-                              'action' => 'orthodoxy',    
+                              'action' => 'orthodoxy',
                               'notes' => $this->notes,
                               'informationEvents' => $this->informationEvents,
                               'events' => $this->events,
@@ -25,19 +25,35 @@
                 ?>
         </div>
         <div id="calendar_navigation">
-            <?php echo Calendar_Days::html($this->date->getM(), $this->date->getY(), $this->date->getD(), 'orthodoxy'); ?>    
+            <?php echo Calendar_Days::html($this->date->getM(), $this->date->getY(), $this->date->getD(), 'orthodoxy'); ?>
         </div>
     </div>
 </div>
 
-          
-            
-      
-<?php echo $this->partial('calendar/elements/footer.phtml',array(  
-                            'data' => $this->date,   
+<div id="subscribe_block">
+  <div class="container">
+    <div id="image">
+      <h2>Рассылка православных праздников</h2>
+      <img src='/images/email_subscr.png'><br/>
+      <p>
+        <a href='<?php echo $this->url(array(), 'smssubscr'); ?>'>
+          Подписаться на email рассылку</a>
+      </p>
+    </div>
+    <div id='subscribe_info' class='form'>
+      <p>Дабы не забыть и не пропустить по незнанию своему либо по растерянности
+        важные православные даты, имеет смысл подписаться на email рассылку.</p>
+      <p> Укажите в настройках подписки категорию праздников и время напоминаний - и вы будете в своевременно предупреждены о предстоящих событиях <p>
+    </div>
+  </div>
+</div>
+
+
+<?php echo $this->partial('calendar/elements/footer.phtml',array(
+                            'data' => $this->date,
                             'nextEvents' => $this->nextEvents,
                             'prevEvents' => $this->prevEvents
                          ));
-?>           
- 
-<?php echo $this->partial('calendar/elements/copyright.phtml');?>               
+?>
+
+<?php echo $this->partial('calendar/elements/copyright.phtml');?>

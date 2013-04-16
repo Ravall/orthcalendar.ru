@@ -120,7 +120,25 @@ body{
     }
 
 
-
+div#subscribe_block {
+        @include main-block();
+        div.container {
+            @include container;
+            div#image {
+                @include prepend(1);
+                @include append(1);
+                @include column(8);
+                img{
+                    @include prepend(1);
+                }
+            }
+            div#subscribe_info {
+                margin-top:20px;
+                @include prepend(1);
+                @include column(13, true);
+            }
+        }
+    }
 
 
     div#today_block, div#article_card, div#icons_card {
