@@ -322,6 +322,21 @@ div#subscribe_block {
 
         }
 
+        div#sms_subscribe
+        {
+            @include column(24, true);
+            div.form {
+                @include column(11);
+            }
+            div.right {
+                @include column(11, true);
+                iframe {
+                    width:100%;
+                    height:300px;
+                }
+            }
+        }
+
         div#add_content {
             div#adSense {
                 padding-top:25px;
