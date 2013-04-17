@@ -326,7 +326,7 @@ div#subscribe_block {
         {
             @include column(24, true);
             div.form {
-                @include column(11);
+                @include column(10);
             }
             div.right {
                 @include column(11, true);
