@@ -93,6 +93,44 @@ class UserController extends SystemController {
      */
     public function smsAction()
     {
+        if ($this->getRequest()->isPost()) {
+          $SubscriptionId = '10976';
+          $MSISDN = $_POST['phone'];
+          $Period = '1';
+          $PeriodType = 'DAY';
+          $Count = '10000';
+          $StartTime = date("YmdHm", time());
+          $SecretKey = 'yTgjX9qv';
+
+
+          $sign = MD5($x =
+            $SubscriptionId . $MSISDN . $Period . $PeriodType
+            . $Count . $StartTime . $SecretKey);
+          $request = "
+            SubscriptionId:{$SubscriptionId}
+            Signature:{$sign}
+            MSISDN:{$MSISDN}
+            Period:{$Period}
+            PeriodType:{$PeriodType}
+            Count:{$Count}
+            StartTime:{$StartTime}";
+
+          $config = new Zend_Config_Ini(PATH_BASE . '/config/config.ini');
+          $pass = $config->a1->login . ':' . $config->a1->password;
+          $curlHandler = curl_init();
+          curl_setopt($curlHandler, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+          curl_setopt($curlHandler, CURLOPT_USERPWD, $pass);
+          curl_setopt($curlHandler, CURLOPT_POST, 1);
+          curl_setopt($curlHandler, CURLOPT_POSTFIELDS, $request);
+          curl_setopt($curlHandler, CURLOPT_URL, "http://api-subscription.a1agregator.ru/createSubscription");
+
+          $response = curl_exec($curlHandler);
+          var_dump($response);
+        }
+    }
+
+    public function smssubscribesetupAction()
+    {
 
     }
 

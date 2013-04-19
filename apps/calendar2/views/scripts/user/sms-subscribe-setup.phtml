@@ -6,23 +6,18 @@
     <div class="container">
         <div id='sms_subscribe'>
             <div class="form">
-                <form method='POST'>
-                    <h1> Подписка на рассылку православных праздников </h1>
+                <form>
+                    <h1> Отписка от рассылку православных праздников </h1>
                     <div class="element">
                             <b>Номер телефона:</b>
                             <input type='text' class='tilte' name='phone'>
                     </div>
-                    <div>
-                        <input type='checkbox' id='agree'>
-                        я согласен с Правилами предоставления Подписки на рассылку православных праздников
-
-                    </div>
                     <div class="element">
-                        <input type='submit' value='Продолжить'>
+                        <input type='submit' value='Отписаться'>
                     </div>
 
                     <div>
-                        <a href='<?php echo $this->url(array(), 'smsrights'); ?>'>Управление подпиской на рассылку православных праздников</a><br/>
+                        <a href='<?php echo $this->url(array(), 'sms'); ?>'>Подписаться  на рассылку православных праздников</a><br/>
                         <a href='<?php echo $this->url(array(), 'smssetup'); ?>'>Правила услуги "Рассылка православных праздников"</a>
                     </div>
 
