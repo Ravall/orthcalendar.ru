@@ -25,13 +25,13 @@ class RssController extends Mindfly_Controller_Action {
                     $articles = Sancta_Article::getByEventId($event->getId());
                     if ($articles) {
                         foreach ($articles as $article) {
-                            $addArticles[] = '<a href="http://calendar.sancta.ru/event/article/id/'.$article->getId().'/event/'.$event->getId().'">'.$article->getTitle().'</a>';
+                            $addArticles[] = '<a href="http://orthcalendar.ru/event/article/id/'.$article->getId().'/event/'.$event->getId().'">'.$article->getTitle().'</a>';
                         }
                     }
                     $addArticlesStr = count($addArticles) ? ('<br/><b>Статьи:</b><br/>' . implode('<br/>', $addArticles)) : '';
                     $rss['entries'][] = array(
                         'title' => $event->getTitle(),
-                        'link' => 'http://calendar.sancta.ru/event/orthodoxy/'.$event->getId(),
+                        'link' => 'http://orthcalendar.ru/event/orthodoxy/'.$event->getId(),
                         'description' => strip_tags($event->getContent()),
                         'content' => $event->getContent() . $addArticlesStr,
                     );
