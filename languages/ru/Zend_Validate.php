@@ -1,5 +1,5 @@
 <?php
-/* 
+/*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -21,5 +21,6 @@ return array(
     'userNotFind' => 'Не верный логин или пароль',
     're_password_invalide' => 'Введенные пароли не совпадают',
     'emailNotUnic' => 'Пользователь с таким email уже зарегистрирован в системе',
+    'subscribeEmailNotUnic' => 'У вас уже есть подписка',
 );
 ?>
